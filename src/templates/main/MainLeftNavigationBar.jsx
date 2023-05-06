@@ -1,15 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
+import Colors from '../../style/Colors';
 
 const Container = styled.div`
-  width: 180px;
+  width: 340px;
   height: 100%;
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
   padding: 16px;
-  background-color: white;
-  border-right: 1px solid rgba(0, 0, 0, 0.12);
+  background-color: ${Colors.BLUE_BACKGROUND};
+  border-right: 1px solid ${Colors.BLACK08};
 `;
 
 const MainLeftNavigationBar = () => {
