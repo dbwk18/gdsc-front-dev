@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Outlet } from 'react-router-dom';
+import GlobalStyle from './GlobalStyle';
 
 const RootContainer = styled.div`
   width: 100vw;
@@ -11,6 +12,7 @@ const RootContainer = styled.div`
 const RootLayout = () => {
   return (
     <RootContainer>
+      <GlobalStyle />
       <Outlet />
     </RootContainer>
   );

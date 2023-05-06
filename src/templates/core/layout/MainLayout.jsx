@@ -14,6 +14,8 @@ const Container = styled.div`
 const Body = styled.div`
   width: 100%;
   flex-grow: 1;
+  display: flex;
+  flex-direction: row;
 `;
 
 const OutletArea = styled.div`
