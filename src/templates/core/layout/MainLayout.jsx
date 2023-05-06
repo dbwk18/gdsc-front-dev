@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Outlet } from 'react-router-dom';
 import MainLeftNavigationBar from '../../main/MainLeftNavigationBar';
-import MainTopBar from '../../main/MainTopBar';
+import MainHeader from '../../main/MainHeader';
 
 const Container = styled.div`
   width: 100%;
@@ -24,7 +24,7 @@ const OutletArea = styled.div`
 const MainLayout = () => {
   return (
     <Container>
-      <MainTopBar />
+      <MainHeader />
       <Body>
         <MainLeftNavigationBar />
         <OutletArea>

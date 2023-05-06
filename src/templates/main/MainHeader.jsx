@@ -11,8 +11,8 @@ const Container = styled.div`
   flex-shrink: 0;
 `;
 
-const MainTopBar = () => {
+const MainHeader = () => {
   return <Container>KAIST BAI</Container>;
 };
 
-export default MainTopBar;
+export default MainHeader;
