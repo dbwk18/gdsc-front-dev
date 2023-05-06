@@ -13,5 +13,6 @@ module.exports = {
   rules: {
     'react/function-component-definition': 'off',
     'react/jsx-curly-brace-presence': 'off',
+    'import/no-extraneous-dependencies': 'off',
   },
 };
