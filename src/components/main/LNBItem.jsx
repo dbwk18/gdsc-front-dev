@@ -18,8 +18,12 @@ const Container = styled.div`
   }
 `;
 
-const LNBItem = ({ label, selected }) => {
-  return <Container selected={selected}>{label}</Container>;
+const LNBItem = ({ label, selected, onClick }) => {
+  return (
+    <Container selected={selected} onClick={onClick}>
+      {label}
+    </Container>
+  );
 };
 
 export default LNBItem;

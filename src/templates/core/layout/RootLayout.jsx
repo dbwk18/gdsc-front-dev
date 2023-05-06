@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import GlobalStyle from './GlobalStyle';
 
 const RootContainer = styled.div`
@@ -10,6 +10,12 @@ const RootContainer = styled.div`
 `;
 
 const RootLayout = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    navigate('/main/budget');
+  }, []);
+
   return (
     <RootContainer>
       <GlobalStyle />

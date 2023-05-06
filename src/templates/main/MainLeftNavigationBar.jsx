@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Colors from '../../style/Colors';
 import LNBItem from '../../components/main/LNBItem';
 
@@ -16,10 +17,21 @@ const Container = styled.div`
 `;
 
 const MainLeftNavigationBar = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
   return (
     <Container>
-      <LNBItem label="예결산안" selected />
-      <LNBItem label="통장거래내역" selected={false} />
+      <LNBItem
+        label="예결산안"
+        selected={location.pathname.includes('budget')}
+        onClick={() => navigate('/main/budget')}
+      />
+      <LNBItem
+        label="통장거래내역"
+        selected={location.pathname.includes('account')}
+        onClick={() => navigate('/main/account')}
+      />
     </Container>
   );
 };
