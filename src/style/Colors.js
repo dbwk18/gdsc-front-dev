@@ -6,7 +6,9 @@ const Colors = {
   BLACK12: 'rgba(0, 0, 0, 0.12)',
   BLACK08: 'rgba(0, 0, 0, 0.08)',
 
-  WHITE100: 'rgba(1, 1, 1, 1)',
+  WHITE100: '#FFFFFF',
+
+  GREY60: '#7F828D',
 
   BLUE_DEEP: '#0052CC',
   BLUE_MEDIUM: '#0151CA',

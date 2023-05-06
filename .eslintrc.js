@@ -14,5 +14,7 @@ module.exports = {
     'react/function-component-definition': 'off',
     'react/jsx-curly-brace-presence': 'off',
     'import/no-extraneous-dependencies': 'off',
+    'react/react-in-jsx-scope': 'off',
+    'react/prop-types': 'off',
   },
 };
