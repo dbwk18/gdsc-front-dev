@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Colors from '../../style/Colors';
+import GDSCText, { TextType } from '../core/GDSCText';
 
 const Container = styled.div`
   width: 100%;
@@ -9,7 +10,6 @@ const Container = styled.div`
   align-items: center;
   border-radius: 16px;
   padding: 28px;
-  color: ${props => (props.selected ? Colors.WHITE100 : Colors.GREY60)};
   background-color: ${props => (props.selected ? Colors.BLUE_DEEP : 'rgba(0, 0, 0, 0)')};
   cursor: pointer;
 
@@ -21,7 +21,9 @@ const Container = styled.div`
 const LNBItem = ({ label, selected, onClick }) => {
   return (
     <Container selected={selected} onClick={onClick}>
-      {label}
+      <GDSCText size={15} fontType={TextType.MEDIUM} color={selected ? Colors.WHITE100 : Colors.GREY60}>
+        {label}
+      </GDSCText>
     </Container>
   );
 };
