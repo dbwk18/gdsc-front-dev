@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Outlet } from 'react-router-dom';
-import MainLeftNavigationBar from '../../main/MainLeftNavigationBar';
-import MainHeader from '../../main/MainHeader';
+import MainLeftNavigationBar from '../../templates/main/MainLeftNavigationBar';
+import MainHeader from '../../templates/main/MainHeader';
 
 const Container = styled.div`
   width: 100%;

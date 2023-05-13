@@ -1,6 +1,6 @@
 import React from 'react';
 import { createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
-import { RootLayout, MainLayout } from '../templates/core/layout';
+import { RootLayout, MainLayout } from './layout/index';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
