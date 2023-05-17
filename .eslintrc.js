@@ -16,5 +16,11 @@ module.exports = {
     'import/no-extraneous-dependencies': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',
+    'prettier/prettier': [
+      'error',
+      {
+        endOfLint: 'auto',
+      },
+    ],
   },
 };
