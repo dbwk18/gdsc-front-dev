@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Outlet } from 'react-router-dom';
 import MainLeftNavigationBar from '../../templates/main/MainLeftNavigationBar';
 import MainHeader from '../../templates/main/MainHeader';
+import Colors from '../../style/Colors';
 
 const Container = styled.div`
   width: 100%;
@@ -21,6 +22,11 @@ const Body = styled.div`
 const OutletArea = styled.div`
   flex-grow: 1;
   height: 100%;
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${Colors.BLUE_BACKGROUND};
 `;
 
 const MainLayout = () => {
