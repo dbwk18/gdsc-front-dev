@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import BAILogo from 'public/assets/KAIST_BAI_logo.svg';
 
 const Container = styled.div`
   width: 100%;
