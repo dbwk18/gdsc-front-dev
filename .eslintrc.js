@@ -22,5 +22,7 @@ module.exports = {
         endOfLine: 'auto',
       },
     ],
+    'import/order': 'off',
+    'no-unused-vars': 'warn',
   },
 };
