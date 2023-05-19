@@ -19,7 +19,7 @@ module.exports = {
     'prettier/prettier': [
       'error',
       {
-        endOfLint: 'auto',
+        endOfLine: 'auto',
       },
     ],
   },
