@@ -3,6 +3,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import SettlementTable from './SettlementTable';
 
 function TabPanel(props) {
   const { children, value, index } = props;
@@ -34,7 +35,7 @@ export default function BasicTabs() {
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="수입" />
+          <Tab label="예산" />
           <Tab label="지출" />
           <Tab label="결산" />
         </Tabs>
@@ -46,7 +47,7 @@ export default function BasicTabs() {
         Item Two
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+        <SettlementTable />
       </TabPanel>
     </Box>
   );
