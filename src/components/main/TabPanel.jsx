@@ -3,6 +3,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import IncomeTable from './IncomeTable';
 
 function TabPanel(props) {
   const { children, value, index } = props;
@@ -40,7 +41,7 @@ export default function BasicTabs() {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        Item One
+        <IncomeTable />
       </TabPanel>
       <TabPanel value={value} index={1}>
         Item Two
