@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Colors from '../style/Colors';
 import ChartHeader from '../components/main/ChartHeader';
+import TabPanel from '../components/main/TabPanel';
 
 const Container = styled.div`
   width: 100%;
@@ -15,6 +16,7 @@ const BudgetPage = () => {
     <Container>
       <ChartHeader headerText={'예결산안'} />
       <p>뭔가 들어갈 곳</p>
+      <TabPanel />
     </Container>
   );
 };
