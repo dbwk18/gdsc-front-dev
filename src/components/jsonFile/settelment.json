@@ -1,0 +1,17 @@
+{
+  "total": "54",
+  "components": [
+    {
+      "type": "수익",
+      "budget": "4000000",
+      "settlement": "3990000",
+      "execute_rate": "99.8"
+    },
+    {
+      "type": "지출",
+      "budget": "3500000",
+      "settlement": "3450000",
+      "execute_rate": "98.6"
+    }
+  ]
+}
