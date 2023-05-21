@@ -1,6 +1,8 @@
 import React from 'react';
 import { Table, TableBody, TableCell, TableHead, TableRow, TableContainer } from '@mui/material';
 import incomeData from '../jsonFile/income.json';
+import StyledTableCell from './StyledTableCell';
+import { TextType } from '../core/GDSCText';
 
 const IncomeTable = () => {
   return (
@@ -8,13 +10,13 @@ const IncomeTable = () => {
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell>출처</TableCell>
-            <TableCell>항목</TableCell>
-            <TableCell>코드</TableCell>
-            <TableCell>예산</TableCell>
-            <TableCell>결산</TableCell>
-            <TableCell>집행률</TableCell>
-            <TableCell>비고</TableCell>
+            <StyledTableCell fontType={TextType.BOLD} text={'출처'} />
+            <StyledTableCell fontType={TextType.BOLD} text={'항목'} />
+            <StyledTableCell fontType={TextType.BOLD} text={'코드'} />
+            <StyledTableCell fontType={TextType.BOLD} text={'예산'} />
+            <StyledTableCell fontType={TextType.BOLD} text={'결산'} />
+            <StyledTableCell fontType={TextType.BOLD} text={'집행률'} />
+            <StyledTableCell fontType={TextType.BOLD} text={'비고'} />
           </TableRow>
         </TableHead>
         <TableBody>
