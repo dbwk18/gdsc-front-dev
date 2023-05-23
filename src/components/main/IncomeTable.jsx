@@ -10,13 +10,13 @@ const IncomeTable = () => {
       <Table>
         <TableHead>
           <TableRow>
-            <StyledTableCell fontType={TextType.BOLD} text={'출처'} />
-            <StyledTableCell fontType={TextType.BOLD} text={'항목'} />
-            <StyledTableCell fontType={TextType.BOLD} text={'코드'} />
-            <StyledTableCell fontType={TextType.BOLD} text={'예산'} />
-            <StyledTableCell fontType={TextType.BOLD} text={'결산'} />
-            <StyledTableCell fontType={TextType.BOLD} text={'집행률'} />
-            <StyledTableCell fontType={TextType.BOLD} text={'비고'} />
+            <StyledTableCell text={'출처'} />
+            <StyledTableCell text={'항목'} />
+            <StyledTableCell text={'코드'} />
+            <StyledTableCell text={'예산'} />
+            <StyledTableCell text={'결산'} />
+            <StyledTableCell text={'집행률'} />
+            <StyledTableCell text={'비고'} />
           </TableRow>
         </TableHead>
         <TableBody>
@@ -25,29 +25,29 @@ const IncomeTable = () => {
               <>
                 {fundSource.items.map(item => (
                   <TableRow>
-                    <TableCell>{fundSource.fund_source}</TableCell>
-                    <TableCell>{item.item}</TableCell>
-                    <TableCell>{item.item_code}</TableCell>
-                    <TableCell>{item.budget}</TableCell>
-                    <TableCell>{item.settlement}</TableCell>
-                    <TableCell>{item.execution_rate}</TableCell>
-                    <TableCell>{item.remarks}</TableCell>
+                    <StyledTableCell size={13} text={fundSource.fund_source} />
+                    <StyledTableCell size={10} text={item.item} />
+                    <StyledTableCell size={13} text={item.item_code} />
+                    <StyledTableCell size={13} text={`₩${item.budget}`} />
+                    <StyledTableCell size={13} text={`₩${item.settlement}`} />
+                    <StyledTableCell size={13} text={`${item.execution_rate}%`} />
+                    <StyledTableCell size={13} text={item.remarks} />
                   </TableRow>
                 ))}
                 <TableRow>
-                  <TableCell colSpan={3}>계</TableCell>
-                  <TableCell>예산계</TableCell>
-                  <TableCell>결산계</TableCell>
-                  <TableCell>집행률계</TableCell>
+                  <StyledTableCell size={10} fontType={TextType.BOLD} text={'계'} colSpan={3} />
+                  <StyledTableCell size={13} fontType={TextType.BOLD} text={`₩${13000000}`} />
+                  <StyledTableCell size={13} fontType={TextType.BOLD} text={`₩${11500000}`} />
+                  <StyledTableCell size={13} fontType={TextType.BOLD} text={`${88.5}%`} />
                   <TableCell />
                 </TableRow>
               </>
             ))}
             <TableRow>
-              <TableCell colSpan={3}>총계</TableCell>
-              <TableCell>총예산계</TableCell>
-              <TableCell>총결산계</TableCell>
-              <TableCell>총집행률</TableCell>
+              <StyledTableCell size={14} fontType={TextType.BOLD} text={'총계'} colSpan={3} />
+              <StyledTableCell size={14} fontType={TextType.BOLD} text={`₩${15500000}`} />
+              <StyledTableCell size={14} fontType={TextType.BOLD} text={`₩${14300000}`} />
+              <StyledTableCell size={14} fontType={TextType.BOLD} text={`${92.3}%`} />
               <TableCell />
             </TableRow>
           </>
