@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import logo from '../../assets/KAIST_BAI_logo.svg';
+import GDSCText, { TextType } from '../../components/core/GDSCText';
 
 const Container = styled.div`
   width: 100%;
@@ -14,7 +15,7 @@ const Container = styled.div`
 
   .logo {
     width: 113px;
-    height: 21px;
+    height: 24px;
   }
 `;
 
@@ -22,9 +23,11 @@ const MainHeader = () => {
   return (
     <Container>
       <div className="logo">
-        <img src={logo} alt="KAIST BAI logo" />
+        <img src={logo} alt="KAIST BAI logo" style={{ height: 'fit-content' }} />
       </div>
-      KAIST 학부 총학생회
+      <GDSCText size={16} fontType={TextType.BOLD}>
+        KAIST 학부 총학생회
+      </GDSCText>
     </Container>
   );
 };
