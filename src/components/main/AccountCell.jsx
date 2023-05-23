@@ -1,34 +1,59 @@
 import React from 'react';
 import { TableRow, TableCell } from '@mui/material';
+import GDSCText from '../core/GDSCText';
 
 const AccountCell = ({
-  businessat,
+  businessAt,
   manager,
-  itemsub,
-  itemcode,
-  transactiontype,
+  itemSub,
+  itemCode,
+  transactionType,
   income,
   expense,
   balance,
-  transactionat,
-  bankname,
+  transactionAt,
+  bankName,
   receipts,
   remarks,
 }) => {
   return (
     <TableRow>
-      <TableCell>{businessat}</TableCell>
-      <TableCell>{manager}</TableCell>
-      <TableCell>{itemsub}</TableCell>
-      <TableCell>{itemcode}</TableCell>
-      <TableCell>{transactiontype}</TableCell>
-      <TableCell>{income}</TableCell>
-      <TableCell>{expense}</TableCell>
-      <TableCell>{balance}</TableCell>
-      <TableCell>{transactionat}</TableCell>
-      <TableCell>{bankname}</TableCell>
-      <TableCell>{receipts}</TableCell>
-      <TableCell>{remarks}</TableCell>
+      <TableCell>
+        <GDSCText size={14}>{businessAt}</GDSCText>
+      </TableCell>
+      <TableCell>
+        <GDSCText size={14}>{manager}</GDSCText>
+      </TableCell>
+      <TableCell>
+        <GDSCText size={14}>{itemSub}</GDSCText>
+      </TableCell>
+      <TableCell>
+        <GDSCText size={14}>{itemCode}</GDSCText>
+      </TableCell>
+      <TableCell>
+        <GDSCText size={14}>{transactionType}</GDSCText>
+      </TableCell>
+      <TableCell>
+        <GDSCText size={14}>{income}</GDSCText>
+      </TableCell>
+      <TableCell>
+        <GDSCText size={14}>{expense}</GDSCText>
+      </TableCell>
+      <TableCell>
+        <GDSCText size={14}>{balance}</GDSCText>
+      </TableCell>
+      <TableCell>
+        <GDSCText size={14}>{transactionAt}</GDSCText>
+      </TableCell>
+      <TableCell>
+        <GDSCText size={14}>{bankName}</GDSCText>
+      </TableCell>
+      <TableCell>
+        <GDSCText size={14}>{receipts}</GDSCText>
+      </TableCell>
+      <TableCell>
+        <GDSCText size={14}>{remarks}</GDSCText>
+      </TableCell>
     </TableRow>
   );
 };
