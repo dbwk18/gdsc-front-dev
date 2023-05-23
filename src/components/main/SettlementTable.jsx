@@ -1,47 +1,39 @@
 import React from 'react';
 import { Table, TableBody, TableCell, TableHead, TableRow, TableContainer } from '@mui/material';
-import styled from 'styled-components';
-import { StyledEngineProvider } from '@mui/styled-engine';
 import SettlementJson from '../jsonFile/settlement.json';
-
-const MyTableHead = styled(TableHead)`
-  background-color: rgba(232, 241, 255, 1);
-`;
+import StyledTableCell from './StyledTableCell';
+import { TextType } from '../core/GDSCText';
+import Colors from '../../style/Colors';
 
 function DataTable() {
   return (
-    <StyledEngineProvider>
-      <TableContainer>
-        <Table>
-          <MyTableHead>
+    <TableContainer>
+      <Table>
+        <TableHead>
+          <TableRow sx={{ backgroundColor: Colors.BLUE_LIGHT }}>
+            <TableCell> </TableCell>
+            <StyledTableCell size={14} fontType={TextType.BOLD} text={'예산'} />
+            <StyledTableCell size={14} fontType={TextType.BOLD} text={'결산'} />
+            <StyledTableCell size={14} fontType={TextType.BOLD} text={'집행률'} />
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {SettlementJson.components.map(item => (
             <TableRow>
-              <TableCell> </TableCell>
-              <TableCell>예산</TableCell>
-              <TableCell>결산</TableCell>
-              <TableCell>집행률</TableCell>
+              <StyledTableCell size={14} fontType={TextType.BOLD} text={item.type} />
+              <StyledTableCell size={14} text={`₩${item.budget}`} />
+              <StyledTableCell size={14} text={`₩${item.settlement}`} />
+              <StyledTableCell size={14} text={`${item.execute_rate}%`} />
             </TableRow>
-          </MyTableHead>
-          <TableBody>
-            {SettlementJson.components.map(item => (
-              <TableRow>
-                <TableCell>{item.type}</TableCell>
-                <TableCell>￦{item.budget}</TableCell>
-                <TableCell>￦{item.settlement}</TableCell>
-                <TableCell>{item.execute_rate}%</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-          <MyTableHead>
-            <TableRow>
-              <TableCell>총계</TableCell>
-              <TableCell />
-              <TableCell>￦1000</TableCell>
-              <TableCell>100%</TableCell>
-            </TableRow>
-          </MyTableHead>
-        </Table>
-      </TableContainer>
-    </StyledEngineProvider>
+          ))}
+        </TableBody>
+        <TableRow sx={{ backgroundColor: Colors.BLUE_DEEP }}>
+          <StyledTableCell size={14} fontType={TextType.BOLD} text={'총계'} color={Colors.WHITE100} colSpan={2} />
+          <StyledTableCell size={14} fontType={TextType.BOLD} color={Colors.WHITE100} text={`₩${-60000}`} />
+          <StyledTableCell size={14} fontType={TextType.BOLD} color={Colors.WHITE100} text={`${1000}%`} />
+        </TableRow>
+      </Table>
+    </TableContainer>
   );
 }
 
