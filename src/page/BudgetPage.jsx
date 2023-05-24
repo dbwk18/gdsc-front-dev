@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Colors from '../style/Colors';
 import ChartHeader from '../components/main/ChartHeader';
-import TabPanels from '../components/main/TabPanels';
+import TabPanels from '../components/main/budget/TabPanels';
 
 const Container = styled.div`
   width: 100%;

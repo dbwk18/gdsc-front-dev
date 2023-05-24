@@ -1,9 +1,9 @@
 import React from 'react';
 import { Table, TableBody, TableCell, TableHead, TableRow, TableContainer } from '@mui/material';
-import SettlementJson from '../jsonfile/settlement.json';
+import SettlementJson from '../../jsonfile/settlement.json';
 import StyledTableCell from './StyledTableCell';
-import { TextType } from '../core/GDSCText';
-import Colors from '../../style/Colors';
+import { TextType } from '../../core/GDSCText';
+import Colors from '../../../style/Colors';
 
 function DataTable() {
   return (
