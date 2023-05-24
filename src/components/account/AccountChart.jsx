@@ -62,23 +62,23 @@ const AccountChart = ({ account }) => {
             </StyledTableCell>
           </TableHead>
           <TableBody>
-            {account.map(c => {
+            {account.map(input => {
               return (
                 <AccountCell
-                  businessAt={c.business_at}
-                  manager={c.manager}
-                  itemSub={c.item_sub}
-                  itemCode={c.item_code}
-                  transactionType={c.transaction_type}
-                  income={c.income}
-                  expense={c.expense}
-                  balance={c.balance}
-                  transactionAt={c.transaction_at}
-                  bankName={c.bank_name}
-                  accountHolder={c.account_holder}
-                  accountNumber={c.account_number}
-                  receipts={c.receipts}
-                  remarks={c.remarks}
+                  businessAt={input.business_at}
+                  manager={input.manager}
+                  itemSub={input.item_sub}
+                  itemCode={input.item_code}
+                  transactionType={input.transaction_type}
+                  income={input.income}
+                  expense={input.expense}
+                  balance={input.balance}
+                  transactionAt={input.transaction_at}
+                  bankName={input.bank_name}
+                  accountHolder={input.account_holder}
+                  accountNumber={input.account_number}
+                  receipts={input.receipts}
+                  remarks={input.remarks}
                 />
               );
             })}
