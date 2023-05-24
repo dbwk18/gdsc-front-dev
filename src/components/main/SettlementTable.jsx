@@ -1,19 +1,9 @@
 import React from 'react';
 import { Table, TableBody, TableCell, TableHead, TableRow, TableContainer } from '@mui/material';
-<<<<<<< HEAD
-import styled from 'styled-components';
-import { StyledEngineProvider } from '@mui/styled-engine';
 import SettlementJson from '../jsonfile/settlement.json';
-
-const MyTableHead = styled(TableHead)`
-  background-color: rgba(232, 241, 255, 1);
-`;
-=======
-import SettlementJson from '../jsonFile/settlement.json';
 import StyledTableCell from './StyledTableCell';
 import { TextType } from '../core/GDSCText';
 import Colors from '../../style/Colors';
->>>>>>> 7bdfbd282f2df5bbbb82c678e18107445e562f60
 
 function DataTable() {
   return (
