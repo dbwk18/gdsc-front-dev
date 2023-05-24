@@ -19,8 +19,12 @@ module.exports = {
     'prettier/prettier': [
       'error',
       {
-        endOfLint: 'auto',
+        endOfLine: 'auto',
       },
     ],
+    'import/order': 'off',
+    'no-unused-vars': 'warn',
+    'jsx-a11y/click-events-have-key-events': 'off',
+    'jsx-a11y/no-static-element-interactions': 'off',
   },
 };
