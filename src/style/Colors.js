@@ -8,7 +8,10 @@ const Colors = {
 
   WHITE100: '#FFFFFF',
 
+  GREY80: '#474747',
   GREY60: '#7F828D',
+  GREY40: '#E0E0E0',
+  GREY20: '#F0F0F0',
 
   BLUE_DEEP: '#0052CC',
   BLUE_MEDIUM: '#0151CA',

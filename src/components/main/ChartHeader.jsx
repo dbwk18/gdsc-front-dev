@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import GDSCText, { TextType } from '../core/GDSCText';
 import Colors from '../../style/Colors';
+import GDSCButton from '../core/GDSCButton';
 
 const Container = styled.div`
   width: 100%;
@@ -30,9 +31,7 @@ const ChartHeader = ({ headerText }) => {
           {`23년도 상반기 ${headerText}`}
         </GDSCText>
       </div>
-      <GDSCText size={14} fontType={TextType.MEDIUM} color={Colors.BLACK100}>
-        내역 추가
-      </GDSCText>
+      <GDSCButton label={'+ 내역 추가'} onClick={() => {}} />
     </Container>
   );
 };

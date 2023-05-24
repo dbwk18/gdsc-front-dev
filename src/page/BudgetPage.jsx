@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Colors from '../style/Colors';
 import ChartHeader from '../components/main/ChartHeader';
+import GDSCText from '../components/core/GDSCText';
 
 const Container = styled.div`
   width: 100%;
@@ -14,6 +15,7 @@ const BudgetPage = () => {
   return (
     <Container>
       <ChartHeader headerText={'예결산안'} />
+      <p>뭔가 들어갈 곳</p>
     </Container>
   );
 };
