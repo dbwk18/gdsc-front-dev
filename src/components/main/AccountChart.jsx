@@ -27,6 +27,17 @@ const AccountChart = ({ account }) => {
             <StyledTableCell>
               <GDSCText size={12}>사업일</GDSCText>
             </StyledTableCell>
+
+            {/* <TableSortLabel
+              active={orderBy === propertyName}
+              direction={orderBy === propertyName ? sortDirection : 'asc'}
+              onClick={() => onSort(propertyName)}
+              hideSortIcon={orderBy === propertyName}
+              IconComponent={() => <DropdownIndicator className={classes.displayOnHover} />}
+            >
+              {<GDSCText size={12}>사업일</GDSCText>}
+            </TableSortLabel> */}
+
             <StyledTableCell>
               <GDSCText size={12}>담당자</GDSCText>
             </StyledTableCell>
