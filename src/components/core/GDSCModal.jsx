@@ -8,6 +8,7 @@ const Wrapper = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  outline: none;
 `;
 
 const GDSCModal = ({ open, onClose, children }) => {
