@@ -1,6 +1,7 @@
 import React from 'react';
 import { Table, TableBody, TableCell, TableHead, TableRow, TableContainer } from '@mui/material';
-import expenseData from '../jsonFile/expense.json';
+import expenseData from '../jsonfile/expense.json';
+import StyledTableCell from './StyledTableCell';
 
 const ExpenseTable = () => {
   return (
@@ -8,7 +9,7 @@ const ExpenseTable = () => {
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell>담당</TableCell>
+            <StyledTableCell>담당</StyledTableCell>
             <TableCell>소항목</TableCell>
             <TableCell>출처</TableCell>
             <TableCell>세부항목</TableCell>

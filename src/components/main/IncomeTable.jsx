@@ -1,6 +1,6 @@
 import React from 'react';
 import { Table, TableBody, TableCell, TableHead, TableRow, TableContainer } from '@mui/material';
-import incomeData from '../jsonFile/income.json';
+import incomeData from '../jsonfile/income.json';
 import StyledTableCell from './StyledTableCell';
 import { TextType } from '../core/GDSCText';
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { Table, TableBody, TableCell, TableHead, TableRow, TableContainer } from '@mui/material';
 import styled from 'styled-components';
 import { StyledEngineProvider } from '@mui/styled-engine';
-import SettlementJson from '../jsonFile/settlement.json';
+import SettlementJson from '../jsonfile/settlement.json';
 
 const MyTableHead = styled(TableHead)`
   background-color: rgba(232, 241, 255, 1);
