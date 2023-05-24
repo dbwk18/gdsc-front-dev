@@ -15,7 +15,7 @@ const BudgetPage = () => {
   return (
     <Container>
       <ChartHeader headerText={'예결산안'} />
-      <p>뭔가 들어갈 곳</p>
+      <GDSCText size={13}>뭔가 들어갈 곳</GDSCText>
     </Container>
   );
 };
