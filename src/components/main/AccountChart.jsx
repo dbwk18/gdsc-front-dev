@@ -8,11 +8,10 @@ import GDSCText from '../core/GDSCText';
 const Container = styled.div`
   width: 100%;
   height: 700px;
-
   padding: 0 12px;
 `;
 
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
+const StyledTableCell = styled(TableCell)(() => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: Colors.BLUE_LIGHT,
     color: 'black',
@@ -26,40 +25,40 @@ const AccountChart = ({ account }) => {
         <Table>
           <TableHead>
             <StyledTableCell>
-              <GDSCText size={14}>사업일</GDSCText>
+              <GDSCText size={15}>사업일</GDSCText>
             </StyledTableCell>
             <StyledTableCell>
-              <GDSCText size={14}>담당자</GDSCText>
+              <GDSCText size={15}>담당자</GDSCText>
             </StyledTableCell>
             <StyledTableCell>
-              <GDSCText size={14}>집행내용</GDSCText>
+              <GDSCText size={15}>집행내용</GDSCText>
             </StyledTableCell>
             <StyledTableCell>
-              <GDSCText size={14}>코드</GDSCText>
+              <GDSCText size={15}>코드</GDSCText>
             </StyledTableCell>
             <StyledTableCell>
-              <GDSCText size={14}>거래형태</GDSCText>
+              <GDSCText size={15}>거래형태</GDSCText>
             </StyledTableCell>
             <StyledTableCell>
-              <GDSCText size={14}>수입</GDSCText>
+              <GDSCText size={15}>수입</GDSCText>
             </StyledTableCell>
             <StyledTableCell>
-              <GDSCText size={14}>지출</GDSCText>
+              <GDSCText size={15}>지출</GDSCText>
             </StyledTableCell>
             <StyledTableCell>
-              <GDSCText size={14}>잔액</GDSCText>
+              <GDSCText size={15}>잔액</GDSCText>
             </StyledTableCell>
             <StyledTableCell>
-              <GDSCText size={14}>통장거래일</GDSCText>
+              <GDSCText size={15}>통장거래일</GDSCText>
             </StyledTableCell>
             <StyledTableCell>
-              <GDSCText size={14}>이체계좌번호</GDSCText>
+              <GDSCText size={15}>이체계좌번호</GDSCText>
             </StyledTableCell>
             <StyledTableCell>
-              <GDSCText size={14}>영수증</GDSCText>
+              <GDSCText size={15}>영수증</GDSCText>
             </StyledTableCell>
             <StyledTableCell>
-              <GDSCText size={14}>비고</GDSCText>
+              <GDSCText size={15}>비고</GDSCText>
             </StyledTableCell>
           </TableHead>
           <TableBody>

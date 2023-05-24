@@ -19,40 +19,40 @@ const AccountCell = ({
   return (
     <TableRow>
       <TableCell>
-        <GDSCText size={14}>{businessAt}</GDSCText>
+        <GDSCText size={13}>{businessAt}</GDSCText>
       </TableCell>
       <TableCell>
-        <GDSCText size={14}>{manager}</GDSCText>
+        <GDSCText size={13}>{manager}</GDSCText>
       </TableCell>
       <TableCell>
-        <GDSCText size={14}>{itemSub}</GDSCText>
+        <GDSCText size={13}>{itemSub}</GDSCText>
       </TableCell>
       <TableCell>
-        <GDSCText size={14}>{itemCode}</GDSCText>
+        <GDSCText size={13}>{itemCode}</GDSCText>
       </TableCell>
       <TableCell>
-        <GDSCText size={14}>{transactionType}</GDSCText>
+        <GDSCText size={13}>{transactionType}</GDSCText>
       </TableCell>
       <TableCell>
-        <GDSCText size={14}>{income}</GDSCText>
+        <GDSCText size={13}>{income}</GDSCText>
       </TableCell>
       <TableCell>
-        <GDSCText size={14}>{expense}</GDSCText>
+        <GDSCText size={13}>{expense}</GDSCText>
       </TableCell>
       <TableCell>
-        <GDSCText size={14}>{balance}</GDSCText>
+        <GDSCText size={13}>{balance}</GDSCText>
       </TableCell>
       <TableCell>
-        <GDSCText size={14}>{transactionAt}</GDSCText>
+        <GDSCText size={13}>{transactionAt}</GDSCText>
       </TableCell>
       <TableCell>
-        <GDSCText size={14}>{bankName}</GDSCText>
+        <GDSCText size={13}>{bankName}</GDSCText>
       </TableCell>
       <TableCell>
-        <GDSCText size={14}>{receipts}</GDSCText>
+        <GDSCText size={13}>{receipts}</GDSCText>
       </TableCell>
       <TableCell>
-        <GDSCText size={14}>{remarks}</GDSCText>
+        <GDSCText size={13}>{remarks}</GDSCText>
       </TableCell>
     </TableRow>
   );
