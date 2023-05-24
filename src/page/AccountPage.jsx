@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Colors from '../style/Colors';
 import ChartHeader from '../components/main/ChartHeader';
-import AccountChart from '../components/main/AccountChart';
+import AccountChart from '../components/account/AccountChart';
 
 const Container = styled.div`
   width: 100%;
