@@ -22,7 +22,9 @@ const Text = styled.p`
   line-height: ${props => `${props.lineHeight}px`};
   white-space: pre-wrap;
   color: ${props => props.fontColor};
-  ${props => (props.font === TextType.UNDERLINE ? 'text-decoration: underline;' : '')}
+  ${props => (props.font === TextType.UNDERLINE ? 'text-decoration: underline;' : '')};
+  width: fit-content;
+  height: fit-content;
 `;
 
 const calculateLineHeight = size => {
