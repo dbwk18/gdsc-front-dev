@@ -11,9 +11,9 @@ const Container = styled.div`
   padding: 20px 30px;
 `;
 
-const account = [
+const mockAccounts = [
   {
-    business_at: '2023-05-10',
+    business_at: '20230510',
     manager: '기획국',
     item_sub: '학과 설명회',
     item_code: 'A1',
@@ -29,7 +29,7 @@ const account = [
     remarks: 'memo',
   },
   {
-    business_at: '2023-05-10',
+    business_at: '20230510',
     manager: '기획국',
     item_sub: '학과 설명회',
     item_code: 'A1',
@@ -45,7 +45,7 @@ const account = [
     remarks: 'memo',
   },
   {
-    business_at: '2023-05-10',
+    business_at: '20230510',
     manager: '기획국',
     item_sub: '학과 설명회',
     item_code: 'A1',
@@ -66,7 +66,7 @@ const AccountPage = () => {
   return (
     <Container>
       <ChartHeader headerText={'통장거래내역'} />
-      <AccountChart account={account} />
+      <AccountChart account={mockAccounts} />
     </Container>
   );
 };

@@ -13,6 +13,8 @@ const AccountCell = ({
   balance,
   transactionAt,
   bankName,
+  accountHolder,
+  accountNumber,
   receipts,
   remarks,
 }) => {
@@ -25,7 +27,7 @@ const AccountCell = ({
         <GDSCText size={13}>{manager}</GDSCText>
       </TableCell>
       <TableCell>
-        <GDSCText size={13}>{itemSub}</GDSCText>
+        <GDSCText size={10}>{itemSub}</GDSCText>
       </TableCell>
       <TableCell>
         <GDSCText size={13}>{itemCode}</GDSCText>
@@ -46,7 +48,10 @@ const AccountCell = ({
         <GDSCText size={13}>{transactionAt}</GDSCText>
       </TableCell>
       <TableCell>
-        <GDSCText size={13}>{bankName}</GDSCText>
+        <GDSCText size={10}>
+          ({bankName}-{accountHolder})
+        </GDSCText>
+        <GDSCText size={10}>{accountNumber}</GDSCText>
       </TableCell>
       <TableCell>
         <GDSCText size={13}>{receipts}</GDSCText>

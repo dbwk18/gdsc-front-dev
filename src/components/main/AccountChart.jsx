@@ -25,40 +25,40 @@ const AccountChart = ({ account }) => {
         <Table>
           <TableHead>
             <StyledTableCell>
-              <GDSCText size={15}>사업일</GDSCText>
+              <GDSCText size={12}>사업일</GDSCText>
             </StyledTableCell>
             <StyledTableCell>
-              <GDSCText size={15}>담당자</GDSCText>
+              <GDSCText size={12}>담당자</GDSCText>
             </StyledTableCell>
             <StyledTableCell>
-              <GDSCText size={15}>집행내용</GDSCText>
+              <GDSCText size={12}>집행내용</GDSCText>
             </StyledTableCell>
             <StyledTableCell>
-              <GDSCText size={15}>코드</GDSCText>
+              <GDSCText size={12}>코드</GDSCText>
             </StyledTableCell>
             <StyledTableCell>
-              <GDSCText size={15}>거래형태</GDSCText>
+              <GDSCText size={12}>거래형태</GDSCText>
             </StyledTableCell>
             <StyledTableCell>
-              <GDSCText size={15}>수입</GDSCText>
+              <GDSCText size={12}>수입</GDSCText>
             </StyledTableCell>
             <StyledTableCell>
-              <GDSCText size={15}>지출</GDSCText>
+              <GDSCText size={12}>지출</GDSCText>
             </StyledTableCell>
             <StyledTableCell>
-              <GDSCText size={15}>잔액</GDSCText>
+              <GDSCText size={12}>잔액</GDSCText>
             </StyledTableCell>
             <StyledTableCell>
-              <GDSCText size={15}>통장거래일</GDSCText>
+              <GDSCText size={12}>통장거래일</GDSCText>
             </StyledTableCell>
             <StyledTableCell>
-              <GDSCText size={15}>이체계좌번호</GDSCText>
+              <GDSCText size={12}>이체계좌번호</GDSCText>
             </StyledTableCell>
             <StyledTableCell>
-              <GDSCText size={15}>영수증</GDSCText>
+              <GDSCText size={12}>영수증</GDSCText>
             </StyledTableCell>
             <StyledTableCell>
-              <GDSCText size={15}>비고</GDSCText>
+              <GDSCText size={12}>비고</GDSCText>
             </StyledTableCell>
           </TableHead>
           <TableBody>
@@ -75,6 +75,8 @@ const AccountChart = ({ account }) => {
                   balance={c.balance}
                   transactionAt={c.transaction_at}
                   bankName={c.bank_name}
+                  accountHolder={c.account_holder}
+                  accountNumber={c.account_number}
                   receipts={c.receipts}
                   remarks={c.remarks}
                 />
