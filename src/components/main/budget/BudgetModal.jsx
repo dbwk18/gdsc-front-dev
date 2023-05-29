@@ -9,11 +9,9 @@ const Container = styled.div`
   display: flex;
   border-radius: 20px;
   flex-direction: column;
-  justify-content: space-between;
 `;
 
 const Header = styled.div`
-  width: 100%;
   height: 72px;
   border-radius: 20px 20px 0px 0px;
   padding: 40px;
@@ -21,6 +19,25 @@ const Header = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+`;
+
+const FormContainer = styled.div`
+  margin: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-grow: 1;
+`;
+
+const LeftForm = styled.div`
+  flex: 4;
+  margin: 40px;
+`;
+
+const RightForm = styled.div`
+  flex: 4;
+  margin: 40px;
 `;
 
 const BudgetModal = () => {
@@ -34,7 +51,11 @@ const BudgetModal = () => {
           X
         </GDSCText>
       </Header>
-      <div>hello</div>
+      <FormContainer>
+        <LeftForm>hi</LeftForm>
+        <RightForm>hello</RightForm>
+        <GDSCButton label={'등록'} />
+      </FormContainer>
     </Container>
   );
 };
