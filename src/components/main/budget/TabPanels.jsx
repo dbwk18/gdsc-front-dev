@@ -7,7 +7,7 @@ import ExpenseTable from './ExpenseTable';
 import SettlementTable from './SettlementTable';
 import Panel from './Panel';
 
-export default function TabPanels() {
+const TabPanels = () => {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -34,4 +34,6 @@ export default function TabPanels() {
       </Panel>
     </Box>
   );
-}
+};
+
+export default TabPanels;

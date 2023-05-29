@@ -5,7 +5,7 @@ import StyledTableCell from './StyledTableCell';
 import { TextType } from '../../core/GDSCText';
 import Colors from '../../../style/Colors';
 
-function DataTable() {
+const SettlementTabel = () => {
   return (
     <TableContainer>
       <Table>
@@ -35,6 +35,6 @@ function DataTable() {
       </Table>
     </TableContainer>
   );
-}
+};
 
-export default DataTable;
+export default SettlementTabel;
