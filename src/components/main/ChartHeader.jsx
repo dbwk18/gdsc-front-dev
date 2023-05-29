@@ -2,6 +2,9 @@ import styled from 'styled-components';
 import GDSCText, { TextType } from '../core/GDSCText';
 import Colors from '../../style/Colors';
 import GDSCButton from '../core/GDSCButton';
+import { useState } from 'react';
+import GDSCModal from '../core/GDSCModal';
+import BudgetModal from './budget/BudgetModal';
 
 const Container = styled.div`
   width: 100%;
@@ -21,6 +24,8 @@ const Container = styled.div`
 `;
 
 const ChartHeader = ({ headerText }) => {
+  const [isModalOpen, setModalOpen] = useState(false);
+
   return (
     <Container>
       <div className="title">
@@ -31,7 +36,12 @@ const ChartHeader = ({ headerText }) => {
           {`23년도 상반기 ${headerText}`}
         </GDSCText>
       </div>
-      <GDSCButton label={'+ 내역 추가'} onClick={() => {}} />
+      <div onClick={() => setModalOpen(true)}>
+        <GDSCButton label={'+ 내역 추가'} />
+      </div>
+      <GDSCModal open={isModalOpen} onClose={() => setModalOpen(false)}>
+        <BudgetModal />
+      </GDSCModal>
     </Container>
   );
 };
