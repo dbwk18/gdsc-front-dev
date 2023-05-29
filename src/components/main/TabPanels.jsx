@@ -18,9 +18,9 @@ export default function TabPanels() {
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="예산" />
-          <Tab label="지출" />
-          <Tab label="결산" />
+          <Tab sx={{ color: 'red', fontWeight: 'bold' }} label="예산" />
+          <Tab sx={{ color: 'red', fontWeight: 'bold' }} label="지출" />
+          <Tab sx={{ color: 'red', fontWeight: 'bold' }} label="결산" />
         </Tabs>
       </Box>
       <Panel value={value} index={0}>
