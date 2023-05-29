@@ -8,28 +8,28 @@ import SettlementTable from './SettlementTable';
 import Panel from './Panel';
 
 const TabPanels = () => {
-  const [value, setValue] = React.useState(0);
+  const [tap, currTap] = React.useState(0);
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
+  const handleChange = (event, newTap) => {
+    currTap(newTap);
   };
 
   return (
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+        <Tabs value={tap} onChange={handleChange} aria-label="basic tabs example">
           <Tab sx={{ color: 'red', fontWeight: 'bold' }} label="예산" />
           <Tab sx={{ color: 'red', fontWeight: 'bold' }} label="지출" />
           <Tab sx={{ color: 'red', fontWeight: 'bold' }} label="결산" />
         </Tabs>
       </Box>
-      <Panel value={value} index={0}>
+      <Panel value={tap} index={0}>
         <IncomeTable />
       </Panel>
-      <Panel value={value} index={1}>
+      <Panel value={tap} index={1}>
         <ExpenseTable />
       </Panel>
-      <Panel value={value} index={2}>
+      <Panel value={tap} index={2}>
         <SettlementTable />
       </Panel>
     </Box>
