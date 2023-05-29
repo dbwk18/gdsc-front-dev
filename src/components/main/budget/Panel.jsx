@@ -2,7 +2,7 @@ import * as React from 'react';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
-export default function Panel(props) {
+const Panel = props => {
   const { children, value, index } = props;
 
   return (
@@ -19,4 +19,6 @@ export default function Panel(props) {
       )}
     </div>
   );
-}
+};
+
+export default Panel;
