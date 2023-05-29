@@ -8,11 +8,19 @@ const CenteredTableCell = styled(TableCell)`
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
 `;
 
-const StyledTableCell = ({ size = 12, fontType = TextType.REGULAR, color = Colors.BLACK100, text, colSpan = 1 }) => {
+const StyledTableCell = ({
+  size = 12,
+  fontType = TextType.REGULAR,
+  color = Colors.BLACK100,
+  text,
+  colSpan = 1,
+  backgroundColor = Colors.WHITE100,
+}) => {
   return (
-    <CenteredTableCell colSpan={colSpan}>
+    <CenteredTableCell colSpan={colSpan} sx={{ backgroundColor }}>
       <GDSCText size={size} fontType={fontType} color={color}>
         {text}
       </GDSCText>

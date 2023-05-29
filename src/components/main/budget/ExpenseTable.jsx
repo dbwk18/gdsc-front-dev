@@ -10,16 +10,16 @@ const ExpenseTable = () => {
     <TableContainer>
       <Table>
         <TableHead>
-          <TableRow sx={{ backgroundColor: Colors.BLUE_LIGHT }}>
-            <StyledTableCell fontType={TextType.BOLD} text={'담당'} />
-            <StyledTableCell fontType={TextType.BOLD} text={'소항목'} />
-            <StyledTableCell fontType={TextType.BOLD} text={'출처'} />
-            <StyledTableCell fontType={TextType.BOLD} text={'세부항목'} />
-            <StyledTableCell fontType={TextType.BOLD} text={'코드'} />
-            <StyledTableCell fontType={TextType.BOLD} text={'예산'} />
-            <StyledTableCell fontType={TextType.BOLD} text={'결산'} />
-            <StyledTableCell fontType={TextType.BOLD} text={'집행률'} />
-            <StyledTableCell fontType={TextType.BOLD} text={'비고'} />
+          <TableRow>
+            <StyledTableCell fontType={TextType.BOLD} text={'담당'} backgroundColor={Colors.BLUE_LIGHT} />
+            <StyledTableCell fontType={TextType.BOLD} text={'소항목'} backgroundColor={Colors.BLUE_LIGHT} />
+            <StyledTableCell fontType={TextType.BOLD} text={'출처'} backgroundColor={Colors.BLUE_LIGHT} />
+            <StyledTableCell fontType={TextType.BOLD} text={'세부항목'} backgroundColor={Colors.BLUE_LIGHT} />
+            <StyledTableCell fontType={TextType.BOLD} text={'코드'} backgroundColor={Colors.BLUE_LIGHT} />
+            <StyledTableCell fontType={TextType.BOLD} text={'예산'} backgroundColor={Colors.BLUE_LIGHT} />
+            <StyledTableCell fontType={TextType.BOLD} text={'결산'} backgroundColor={Colors.BLUE_LIGHT} />
+            <StyledTableCell fontType={TextType.BOLD} text={'집행률'} backgroundColor={Colors.BLUE_LIGHT} />
+            <StyledTableCell fontType={TextType.BOLD} text={'비고'} backgroundColor={Colors.BLUE_LIGHT} />
           </TableRow>
         </TableHead>
         <TableBody>
@@ -43,21 +43,67 @@ const ExpenseTable = () => {
                     ))}
                   </>
                 ))}
-                <TableRow sx={{ backgroundColor: Colors.BLACK08 }}>
-                  <StyledTableCell size={10} fontType={TextType.BOLD} text={'계'} colSpan={5} />
-                  <StyledTableCell size={13} fontType={TextType.BOLD} text={`₩${13000000}`} />
-                  <StyledTableCell size={13} fontType={TextType.BOLD} text={`₩${11500000}`} />
-                  <StyledTableCell size={13} fontType={TextType.BOLD} text={`${88.5}%`} />
-                  <TableCell />
+                <TableRow>
+                  <StyledTableCell
+                    size={10}
+                    fontType={TextType.BOLD}
+                    text={'계'}
+                    colSpan={5}
+                    backgroundColor={Colors.BLACK08}
+                  />
+                  <StyledTableCell
+                    size={13}
+                    fontType={TextType.BOLD}
+                    text={`₩${13000000}`}
+                    backgroundColor={Colors.BLACK08}
+                  />
+                  <StyledTableCell
+                    size={13}
+                    fontType={TextType.BOLD}
+                    text={`₩${11500000}`}
+                    backgroundColor={Colors.BLACK08}
+                  />
+                  <StyledTableCell
+                    size={13}
+                    fontType={TextType.BOLD}
+                    text={`${88.5}%`}
+                    backgroundColor={Colors.BLACK08}
+                  />
+                  <TableCell sx={{ backgroundColor: Colors.BLACK08 }} />
                 </TableRow>
               </>
             ))}
-            <TableRow sx={{ backgroundColor: Colors.BLUE_DEEP }}>
-              <StyledTableCell size={14} fontType={TextType.BOLD} color={Colors.WHITE100} text={'총계'} colSpan={5} />
-              <StyledTableCell size={14} fontType={TextType.BOLD} color={Colors.WHITE100} text={`₩${15500000}`} />
-              <StyledTableCell size={14} fontType={TextType.BOLD} color={Colors.WHITE100} text={`₩${14300000}`} />
-              <StyledTableCell size={14} fontType={TextType.BOLD} color={Colors.WHITE100} text={`${92.3}%`} />
-              <TableCell />
+            <TableRow>
+              <StyledTableCell
+                size={14}
+                fontType={TextType.BOLD}
+                color={Colors.WHITE100}
+                text={'총계'}
+                colSpan={5}
+                backgroundColor={Colors.BLUE_DEEP}
+              />
+              <StyledTableCell
+                size={14}
+                fontType={TextType.BOLD}
+                color={Colors.WHITE100}
+                text={`₩${15500000}`}
+                backgroundColor={Colors.BLUE_DEEP}
+              />
+              <StyledTableCell
+                size={14}
+                fontType={TextType.BOLD}
+                color={Colors.WHITE100}
+                text={`₩${14300000}`}
+                backgroundColor={Colors.BLUE_DEEP}
+              />
+              <StyledTableCell
+                size={14}
+                fontType={TextType.BOLD}
+                color={Colors.WHITE100}
+                text={`${92.3}%`}
+                backgroundColor={Colors.BLUE_DEEP}
+              />
+              <TableCell sx={{ backgroundColor: Colors.BLUE_DEEP }} />
             </TableRow>
           </>
         </TableBody>
