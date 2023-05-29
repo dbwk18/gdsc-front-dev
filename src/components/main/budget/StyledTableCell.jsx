@@ -1,7 +1,7 @@
 import React from 'react';
 import { TableCell } from '@mui/material';
-import GDSCText, { TextType } from '../core/GDSCText';
-import Colors from '../../style/Colors';
+import GDSCText, { TextType } from '../../core/GDSCText';
+import Colors from '../../../style/Colors';
 import styled from 'styled-components';
 
 const CenteredTableCell = styled(TableCell)`
