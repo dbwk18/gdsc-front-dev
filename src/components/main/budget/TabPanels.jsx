@@ -7,35 +7,35 @@ import ExpenseTable from './ExpenseTable';
 import SettlementTable from './SettlementTable';
 import Panel from './Panel';
 
-const TapType = {
+const TabType = {
   INCOME: 'INCOME',
   EXPENSE: 'EXPENSE',
   SETTLEMENT: 'SETTLEMENT',
 };
 
 const TabPanels = () => {
-  const [currTap, setCurrTap] = React.useState(0);
+  const [currTab, setCurrTab] = React.useState(0);
 
-  const handleChange = (event, newTap) => {
-    setCurrTap(newTap);
+  const handleChange = (event, newTab) => {
+    setCurrTab(newTab);
   };
 
   return (
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={currTap} onChange={handleChange} aria-label="basic tabs example">
+        <Tabs value={currTab} onChange={handleChange} aria-label="basic tabs example">
           <Tab sx={{ color: 'red', fontWeight: 'bold' }} label="예산" />
           <Tab sx={{ color: 'red', fontWeight: 'bold' }} label="지출" />
           <Tab sx={{ color: 'red', fontWeight: 'bold' }} label="결산" />
         </Tabs>
       </Box>
-      <Panel value={currTap} index={TapType.INCOME}>
+      <Panel value={currTab} index={0}>
         <IncomeTable />
       </Panel>
-      <Panel value={currTap} index={TapType.EXPENSE}>
+      <Panel value={currTab} index={1}>
         <ExpenseTable />
       </Panel>
-      <Panel value={currTap} index={TapType.SETTLEMENT}>
+      <Panel value={currTab} index={2}>
         <SettlementTable />
       </Panel>
     </Box>
