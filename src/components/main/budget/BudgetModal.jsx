@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import Colors from '../../../style/Colors';
 import GDSCText, { TextType } from '../../core/GDSCText';
 import GDSCButton from '../../core/GDSCButton';
+import SelectDrop from './SelectDrop';
+import TextField from '@mui/material/TextField';
 
 const Container = styled.div`
   width: 1088px;
@@ -26,18 +28,34 @@ const FormContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: stretch;
   flex-grow: 1;
 `;
 
 const LeftForm = styled.div`
-  flex: 4;
+  flex: 7;
+  flex-direction: column;
   margin: 40px;
+  justify-content: space-between;
+  align-items: stretch;
 `;
 
 const RightForm = styled.div`
-  flex: 4;
+  flex: 7;
   margin: 40px;
+  flex-direction: column;
+`;
+
+const ButtonForm = styled.div`
+  flex: 1;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+`;
+
+const TextForm = styled.div`
+  flex: 1;
+  margin: 10px;
+  justify-content: space-between;
 `;
 
 const BudgetModal = () => {
@@ -52,9 +70,20 @@ const BudgetModal = () => {
         </GDSCText>
       </Header>
       <FormContainer>
-        <LeftForm>hi</LeftForm>
+        <LeftForm>
+          <TextForm>
+            수입/지출 <SelectDrop />
+          </TextForm>
+          <TextForm>
+            출처 <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+          </TextForm>
+          <TextForm>항목</TextForm>
+          <TextForm>지출</TextForm>
+        </LeftForm>
         <RightForm>hello</RightForm>
-        <GDSCButton label={'등록'} />
+        <ButtonForm>
+          <GDSCButton label={'등록'} />
+        </ButtonForm>
       </FormContainer>
     </Container>
   );
