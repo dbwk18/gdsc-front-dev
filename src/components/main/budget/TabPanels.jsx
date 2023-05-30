@@ -3,6 +3,22 @@ import { useState } from 'react';
 import IncomeTable from './IncomeTable';
 import ExpenseTable from './ExpenseTable';
 import SettlementTable from './SettlementTable';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import styled from 'styled-components';
+import Colors from '../../../style/Colors';
+
+const LineGrey = styled.div`
+  width: 1500px;
+  height: 2px;
+  display: flex;
+`;
+
+const LineWhite = styled.div`
+  width: 1500px;
+  height: 20px;
+  display: flex;
+`;
 
 const TabComponent = () => {
   const [activeTab, setActiveTab] = useState('INCOME');
@@ -14,15 +30,13 @@ const TabComponent = () => {
   return (
     <div>
       <div>
-        <button type="button" onClick={() => handleTabClick('INCOME')}>
-          예산
-        </button>
-        <button type="button" onClick={() => handleTabClick('EXPENSE')}>
-          지출
-        </button>
-        <button type="button" onClick={() => handleTabClick('SETTLEMENT')}>
-          결산
-        </button>
+        <Tabs value={activeTab}>
+          <Tab label="예산" value="INCOME" onClick={() => handleTabClick('INCOME')} />
+          <Tab label="지출" value="EXPENSE" onClick={() => handleTabClick('EXPENSE')} />
+          <Tab label="결산" value="SETTLEMENT" onClick={() => handleTabClick('SETTLEMENT')} />
+        </Tabs>
+        <LineGrey style={{ backgroundColor: Colors.GREY40 }} />
+        <LineWhite style={{ backgroundColor: Colors.WHITE100 }} />
       </div>
 
       {activeTab === 'INCOME' && <IncomeTable />}
