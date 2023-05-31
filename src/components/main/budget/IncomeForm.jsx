@@ -4,6 +4,11 @@ import SelectDrop from './SelectDrop';
 import TextField from '@mui/material/TextField';
 import GDSCText, { TextType } from '../../core/GDSCText';
 
+const MyTextField = styled(TextField)`
+  width: 250px;
+  height: 40px;
+`;
+
 const FormContainer = styled.div`
   margin: 40px;
   display: flex;
@@ -36,11 +41,11 @@ const ButtonForm = styled.div`
 `;
 
 const TextForm = styled.div`
-  flex: 1;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  height: 40px;
 `;
 
 const IncomeForm = () => {
@@ -56,18 +61,20 @@ const IncomeForm = () => {
         <TextForm>
           <GDSCText size={14} fontType={TextType.BOLD}>
             출처
-          </GDSCText>{' '}
-          <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+          </GDSCText>
+          <MyTextField id="outlined-size-small" label="출처" size="small" />
         </TextForm>
         <TextForm>
           <GDSCText size={14} fontType={TextType.BOLD}>
             항목
           </GDSCText>
+          <MyTextField id="outlined-size-small" label="항목" size="small" />
         </TextForm>
         <TextForm>
           <GDSCText size={14} fontType={TextType.BOLD}>
             코드
           </GDSCText>
+          <MyTextField id="outlined-size-small" label="코드" size="small" />
         </TextForm>
       </LeftForm>
       <RightForm>hello</RightForm>
