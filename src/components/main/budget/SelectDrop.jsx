@@ -11,12 +11,10 @@ const SelectDrop = () => {
   };
 
   return (
-    <FormControl>
-      <Select onChange={handleChange}>
-        <MenuItem value={'수입'}>수입</MenuItem>
-        <MenuItem value={'지출'}>지출</MenuItem>
-      </Select>
-    </FormControl>
+    <Select labelId="demo-select-small-label" id="demo-select-small" value={incomeExpend} onChange={handleChange}>
+      <MenuItem value={'수입'}>수입</MenuItem>
+      <MenuItem value={'지출'}>지출</MenuItem>
+    </Select>
   );
 };
 
