@@ -1,44 +1,48 @@
 import * as React from 'react';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Box from '@mui/material/Box';
+import { useState } from 'react';
 import IncomeTable from './IncomeTable';
 import ExpenseTable from './ExpenseTable';
 import SettlementTable from './SettlementTable';
-import Panel from './Panel';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import styled from 'styled-components';
+import Colors from '../../../style/Colors';
 
-const TabType = {
-  INCOME: 'INCOME',
-  EXPENSE: 'EXPENSE',
-  SETTLEMENT: 'SETTLEMENT',
-};
+const LineGrey = styled.div`
+  width: 100%;
+  height: 2px;
+  display: flex;
+`;
+
+const LineWhite = styled.div`
+  width: 100%;
+  height: 20px;
+  display: flex;
+`;
 
 const TabPanels = () => {
-  const [currTab, setCurrTab] = React.useState(0);
+  const [activeTab, setActiveTab] = useState('INCOME');
 
-  const handleChange = (event, newTab) => {
-    setCurrTab(newTab);
+  const handleTabClick = tab => {
+    setActiveTab(tab);
   };
 
   return (
-    <Box sx={{ width: '100%' }}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={currTab} onChange={handleChange} aria-label="basic tabs example">
-          <Tab sx={{ color: 'red', fontWeight: 'bold' }} label="예산" />
-          <Tab sx={{ color: 'red', fontWeight: 'bold' }} label="지출" />
-          <Tab sx={{ color: 'red', fontWeight: 'bold' }} label="결산" />
+    <div>
+      <div>
+        <Tabs value={activeTab}>
+          <Tab label="예산" value="INCOME" onClick={() => handleTabClick('INCOME')} />
+          <Tab label="지출" value="EXPENSE" onClick={() => handleTabClick('EXPENSE')} />
+          <Tab label="결산" value="SETTLEMENT" onClick={() => handleTabClick('SETTLEMENT')} />
         </Tabs>
-      </Box>
-      <Panel value={currTab} index={0}>
-        <IncomeTable />
-      </Panel>
-      <Panel value={currTab} index={1}>
-        <ExpenseTable />
-      </Panel>
-      <Panel value={currTab} index={2}>
-        <SettlementTable />
-      </Panel>
-    </Box>
+        <LineGrey style={{ backgroundColor: Colors.GREY40 }} />
+        <LineWhite style={{ backgroundColor: Colors.WHITE100 }} />
+      </div>
+
+      {activeTab === 'INCOME' && <IncomeTable />}
+      {activeTab === 'EXPENSE' && <ExpenseTable />}
+      {activeTab === 'SETTLEMENT' && <SettlementTable />}
+    </div>
   );
 };
 
