@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import Colors from '../../../style/Colors';
 import GDSCText, { TextType } from '../../core/GDSCText';
 import GDSCButton from '../../core/GDSCButton';
+import SelectDrop from './SelectDrop';
+import TextField from '@mui/material/TextField';
 
 const Container = styled.div`
   width: 1088px;
@@ -26,18 +28,38 @@ const FormContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: stretch;
   flex-grow: 1;
 `;
 
 const LeftForm = styled.div`
-  flex: 4;
+  flex: 7;
+  display: flex;
+  flex-direction: column;
   margin: 40px;
+  justify-content: space-between;
+  align-items: stretch;
 `;
 
 const RightForm = styled.div`
-  flex: 4;
+  flex: 7;
   margin: 40px;
+  flex-direction: column;
+`;
+
+const ButtonForm = styled.div`
+  width: 100px;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-end;
+`;
+
+const TextForm = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const BudgetModal = () => {
@@ -52,9 +74,34 @@ const BudgetModal = () => {
         </GDSCText>
       </Header>
       <FormContainer>
-        <LeftForm>hi</LeftForm>
+        <LeftForm>
+          <TextForm>
+            <GDSCText size={14} fontType={TextType.BOLD}>
+              수입/지출
+            </GDSCText>
+            <SelectDrop />
+          </TextForm>
+          <TextForm>
+            <GDSCText size={14} fontType={TextType.BOLD}>
+              출처
+            </GDSCText>{' '}
+            <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+          </TextForm>
+          <TextForm>
+            <GDSCText size={14} fontType={TextType.BOLD}>
+              항목
+            </GDSCText>
+          </TextForm>
+          <TextForm>
+            <GDSCText size={14} fontType={TextType.BOLD}>
+              코드
+            </GDSCText>
+          </TextForm>
+        </LeftForm>
         <RightForm>hello</RightForm>
-        <GDSCButton label={'등록'} />
+        <ButtonForm>
+          <GDSCButton label={'등록'} />
+        </ButtonForm>
       </FormContainer>
     </Container>
   );
