@@ -48,6 +48,15 @@ const TextForm = styled.div`
   height: 40px;
 `;
 
+const Text1Form = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  margin-bottom: 120px;
+`;
+
 const IncomeForm = () => {
   return (
     <FormContainer>
@@ -77,7 +86,26 @@ const IncomeForm = () => {
           <MyTextField id="outlined-size-small" label="코드" size="small" />
         </TextForm>
       </LeftForm>
-      <RightForm>hello</RightForm>
+      <LeftForm>
+        <TextForm>
+          <GDSCText size={14} fontType={TextType.BOLD}>
+            예산
+          </GDSCText>
+          <MyTextField id="outlined-size-small" label="예산" size="small" />
+        </TextForm>
+        <TextForm>
+          <GDSCText size={14} fontType={TextType.BOLD}>
+            결산
+          </GDSCText>
+          <MyTextField id="outlined-size-small" label="결산" size="small" />
+        </TextForm>
+        <Text1Form>
+          <GDSCText size={14} fontType={TextType.BOLD}>
+            비고
+          </GDSCText>
+          <MyTextField id="outlined-multiline-static" label="비고" multiline rows={5.55} />
+        </Text1Form>
+      </LeftForm>
       <ButtonForm>
         <GDSCButton label={'등록'} />
       </ButtonForm>
