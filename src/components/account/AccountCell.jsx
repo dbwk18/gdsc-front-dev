@@ -22,67 +22,93 @@ const AccountCell = ({
   return (
     <TableRow>
       <TableCell>
-        <GDSCText size={13} color={Colors.GREY80}>
-          {businessAt}
-        </GDSCText>
+        <div className="centered">
+          <GDSCText size={13} color={Colors.GREY80}>
+            {businessAt}
+          </GDSCText>
+        </div>
       </TableCell>
       <TableCell>
-        <GDSCText size={13} color={Colors.GREY80}>
-          {manager}
-        </GDSCText>
+        <div className="centered">
+          <GDSCText size={13} color={Colors.GREY80}>
+            {manager}
+          </GDSCText>
+        </div>
       </TableCell>
       <TableCell>
-        <GDSCText size={10} color={Colors.GREY80}>
-          {itemSub}
-        </GDSCText>
+        <div className="centered">
+          <GDSCText size={10} color={Colors.GREY80}>
+            {itemSub}
+          </GDSCText>
+        </div>
       </TableCell>
       <TableCell>
-        <GDSCText size={13} color={Colors.GREY80}>
-          {itemCode}
-        </GDSCText>
+        <div className="centered">
+          <GDSCText size={13} color={Colors.GREY80}>
+            {itemCode}
+          </GDSCText>
+        </div>
       </TableCell>
       <TableCell>
-        <GDSCText size={13} color={Colors.GREY80}>
-          {transactionType}
-        </GDSCText>
+        <div className="centered">
+          <GDSCText size={13} color={Colors.GREY80}>
+            {transactionType}
+          </GDSCText>
+        </div>
       </TableCell>
       <TableCell>
-        <GDSCText size={13} color={Colors.GREY80}>
-          {income}
-        </GDSCText>
+        <div className="centered">
+          <GDSCText size={13} color={Colors.GREY80}>
+            {income}
+          </GDSCText>
+        </div>
       </TableCell>
       <TableCell>
-        <GDSCText size={13} color={Colors.GREY80}>
-          {expense}
-        </GDSCText>
+        <div className="centered">
+          <GDSCText size={13} color={Colors.GREY80}>
+            {expense}
+          </GDSCText>
+        </div>
       </TableCell>
       <TableCell>
-        <GDSCText size={13} color={Colors.GREY80}>
-          {balance}
-        </GDSCText>
+        <div className="centered">
+          <GDSCText size={13} color={Colors.GREY80}>
+            {balance}
+          </GDSCText>
+        </div>
       </TableCell>
       <TableCell>
-        <GDSCText size={13} color={Colors.GREY80}>
-          {transactionAt}
-        </GDSCText>
+        <div className="centered">
+          <GDSCText size={13} color={Colors.GREY80}>
+            {transactionAt}
+          </GDSCText>
+        </div>
       </TableCell>
       <TableCell>
-        <GDSCText size={10} color={Colors.GREY80}>
-          ({bankName}-{accountHolder})
-        </GDSCText>
-        <GDSCText size={10} color={Colors.GREY80}>
-          {accountNumber}
-        </GDSCText>
+        <div className="centered">
+          <GDSCText size={10} color={Colors.GREY80}>
+            ({bankName}-{accountHolder})
+          </GDSCText>
+        </div>
+        <div className="centered">
+          <GDSCText size={10} color={Colors.GREY80}>
+            {accountNumber}
+          </GDSCText>
+        </div>
       </TableCell>
       <TableCell>
-        <GDSCText size={13} color={Colors.GREY80}>
-          {receipts}
-        </GDSCText>
+        <div className="centered">
+          <GDSCText size={13} color={Colors.GREY80}>
+            {receipts}
+          </GDSCText>
+        </div>
       </TableCell>
       <TableCell>
-        <GDSCText size={13} color={Colors.GREY80}>
-          {remarks}
-        </GDSCText>
+        <div className="centered">
+          <GDSCText size={13} color={Colors.GREY80}>
+            {remarks}
+          </GDSCText>
+        </div>
       </TableCell>
     </TableRow>
   );

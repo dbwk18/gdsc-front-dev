@@ -9,6 +9,14 @@ const Container = styled.div`
   width: 100%;
   height: 700px;
   padding: 0 12px;
+
+  .centered {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 const StyledTableCell = styled(TableCell)(() => ({
@@ -25,40 +33,64 @@ const AccountChart = ({ account }) => {
         <Table>
           <TableHead>
             <StyledTableCell>
-              <GDSCText size={12}>사업일</GDSCText>
+              <div className="centered">
+                <GDSCText size={12}>사업일</GDSCText>
+              </div>
             </StyledTableCell>
             <StyledTableCell>
-              <GDSCText size={12}>담당자</GDSCText>
+              <div className="centered">
+                <GDSCText size={12}>담당자</GDSCText>
+              </div>
             </StyledTableCell>
             <StyledTableCell>
-              <GDSCText size={12}>집행내용</GDSCText>
+              <div className="centered">
+                <GDSCText size={12}>집행내용</GDSCText>
+              </div>
             </StyledTableCell>
             <StyledTableCell>
-              <GDSCText size={12}>코드</GDSCText>
+              <div className="centered">
+                <GDSCText size={12}>코드</GDSCText>
+              </div>
             </StyledTableCell>
             <StyledTableCell>
-              <GDSCText size={12}>거래형태</GDSCText>
+              <div className="centered">
+                <GDSCText size={12}>거래형태</GDSCText>
+              </div>
             </StyledTableCell>
             <StyledTableCell>
-              <GDSCText size={12}>수입</GDSCText>
+              <div className="centered">
+                <GDSCText size={12}>수입</GDSCText>
+              </div>
             </StyledTableCell>
             <StyledTableCell>
-              <GDSCText size={12}>지출</GDSCText>
+              <div className="centered">
+                <GDSCText size={12}>지출</GDSCText>
+              </div>
             </StyledTableCell>
             <StyledTableCell>
-              <GDSCText size={12}>잔액</GDSCText>
+              <div className="centered">
+                <GDSCText size={12}>잔액</GDSCText>
+              </div>
             </StyledTableCell>
             <StyledTableCell>
-              <GDSCText size={12}>통장거래일</GDSCText>
+              <div className="centered">
+                <GDSCText size={12}>통장거래일</GDSCText>
+              </div>
             </StyledTableCell>
             <StyledTableCell>
-              <GDSCText size={12}>이체계좌번호</GDSCText>
+              <div className="centered">
+                <GDSCText size={12}>이체계좌번호</GDSCText>
+              </div>
             </StyledTableCell>
             <StyledTableCell>
-              <GDSCText size={12}>영수증</GDSCText>
+              <div className="centered">
+                <GDSCText size={12}>영수증</GDSCText>
+              </div>
             </StyledTableCell>
             <StyledTableCell>
-              <GDSCText size={12}>비고</GDSCText>
+              <div className="centered">
+                <GDSCText size={12}>비고</GDSCText>
+              </div>
             </StyledTableCell>
           </TableHead>
           <TableBody>
