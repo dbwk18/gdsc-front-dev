@@ -9,13 +9,13 @@ import styled from 'styled-components';
 import Colors from '../../../style/Colors';
 
 const LineGrey = styled.div`
-  width: 1500px;
+  width: 100%;
   height: 2px;
   display: flex;
 `;
 
 const LineWhite = styled.div`
-  width: 1500px;
+  width: 100%;
   height: 20px;
   display: flex;
 `;
