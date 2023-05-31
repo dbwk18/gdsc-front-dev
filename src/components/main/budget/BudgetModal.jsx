@@ -76,13 +76,27 @@ const BudgetModal = () => {
       <FormContainer>
         <LeftForm>
           <TextForm>
-            수입/지출 <SelectDrop />
+            <GDSCText size={14} fontType={TextType.BOLD}>
+              수입/지출
+            </GDSCText>
+            <SelectDrop />
           </TextForm>
           <TextForm>
-            출처 <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+            <GDSCText size={14} fontType={TextType.BOLD}>
+              출처
+            </GDSCText>{' '}
+            <TextField id="outlined-basic" label="Outlined" variant="outlined" />
           </TextForm>
-          <TextForm>항목</TextForm>
-          <TextForm>지출</TextForm>
+          <TextForm>
+            <GDSCText size={14} fontType={TextType.BOLD}>
+              항목
+            </GDSCText>
+          </TextForm>
+          <TextForm>
+            <GDSCText size={14} fontType={TextType.BOLD}>
+              코드
+            </GDSCText>
+          </TextForm>
         </LeftForm>
         <RightForm>hello</RightForm>
         <ButtonForm>
