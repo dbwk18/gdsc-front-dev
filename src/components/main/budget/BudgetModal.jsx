@@ -3,6 +3,7 @@ import Colors from '../../../style/Colors';
 import GDSCText, { TextType } from '../../core/GDSCText';
 
 import IncomeForm from './IncomeForm';
+import ExpenseForm from './ExpenseForm';
 
 const Container = styled.div`
   width: 1088px;
@@ -33,7 +34,7 @@ const BudgetModal = () => {
           X
         </GDSCText>
       </Header>
-      <IncomeForm />
+      {/* initially <incomeForm /> but after selecting, return <incomeForm /> or <ExpenseForm /> */}
     </Container>
   );
 };

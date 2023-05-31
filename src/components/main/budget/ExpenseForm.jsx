@@ -63,15 +63,27 @@ const IncomeForm = () => {
         </TextForm>
         <TextForm>
           <GDSCText size={14} fontType={TextType.BOLD}>
+            담당
+          </GDSCText>
+          <MyTextField id="outlined-size-small" label="담당" size="small" />
+        </TextForm>
+        <TextForm>
+          <GDSCText size={14} fontType={TextType.BOLD}>
+            소항목
+          </GDSCText>
+          <MyTextField id="outlined-size-small" label="소항목" size="small" />
+        </TextForm>
+        <TextForm>
+          <GDSCText size={14} fontType={TextType.BOLD}>
             출처
           </GDSCText>
           <MyTextField id="outlined-size-small" label="출처" size="small" />
         </TextForm>
         <TextForm>
           <GDSCText size={14} fontType={TextType.BOLD}>
-            항목
+            세부사항
           </GDSCText>
-          <MyTextField id="outlined-size-small" label="항목" size="small" />
+          <MyTextField id="outlined-size-small" label="세부사항" size="small" />
         </TextForm>
         <TextForm>
           <GDSCText size={14} fontType={TextType.BOLD}>
