@@ -1,19 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Colors from '../../style/Colors';
-import GDSCText from '../core/GDSCText';
+import GDSCText, { TextType } from '../core/GDSCText';
 import GDSCModal from '../core/GDSCModal';
 import GDSCButton from '../core/GDSCButton';
 
 const Container = styled.div``;
-
-export const TextType = {
-  BOLD: 'Bold',
-  REGULAR: 'Regular',
-  MEDIUM: 'Medium',
-  LIGHT: 'Light',
-  UNDERLINE: 'Underline',
-};
 
 const ChartHeader = ({ headerText }) => {
   const [isModalOpen, setModalOpen] = useState(false);
