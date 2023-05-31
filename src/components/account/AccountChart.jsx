@@ -1,9 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Table, TableHead, TableBody, TableCell, tableCellClasses, StyledEngineProvider } from '@mui/material';
-import Colors from '../../style/Colors';
+import { Table, TableHead, TableBody, StyledEngineProvider } from '@mui/material';
 import AccountCell from './AccountCell';
-import GDSCText from '../core/GDSCText';
+import AccountChartHeader from './AccountChartHeader';
 
 const Container = styled.div`
   width: 100%;
@@ -19,79 +18,24 @@ const Container = styled.div`
   }
 `;
 
-const StyledTableCell = styled(TableCell)(() => ({
-  [`&.${tableCellClasses.head}`]: {
-    backgroundColor: Colors.BLUE_LIGHT,
-    color: 'black',
-  },
-}));
-
 const AccountChart = ({ account }) => {
   return (
     <StyledEngineProvider injectFirst>
       <Container>
         <Table>
           <TableHead>
-            <StyledTableCell>
-              <div className="centered">
-                <GDSCText size={12}>사업일</GDSCText>
-              </div>
-            </StyledTableCell>
-            <StyledTableCell>
-              <div className="centered">
-                <GDSCText size={12}>담당자</GDSCText>
-              </div>
-            </StyledTableCell>
-            <StyledTableCell>
-              <div className="centered">
-                <GDSCText size={12}>집행내용</GDSCText>
-              </div>
-            </StyledTableCell>
-            <StyledTableCell>
-              <div className="centered">
-                <GDSCText size={12}>코드</GDSCText>
-              </div>
-            </StyledTableCell>
-            <StyledTableCell>
-              <div className="centered">
-                <GDSCText size={12}>거래형태</GDSCText>
-              </div>
-            </StyledTableCell>
-            <StyledTableCell>
-              <div className="centered">
-                <GDSCText size={12}>수입</GDSCText>
-              </div>
-            </StyledTableCell>
-            <StyledTableCell>
-              <div className="centered">
-                <GDSCText size={12}>지출</GDSCText>
-              </div>
-            </StyledTableCell>
-            <StyledTableCell>
-              <div className="centered">
-                <GDSCText size={12}>잔액</GDSCText>
-              </div>
-            </StyledTableCell>
-            <StyledTableCell>
-              <div className="centered">
-                <GDSCText size={12}>통장거래일</GDSCText>
-              </div>
-            </StyledTableCell>
-            <StyledTableCell>
-              <div className="centered">
-                <GDSCText size={12}>이체계좌번호</GDSCText>
-              </div>
-            </StyledTableCell>
-            <StyledTableCell>
-              <div className="centered">
-                <GDSCText size={12}>영수증</GDSCText>
-              </div>
-            </StyledTableCell>
-            <StyledTableCell>
-              <div className="centered">
-                <GDSCText size={12}>비고</GDSCText>
-              </div>
-            </StyledTableCell>
+            <AccountChartHeader title={'사업일'} />
+            <AccountChartHeader title={'담당자'} />
+            <AccountChartHeader title={'집행내용'} />
+            <AccountChartHeader title={'코드'} />
+            <AccountChartHeader title={'거래형태'} />
+            <AccountChartHeader title={'수입'} />
+            <AccountChartHeader title={'지출'} />
+            <AccountChartHeader title={'잔액'} />
+            <AccountChartHeader title={'통장거래일'} />
+            <AccountChartHeader title={'이체계좌번호'} />
+            <AccountChartHeader title={'영수증'} />
+            <AccountChartHeader title={'비고'} />
           </TableHead>
           <TableBody>
             {account.map(input => {
