@@ -34,6 +34,7 @@ const FormContainer = styled.div`
 
 const LeftForm = styled.div`
   flex: 7;
+  display: flex;
   flex-direction: column;
   margin: 40px;
   justify-content: space-between;
@@ -47,15 +48,18 @@ const RightForm = styled.div`
 `;
 
 const ButtonForm = styled.div`
-  flex: 1;
-  flex-direction: row-reverse;
-  justify-content: flex-end;
+  width: 100px;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-end;
 `;
 
 const TextForm = styled.div`
   flex: 1;
-  margin: 10px;
+  display: flex;
+  flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 `;
 
 const BudgetModal = () => {
