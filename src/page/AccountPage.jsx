@@ -1,7 +1,10 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import Colors from '../style/Colors';
 import ChartHeader from '../components/main/ChartHeader';
 import AccountChart from '../components/account/AccountChart';
+import AccountModal from '../components/account/AccountModal';
+import GDSCModal from '../components/core/GDSCModal';
 
 const Container = styled.div`
   width: 100%;
@@ -63,10 +66,15 @@ const toydata = [
 ];
 
 const AccountPage = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <Container>
-      <ChartHeader headerText={'통장거래내역'} />
+      <ChartHeader headerText={'통장거래내역'} setIsOpen={setIsOpen} />
       <AccountChart account={toydata} />
+      <GDSCModal open={isOpen} onClose={() => setIsOpen(false)}>
+        <AccountModal setIsOpen={setIsOpen} />
+      </GDSCModal>
     </Container>
   );
 };

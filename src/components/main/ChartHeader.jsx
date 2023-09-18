@@ -20,7 +20,7 @@ const Container = styled.div`
   }
 `;
 
-const ChartHeader = ({ headerText }) => {
+const ChartHeader = ({ headerText, setIsOpen }) => {
   return (
     <Container>
       <div className="title">
@@ -31,7 +31,13 @@ const ChartHeader = ({ headerText }) => {
           {`23년도 상반기 ${headerText}`}
         </GDSCText>
       </div>
-      <GDSCButton label={'+ 내역 추가'} onClick={() => {}} />
+      <GDSCButton
+        label={'+ 내역 추가'}
+        onClick={() => {
+          setIsOpen(true);
+        }}
+        inactive={false}
+      />
     </Container>
   );
 };
