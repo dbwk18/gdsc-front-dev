@@ -2,9 +2,9 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import Colors from '../style/Colors';
 import ChartHeader from '../components/main/ChartHeader';
-import AccountChart from '../components/account/AccountChart';
-import AccountModal from '../components/account/AccountModal';
+import AccountChart from '../components/main/account/AccountChart';
 import GDSCModal from '../components/core/GDSCModal';
+import AccountModal from '../components/main/account/AccountModal';
 
 const Container = styled.div`
   width: 100%;

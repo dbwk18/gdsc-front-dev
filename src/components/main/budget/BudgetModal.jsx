@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import GDSCText, { TextType } from '../core/GDSCText';
-import GDSCButton from '../core/GDSCButton';
-import Colors from '../../style/Colors';
+import GDSCText, { TextType } from '../../core/GDSCText';
+import GDSCButton from '../../core/GDSCButton';
+import Colors from '../../../style/Colors';
 
 const Container = styled.div`
   display: flex;
@@ -49,7 +49,7 @@ const ContentsColumn = styled.div`
   flex-direction: column;
   align-items: stretch;
   justify-content: space-between;
-  padding: 40px;
+  padding: 80px 40px;
   flex: 1 0 0;
 `;
 
@@ -73,7 +73,7 @@ const ImgField = styled.div`
   height: 163px;
 `;
 
-const AccountModal = ({ setIsOpen }) => {
+const BudgetModal = ({ setIsOpen }) => {
   return (
     <Container>
       <Header>
@@ -92,19 +92,19 @@ const AccountModal = ({ setIsOpen }) => {
         <ContentsColumn>
           <Item>
             <GDSCText size={14} fontType={TextType.BOLD} color={Colors.BLACK100}>
-              사업일
+              수입/지출
             </GDSCText>
             <ItemField />
           </Item>
           <Item>
             <GDSCText size={14} fontType={TextType.BOLD} color={Colors.BLACK100}>
-              담당자
+              출처
             </GDSCText>
             <ItemField />
           </Item>
           <Item>
             <GDSCText size={14} fontType={TextType.BOLD} color={Colors.BLACK100}>
-              집행내용
+              항목
             </GDSCText>
             <ItemField />
           </Item>
@@ -114,49 +114,19 @@ const AccountModal = ({ setIsOpen }) => {
             </GDSCText>
             <ItemField />
           </Item>
-          <Item>
-            <GDSCText size={14} fontType={TextType.BOLD} color={Colors.BLACK100}>
-              거래형태
-            </GDSCText>
-            <ItemField />
-          </Item>
-          <Item>
-            <GDSCText size={14} fontType={TextType.BOLD} color={Colors.BLACK100}>
-              수입
-            </GDSCText>
-            <ItemField />
-          </Item>
-          <Item>
-            <GDSCText size={14} fontType={TextType.BOLD} color={Colors.BLACK100}>
-              지출
-            </GDSCText>
-            <ItemField />
-          </Item>
-          <Item>
-            <GDSCText size={14} fontType={TextType.BOLD} color={Colors.BLACK100}>
-              잔액
-            </GDSCText>
-            <ItemField />
-          </Item>
         </ContentsColumn>
         <ContentsColumn>
           <Item>
             <GDSCText size={14} fontType={TextType.BOLD} color={Colors.BLACK100}>
-              통장거래일
+              예산
             </GDSCText>
             <ItemField />
           </Item>
           <Item>
             <GDSCText size={14} fontType={TextType.BOLD} color={Colors.BLACK100}>
-              이채계좌번호
+              결산
             </GDSCText>
             <ItemField />
-          </Item>
-          <Item>
-            <GDSCText size={14} fontType={TextType.BOLD} color={Colors.BLACK100}>
-              영수증
-            </GDSCText>
-            <ImgField />
           </Item>
           <Item>
             <GDSCText size={14} fontType={TextType.BOLD} color={Colors.BLACK100}>
@@ -179,4 +149,4 @@ const AccountModal = ({ setIsOpen }) => {
   );
 };
 
-export default AccountModal;
+export default BudgetModal;

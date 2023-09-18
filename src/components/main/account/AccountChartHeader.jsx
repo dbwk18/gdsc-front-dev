@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import Colors from '../../style/Colors';
-import GDSCText from '../core/GDSCText';
+import Colors from '../../../style/Colors';
+import GDSCText from '../../core/GDSCText';
 import { TableRow, TableCell, tableCellClasses } from '@mui/material';
 
 const StyledTableCell = styled(TableCell)(() => ({
