@@ -70,7 +70,7 @@ const AccountPage = () => {
 
   return (
     <Container>
-      <ChartHeader headerText={'통장거래내역'} setIsOpen={setIsOpen} />
+      <ChartHeader headerText={'통장거래내역!'} setIsOpen={setIsOpen} />
       <AccountChart account={toydata} />
       <GDSCModal open={isOpen} onClose={() => setIsOpen(false)}>
         <AccountModal setIsOpen={setIsOpen} />
