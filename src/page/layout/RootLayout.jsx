@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { Outlet, useNavigate } from 'react-router-dom';
 import GlobalStyle from './GlobalStyle';
-import { useSetRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { loginAtom, userAtom } from '../../store/atoms/authAtoms';
 import Authentication from '../../store/Authentication';
 
@@ -14,14 +14,21 @@ const RootContainer = styled.div`
 `;
 
 const RootLayout = () => {
-  const setLoginState = useSetRecoilState(loginAtom);
-  const setUserInfo = useSetRecoilState(userAtom);
+  const [loginState, setLoginState] = useRecoilState(loginAtom);
+  const [userInfo, setUserInfo] = useRecoilState(userAtom);
   const navigate = useNavigate();
 
   useEffect(() => {
     Authentication.shared.initialize(setLoginState, setUserInfo);
-    navigate('/main/budget');
+    if (!loginState) navigate('/login');
+    else navigate('/main/budget');
   }, []);
+
+  useEffect(() => {
+    if (!loginState) navigate('/login');
+    // TODO: userInfo에 따라 admin 혹은 유저 사이드로 라우팅
+    else navigate('/main/budget');
+  }, [loginState]);
 
   return (
     <RootContainer>

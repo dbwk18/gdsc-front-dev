@@ -39,7 +39,7 @@ export const ButtonType = {
   MAIN: 'main',
 };
 
-const GDSCButton = ({ label, onClick, inactive = true, buttonType = ButtonType.MAIN }) => {
+const GDSCButton = ({ label, onClick, inactive = false, buttonType = ButtonType.MAIN }) => {
   const buttonClassName = `${buttonType} ${inactive ? 'inactive' : ''}`;
   const handleClick = () => {
     if (!inactive) onClick();
