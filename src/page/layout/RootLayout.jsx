@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Outlet, useNavigate } from 'react-router-dom';
 import GlobalStyle from './GlobalStyle';
 import { useRecoilState } from 'recoil';
-import { loginAtom, userAtom } from '../../store/atoms/authAtoms';
+import { authTypeAtom, loginAtom, userAtom } from '../../store/atoms/authAtoms';
 import Authentication from '../../store/Authentication';
 
 const RootContainer = styled.div`
@@ -16,10 +16,11 @@ const RootContainer = styled.div`
 const RootLayout = () => {
   const [loginState, setLoginState] = useRecoilState(loginAtom);
   const [userInfo, setUserInfo] = useRecoilState(userAtom);
+  const [authType, setAuthType] = useRecoilState(authTypeAtom);
   const navigate = useNavigate();
 
   useEffect(() => {
-    Authentication.shared.initialize(setLoginState, setUserInfo);
+    Authentication.shared.initialize(setLoginState, setAuthType, setUserInfo);
     if (!loginState) navigate('/login');
     else navigate('/main/budget');
   }, []);

@@ -6,6 +6,12 @@ export const loginAtom = atom({
   default: null,
 });
 
+// 'ADMIN' | 'USER' | null, 유저 정보에 type 같이 오면 사실 없어도 됨
+export const authTypeAtom = atom({
+  key: 'authType',
+  default: null,
+});
+
 // User 정보 | null
 export const userAtom = atom({
   key: 'userInfo',
