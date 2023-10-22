@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import MainLeftNavigationBar from '../../templates/main/MainLeftNavigationBar';
 import MainHeader from '../../templates/main/MainHeader';
 import Colors from '../../style/Colors';
+import { useRecoilValue } from 'recoil';
+import { authTypeAtom } from '../../store/atoms/authAtoms';
+import { AuthType } from '../../store/Authentication';
 
 const Container = styled.div`
   width: 100%;
@@ -30,6 +33,14 @@ const OutletArea = styled.div`
 `;
 
 const MainLayout = () => {
+  const authType = useRecoilValue(authTypeAtom);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (authType === AuthType.ADMIN) navigate('/main/groups');
+    else navigate('/main/budget');
+  }, [authType]);
+
   return (
     <Container>
       <MainHeader />
