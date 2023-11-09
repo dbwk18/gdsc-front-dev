@@ -3,6 +3,8 @@ import { createBrowserRouter, createRoutesFromElements, Route } from 'react-rout
 import { RootLayout, MainLayout } from './layout/index';
 import BudgetPage from './BudgetPage';
 import AccountPage from './AccountPage';
+import DashboardPage from './DashboardPage';
+import AdminDashboardPage from './AdminDashboardPage';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -10,6 +12,8 @@ const router = createBrowserRouter(
       <Route path="main" element={<MainLayout />}>
         <Route path="budget" element={<BudgetPage />} />
         <Route path="account" element={<AccountPage />} />
+        <Route path="organization-dashboard" element={<DashboardPage />} />
+        <Route path="admin-dashboard" element={<AdminDashboardPage />} />
       </Route>
     </Route>,
   ),
