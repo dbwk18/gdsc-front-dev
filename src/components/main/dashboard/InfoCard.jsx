@@ -1,9 +1,10 @@
 import React from 'react';
-import { Box } from '@mui/material';
+import { Box, IconButton } from '@mui/material';
 import GDSCText, { TextType } from '../../core/GDSCText';
 import Colors from '../../../style/Colors';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
-const InfoCard = ({ minWidth = '300px', title, children }) => {
+const InfoCard = ({ title, minWidth = '300px', redirect = false, onIconClick, children }) => {
   return (
     <Box
       sx={{
@@ -16,11 +17,23 @@ const InfoCard = ({ minWidth = '300px', title, children }) => {
       }}
     >
       {title && (
-        <div style={{ marginBottom: '16px' }}>
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            marginBottom: '16px',
+          }}
+        >
           <GDSCText size={20} fontType={TextType.BOLD} color={Colors.BLACK100}>
             {title}
           </GDSCText>
-        </div>
+          {redirect && (
+            <IconButton onClick={onIconClick}>
+              <ArrowForwardIosIcon />
+            </IconButton>
+          )}
+        </Box>
       )}
       {children}
     </Box>

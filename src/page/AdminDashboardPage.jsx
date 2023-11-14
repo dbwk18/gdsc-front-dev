@@ -36,11 +36,11 @@ const AdminDashboardPage = () => {
         </InfoCard>
       </ItemsRow>
       <ItemsRow>
-        <InfoCard title={'예결산안'}>
+        <InfoCard title={'예결산안'} redirect>
           <InfoTextRow title={'제출 기구'} fontType={TextType.BOLD} content={'00개'} />
           <InfoTextRow title={'미제출 기구'} fontType={TextType.BOLD} content={'00개'} />
         </InfoCard>
-        <InfoCard title={'통장거래내역'}>
+        <InfoCard title={'통장거래내역'} redirect>
           <InfoTextRow title={'제출 기구'} fontType={TextType.BOLD} content={'00개'} />
           <InfoTextRow title={'미제출 기구'} fontType={TextType.BOLD} content={'00개'} />
         </InfoCard>
