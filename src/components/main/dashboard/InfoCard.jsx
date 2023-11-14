@@ -3,7 +3,7 @@ import { Box } from '@mui/material';
 import GDSCText, { TextType } from '../../core/GDSCText';
 import Colors from '../../../style/Colors';
 
-const InfoCard = ({ title, children }) => {
+const InfoCard = ({ minWidth = '300px', title, children }) => {
   return (
     <Box
       sx={{
@@ -12,6 +12,7 @@ const InfoCard = ({ title, children }) => {
         borderRadius: 2,
         boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
         backgroundColor: 'background.paper',
+        minWidth,
       }}
     >
       {title && (

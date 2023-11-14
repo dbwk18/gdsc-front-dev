@@ -39,11 +39,15 @@ const DashboardPage = () => {
         </InfoCard>
       </ItemsRow>
       <ItemsRow>
-        <InfoCard title={'통장 정보'}>
-          <FileUploadBox onFilesSelect={files => console.log(files)} fileType={'image/*'} />
+        <InfoCard title={'통장 정보'} minWidth="400px">
+          <FileUploadBox inputId="통장 정보" onFilesSelect={files => console.log(files)} fileType="image/*" />
         </InfoCard>
-        <InfoCard title={'거래명세조회서'}>
-          <FileUploadBox onFilesSelect={files => console.log(files)} fileType={'application/pdf'} />
+        <InfoCard title={'거래명세조회서'} minWidth="400px">
+          <FileUploadBox
+            inputId="거래명세조회서"
+            onFilesSelect={files => console.log(files)}
+            fileType="application/pdf"
+          />
         </InfoCard>
       </ItemsRow>
     </Container>
