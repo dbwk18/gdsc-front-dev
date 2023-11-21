@@ -1,4 +1,5 @@
 import { Cookies } from 'react-cookie';
+import { getForEntity, postForEntity } from '../network/HttpRequests';
 
 const cookies = new Cookies(document.cookie);
 
@@ -31,8 +32,14 @@ class Authentication {
     // TODO: 실패 시 logout
   }
 
-  async login(type, accessKey) {
-    this.setLoginInfo(type, accessKey);
+  async login(email, password) {
+    const response = postForEntity(`/user/login`, { email, password });
+    if (response.status === 200) {
+      // TODO: get cookie and set login state
+      const { type } = response.data;
+      this.setLoginInfo(type, response.data.accessKey);
+    }
+    return false;
   }
 
   logout() {
