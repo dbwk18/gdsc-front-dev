@@ -4,6 +4,7 @@ import Colors from '../style/Colors';
 import GDSCButton from '../components/core/GDSCButton';
 import { Box, TextField, Typography, Button } from '@mui/material';
 import Authentication from '../store/Authentication';
+import { useState } from 'react';
 
 const Container = styled.div`
   width: 100%;
@@ -12,7 +13,6 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: px;
 `;
 
 const StyledForm = styled.form`
@@ -29,14 +29,15 @@ const ButtonContainer = styled.div`
 `;
 
 const LoginPage = () => {
-  const handleSubmit = event => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-    // Authentication.shared.login(data.get('email'), data.get('password'));
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = () => {
+    const data = {
+      email,
+      password,
+    };
+    Authentication.shared.login(email, password);
   };
 
   return (
@@ -44,7 +45,12 @@ const LoginPage = () => {
       <GDSCText size={22} fontType={TextType.BOLD} color={Colors.Black100}>
         Sign in
       </GDSCText>
-      <StyledForm>
+      <StyledForm
+        onSubmit={e => {
+          e.preventDefault();
+          handleLogin();
+        }}
+      >
         <TextField
           margin="normal"
           required
@@ -54,6 +60,8 @@ const LoginPage = () => {
           name="email"
           autoComplete="email"
           autoFocus
+          value={email}
+          onChange={e => setEmail(e.target.value)}
         />
         <TextField
           margin="normal"
@@ -64,14 +72,18 @@ const LoginPage = () => {
           type="password"
           id="password"
           autoComplete="current-password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
         />
         <ButtonContainer>
-          <GDSCButton label={'로그인하기'} onClick={handleSubmit} />
+          <GDSCButton label={'로그인하기'} onClick={() => {}} />
           <GDSCButton
             label={'ID/PW 찾기'}
-            onClick={() => {
+            onClick={e => {
+              e.preventDefault();
               alert('아이디 혹은 비밀번호를 잊어버린 경우,감사원 xxx (xxx@kaist.ac.kr) 로 문의 부탁드립니다.');
             }}
+            type="button"
           />
         </ButtonContainer>
       </StyledForm>

@@ -33,9 +33,10 @@ class Authentication {
   }
 
   async login(email, password) {
-    const response = postForEntity(`/user/login`, { email, password });
+    const response = await postForEntity(`${process.env.REACT_APP_SERVER_URL}/users/login`, { email, password });
     if (response.status === 200) {
       // TODO: get cookie and set login state
+      console.log(response);
       const { type } = response.data;
       this.setLoginInfo(type, response.data.accessKey);
     }

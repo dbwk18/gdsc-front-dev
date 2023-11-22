@@ -23,7 +23,7 @@ const requestForEntity = async (method, url, params, data, arrayNoBrackets) => {
       params,
       data,
       headers,
-      // baseURL: process.env.SERVER_URL,
+      baseURL: process.env.REACT_APP_SERVER_URL,
       paramsSerializer: arrayNoBrackets ? param => qs.stringify(param, { arrayFormat: 'repeat' }) : undefined,
     });
     return axiosResult.data;
