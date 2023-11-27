@@ -12,9 +12,9 @@ const HttpMethod = {
 };
 
 const requestForEntity = async (method, url, params, data, arrayNoBrackets) => {
-  const headers = {
-    Authorization: `${cookies.get('Authorization')}`,
-  };
+  // const headers = {
+  //   Authorization: `${cookies.get('Authorization')}`,
+  // };
 
   try {
     const axiosResult = await Axios.request({
@@ -22,9 +22,9 @@ const requestForEntity = async (method, url, params, data, arrayNoBrackets) => {
       method,
       params,
       data,
-      headers,
       baseURL: process.env.REACT_APP_SERVER_URL,
       paramsSerializer: arrayNoBrackets ? param => qs.stringify(param, { arrayFormat: 'repeat' }) : undefined,
+      withCredentials: true,
     });
     return axiosResult.data;
   } catch (e) {

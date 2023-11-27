@@ -5,6 +5,7 @@ import GDSCButton from '../components/core/GDSCButton';
 import { Box, TextField, Typography, Button } from '@mui/material';
 import Authentication from '../store/Authentication';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Container = styled.div`
   width: 100%;
@@ -31,13 +32,12 @@ const ButtonContainer = styled.div`
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleLogin = () => {
-    const data = {
-      email,
-      password,
-    };
-    Authentication.shared.login(email, password);
+    Authentication.shared.login(email, password).then(() => {
+      navigate('/main');
+    });
   };
 
   return (

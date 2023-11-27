@@ -7,6 +7,7 @@ import Colors from '../../style/Colors';
 import { useRecoilValue } from 'recoil';
 import { authTypeAtom } from '../../store/atoms/authAtoms';
 import { AuthType } from '../../store/Authentication';
+import { getForEntity } from '../../network/HttpRequests';
 
 const Container = styled.div`
   width: 100%;
@@ -35,6 +36,11 @@ const OutletArea = styled.div`
 const MainLayout = () => {
   const authType = useRecoilValue(authTypeAtom);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Auth 정상적으로 됐는지 시험용
+    getForEntity('/organizations').then(data => console.log(data));
+  }, []);
 
   useEffect(() => {
     if (authType === AuthType.ADMIN) navigate('/main/groups');

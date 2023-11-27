@@ -1,5 +1,6 @@
 import { Cookies } from 'react-cookie';
 import { getForEntity, postForEntity } from '../network/HttpRequests';
+import Axios from 'axios';
 
 const cookies = new Cookies(document.cookie);
 
@@ -33,10 +34,14 @@ class Authentication {
   }
 
   async login(email, password) {
-    const response = await postForEntity(`${process.env.REACT_APP_SERVER_URL}/users/login`, { email, password });
+    const response = await Axios.post(
+      // `${process.env.REACT_APP_SERVER_URL}/users/login`,
+      `https://ec2-3-38-168-189.ap-northeast-2.compute.amazonaws.com:3000/users/login`,
+      { email, password },
+      { withCredentials: true },
+    );
     if (response.status === 200) {
       // TODO: get cookie and set login state
-      console.log(response);
       const { type } = response.data;
       this.setLoginInfo(type, response.data.accessKey);
     }
