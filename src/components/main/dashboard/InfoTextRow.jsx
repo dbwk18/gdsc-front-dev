@@ -6,8 +6,8 @@ const InfoTextContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 100px;
-  margin-bottom: 16px;
+  gap: 40px;
+  margin-bottom: 2px;
 `;
 
 const InfoTextRow = ({ title, content, fontType }) => {

@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 import Colors from '../style/Colors';
-import { TextType } from '../components/core/GDSCText';
 import InfoCard from '../components/main/dashboard/InfoCard';
 import InfoTextRow from '../components/main/dashboard/InfoTextRow';
 import InfoText from '../components/main/dashboard/InfoText';
+import GDSCButton from '../components/core/GDSCButton';
+import CardGrid from '../components/main/dashboard/CardGrid';
+import CardStatus from '../components/main/dashboard/CardStatus';
 
 const Container = styled.div`
   width: 100%;
@@ -11,40 +13,41 @@ const Container = styled.div`
   background-color: ${Colors.WHITE100};
   border-radius: 16px;
   padding: 20px 30px;
+  display: flex;
+  gap: 2s0px;
 `;
 
-const ItemsRow = styled.div`
+const LeftColumn = styled.div`
   display: flex;
+  flex-direction: column;
+  width: 50%;
   gap: 16px;
 `;
 
 const AdminDashboardPage = () => {
   return (
     <Container>
-      <ItemsRow>
-        <InfoCard title={'내 정보'}>
-          <ItemsRow>
+      <LeftColumn>
+        <InfoCard title={'내 정보'} redirect={'편집하기'} onIconClick={() => console.log('')}>
+          <div style={{ display: 'flex', gap: '16px' }}>
             <InfoText title={'기구장'} content={'김넙죽'} />
             <InfoText title={'이메일'} content={'gamsawon@kaist.ac.kr'} />
-          </ItemsRow>
+          </div>
         </InfoCard>
-      </ItemsRow>
-      <ItemsRow>
         <InfoCard title={'회계 감사 자료 수정 기간'}>
-          <InfoTextRow title={'23년도 하반기 추가 수정 기간'} content={'2021.10.01 ~ 2021.10.31'} />
-          <InfoTextRow title={'23년도 하반기 자료 수정 기간'} content={'2021.10.01 ~ 2021.10.31'} />
+          <InfoText title={'최근 수정 기간'} content={''} />
+          <InfoTextRow title={'23년도 하반기 자료 입력 기간'} content={'2021.10.01 ~ 2021.10.31'} />
+          <InfoTextRow title={'23년도 상반기 자료 수정 기간'} content={'2021.10.01 ~ 2021.10.31'} />
+          <InfoTextRow title={'23년도 상반기 자료 입력 기간'} content={'2021.10.01 ~ 2021.10.31'} />
+          <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '20px' }}>
+            <GDSCButton label={'감사 시작하기'} onClick={() => console.log('')} inactive={false} />
+          </div>
         </InfoCard>
-      </ItemsRow>
-      <ItemsRow>
-        <InfoCard title={'예결산안'} redirect>
-          <InfoTextRow title={'제출 기구'} fontType={TextType.BOLD} content={'00개'} />
-          <InfoTextRow title={'미제출 기구'} fontType={TextType.BOLD} content={'00개'} />
-        </InfoCard>
-        <InfoCard title={'통장거래내역'} redirect>
-          <InfoTextRow title={'제출 기구'} fontType={TextType.BOLD} content={'00개'} />
-          <InfoTextRow title={'미제출 기구'} fontType={TextType.BOLD} content={'00개'} />
-        </InfoCard>
-      </ItemsRow>
+      </LeftColumn>
+      <InfoCard title={'피감기관 카드 목록'} minWidth="50%">
+        <CardStatus />
+        <CardGrid />
+      </InfoCard>
     </Container>
   );
 };

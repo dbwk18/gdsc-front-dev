@@ -1,10 +1,10 @@
 import React from 'react';
-import { Box, IconButton } from '@mui/material';
+import { Box } from '@mui/material';
 import GDSCText, { TextType } from '../../core/GDSCText';
+import GDSCButton from '../../core/GDSCButton';
 import Colors from '../../../style/Colors';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
-const InfoCard = ({ title, minWidth = '300px', redirect = false, onIconClick, children }) => {
+const InfoCard = ({ title, minWidth = '300px', redirect = '', onIconClick, children }) => {
   return (
     <Box
       sx={{
@@ -28,11 +28,7 @@ const InfoCard = ({ title, minWidth = '300px', redirect = false, onIconClick, ch
           <GDSCText size={20} fontType={TextType.BOLD} color={Colors.BLACK100}>
             {title}
           </GDSCText>
-          {redirect && (
-            <IconButton onClick={onIconClick}>
-              <ArrowForwardIosIcon />
-            </IconButton>
-          )}
+          {redirect !== '' && <GDSCButton label={'편집하기'} onClick={onIconClick} inactive={false} />}
         </Box>
       )}
       {children}
