@@ -160,7 +160,7 @@ export const orgs = [
 
 const SubmitIcon = styled.div`
   background-color: ${props => props.backgroundColor};
-  width: 120px;
+  width: 130px;
   height: 30px;
   border-radius: 16px;
   color: ${props => props.color};
@@ -171,40 +171,6 @@ const SubmitIcon = styled.div`
   font-weight: 600;
   margin-right: 15px;
 `;
-
-const StatusIcon = ({ status }) => {
-  const submitted = status === '제출완료';
-  const color = submitted ? '#28C82E' : '#DC3545';
-  const backgroundColor = submitted ? '#DFF7E0' : '#F8D7DA';
-  return (
-    <SubmitIcon backgroundColor={backgroundColor} color={color}>
-      <CircleIcon
-        sx={{
-          verticalAlign: 'middle',
-          color,
-          fontSize: '6.5px',
-          marginRight: '4px',
-          marginBottom: '2px',
-        }}
-      />
-      {status}
-    </SubmitIcon>
-  );
-};
-
-const OrgRow = ({ org }) => {
-  return (
-    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-      <div style={{ width: '150px' }}>{org.name}</div>
-      <div style={{ display: 'flex', justifyContent: 'center', gap: 15, width: '100%' }}>
-        {org.cards.map(item => (
-          <CardMedia component="img" image={item} alt={item} sx={{ width: 80, height: 80, marginBottom: 3 }} />
-        ))}
-      </div>
-      <StatusIcon status={org.status} />
-    </div>
-  );
-};
 
 const Divider = styled.div`
   width: 100%;
@@ -228,10 +194,44 @@ const CardGrid = () => {
         </GDSCText>
       </div>
       <Divider />
-      {orgs.map((org, index) => (
+      {orgs.map(org => (
         <OrgRow key={org.id} org={org} />
       ))}
     </Box>
+  );
+};
+
+const OrgRow = ({ org }) => {
+  return (
+    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+      <div style={{ width: '150px' }}>{org.name}</div>
+      <div style={{ display: 'flex', justifyContent: 'center', gap: 15, width: '100%', marginRight: 5 }}>
+        {org.cards.map(item => (
+          <CardMedia component="img" image={item} alt={item} sx={{ width: 80, height: 80, marginBottom: 3 }} />
+        ))}
+      </div>
+      <StatusChip status={org.status} />
+    </div>
+  );
+};
+
+const StatusChip = ({ status }) => {
+  const submitted = status === '제출완료';
+  const color = submitted ? '#28C82E' : '#DC3545';
+  const backgroundColor = submitted ? '#DFF7E0' : '#F8D7DA';
+  return (
+    <SubmitIcon backgroundColor={backgroundColor} color={color}>
+      <CircleIcon
+        sx={{
+          verticalAlign: 'middle',
+          color,
+          fontSize: '6px',
+          marginRight: '4px',
+          marginBottom: '2px',
+        }}
+      />
+      {status}
+    </SubmitIcon>
   );
 };
 

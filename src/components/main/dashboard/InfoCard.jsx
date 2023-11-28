@@ -1,38 +1,38 @@
 import React from 'react';
-import { Box } from '@mui/material';
 import GDSCText, { TextType } from '../../core/GDSCText';
 import GDSCButton from '../../core/GDSCButton';
 import Colors from '../../../style/Colors';
+import styled from 'styled-components';
 
-const InfoCard = ({ title, minWidth = '300px', redirect = '', onIconClick, children }) => {
+const Container = styled.div`
+  padding: 16px;
+  margin: 16px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff; // Replace with your theme's background.paper color
+  min-width: ${props => props.minWidth};
+`;
+
+const Title = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+`;
+
+const InfoCard = ({ title, minWidth = '300px', upperButtonLabel = '', onButtonClick, children }) => {
   return (
-    <Box
-      sx={{
-        padding: 2,
-        margin: 2,
-        borderRadius: 2,
-        boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-        backgroundColor: 'background.paper',
-        minWidth,
-      }}
-    >
+    <Container minWidth={minWidth}>
       {title && (
-        <Box
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            marginBottom: '16px',
-          }}
-        >
+        <Title>
           <GDSCText size={20} fontType={TextType.BOLD} color={Colors.BLACK100}>
             {title}
           </GDSCText>
-          {redirect !== '' && <GDSCButton label={'편집하기'} onClick={onIconClick} inactive={false} />}
-        </Box>
+          {upperButtonLabel !== '' && <GDSCButton label={upperButtonLabel} onClick={onButtonClick} inactive={false} />}
+        </Title>
       )}
       {children}
-    </Box>
+    </Container>
   );
 };
 
