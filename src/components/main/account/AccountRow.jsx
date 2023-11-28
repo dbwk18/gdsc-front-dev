@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { TableRow, TableCell, tableCellClasses, tableRowClasses } from '@mui/material';
-import GDSCText from '../../core/GDSCText';
+import GDSCText, { TextType } from '../../core/GDSCText';
 import Colors from '../../../style/Colors';
+import GDSCStatusButton from '../../core/GDSCStatusButton';
 
 const StyledDiv = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
 `;
 
 const StyledTableRow = styled(TableRow)(props => ({
@@ -19,128 +19,40 @@ const StyledTableRow = styled(TableRow)(props => ({
   },
 }));
 
-const AccountRow = ({
-  businessAt,
-  manager,
-  itemSub,
-  itemCode,
-  transactionType,
-  income,
-  expense,
-  balance,
-  transactionAt,
-  bankName,
-  accountHolder,
-  accountNumber,
-  receipts,
-  remarks,
-  highlight,
-  page,
-}) => {
-  const [rowHighlight, setRowHighlight] = useState(false);
-
-  useEffect(() => {
-    setRowHighlight(highlight);
-  }, [page]);
-
-  useEffect(() => {
-    setRowHighlight(highlight);
-    const timeout = setTimeout(() => {
-      setRowHighlight(false);
-    }, 5000);
-
-    return () => clearTimeout(timeout);
-  }, [highlight]);
-
+const AccountRow = ({ organisation, email, id, password, accountStatus }) => {
   return (
-    <StyledTableRow rowHighlight={rowHighlight}>
+    <StyledTableRow>
       <TableCell>
         <StyledDiv>
-          <GDSCText size={13} color={Colors.GREY80}>
-            {businessAt}
+          <GDSCText size={13} fontType={TextType.BOLD} color={Colors.GREY80}>
+            {organisation}
           </GDSCText>
         </StyledDiv>
       </TableCell>
       <TableCell>
         <StyledDiv>
-          <GDSCText size={13} color={Colors.GREY80}>
-            {manager}
+          <GDSCText size={13} fontType={TextType.BOLD} color={Colors.GREY80}>
+            {email}
           </GDSCText>
         </StyledDiv>
       </TableCell>
       <TableCell>
         <StyledDiv>
-          <GDSCText size={10} color={Colors.GREY80}>
-            {itemSub}
+          <GDSCText size={13} fontType={TextType.BOLD} color={Colors.GREY80}>
+            {id}
           </GDSCText>
         </StyledDiv>
       </TableCell>
       <TableCell>
         <StyledDiv>
-          <GDSCText size={13} color={Colors.GREY80}>
-            {itemCode}
+          <GDSCText size={13} fontType={TextType.BOLD} color={Colors.GREY80}>
+            {password}
           </GDSCText>
         </StyledDiv>
       </TableCell>
       <TableCell>
         <StyledDiv>
-          <GDSCText size={13} color={Colors.GREY80}>
-            {transactionType}
-          </GDSCText>
-        </StyledDiv>
-      </TableCell>
-      <TableCell>
-        <StyledDiv>
-          <GDSCText size={13} color={Colors.GREY80}>
-            {income}
-          </GDSCText>
-        </StyledDiv>
-      </TableCell>
-      <TableCell>
-        <StyledDiv>
-          <GDSCText size={13} color={Colors.GREY80}>
-            {expense}
-          </GDSCText>
-        </StyledDiv>
-      </TableCell>
-      <TableCell>
-        <StyledDiv>
-          <GDSCText size={13} color={Colors.GREY80}>
-            {balance}
-          </GDSCText>
-        </StyledDiv>
-      </TableCell>
-      <TableCell>
-        <StyledDiv>
-          <GDSCText size={13} color={Colors.GREY80}>
-            {transactionAt}
-          </GDSCText>
-        </StyledDiv>
-      </TableCell>
-      <TableCell>
-        <StyledDiv>
-          <GDSCText size={10} color={Colors.GREY80}>
-            ({bankName}-{accountHolder})
-          </GDSCText>
-        </StyledDiv>
-        <StyledDiv>
-          <GDSCText size={10} color={Colors.GREY80}>
-            {accountNumber}
-          </GDSCText>
-        </StyledDiv>
-      </TableCell>
-      <TableCell>
-        <StyledDiv>
-          <GDSCText size={13} color={Colors.GREY80}>
-            {receipts}
-          </GDSCText>
-        </StyledDiv>
-      </TableCell>
-      <TableCell>
-        <StyledDiv>
-          <GDSCText size={13} color={Colors.GREY80}>
-            {remarks}
-          </GDSCText>
+          <GDSCStatusButton label={'활성화'} />
         </StyledDiv>
       </TableCell>
     </StyledTableRow>

@@ -6,24 +6,11 @@ import AccountChartHeader from './AccountChartHeader';
 
 const Container = styled.div`
   width: 100%;
-  height: 700px;
+  height: 1080px;
   padding: 0 12px;
 `;
 
-const columnName = [
-  '사업일',
-  '담당자',
-  '집행내용',
-  '코드',
-  '거래형태',
-  '수입',
-  '지출',
-  '잔액',
-  '통장거래일',
-  '이체계좌번호',
-  '영수증',
-  '비고',
-];
+const columnName = ['피감기관명', '이메일', '아이디', '비밀번호', '계정 상태'];
 
 const AccountChart = ({ account, addRow, page }) => {
   return (
@@ -37,22 +24,11 @@ const AccountChart = ({ account, addRow, page }) => {
             {account.map((input, idx) => {
               return (
                 <AccountRow
-                  businessAt={input.business_at}
-                  manager={input.manager}
-                  itemSub={input.item_sub}
-                  itemCode={input.item_code}
-                  transactionType={input.transaction_type}
-                  income={input.income}
-                  expense={input.expense}
-                  balance={input.balance}
-                  transactionAt={input.transaction_at}
-                  bankName={input.bank_name}
-                  accountHolder={input.account_holder}
-                  accountNumber={input.account_number}
-                  receipts={input.receipts}
-                  remarks={input.remarks}
-                  highlight={input === addRow[0]}
-                  page={page}
+                  organisation={input.organisation}
+                  email={input.email}
+                  id={input.id}
+                  password={input.password}
+                  accountStatus={input.accountStatus}
                 />
               );
             })}

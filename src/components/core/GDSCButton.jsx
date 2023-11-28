@@ -13,13 +13,13 @@ const Button = styled.button`
   align-items: center;
   gap: 4px;
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 8px;
   text-align: center;
 
   &.main {
     height: 40px;
-    padding: 0 16px;
-    background-color: ${Colors.BLUE_DEEP};
+    padding: 16px 36.5px;
+    background-color: ${Colors.GREY20};
 
     &:hover {
       filter: brightness(110%);
@@ -47,7 +47,7 @@ const GDSCButton = ({ label, onClick, inactive = true, buttonType = ButtonType.M
 
   return (
     <Button onClick={handleClick} className={buttonClassName}>
-      <GDSCText size={14} fontType={TextType.BOLD} color={Colors.WHITE100}>
+      <GDSCText size={14} fontType={TextType.REGULAR} color={Colors.BLACK100}>
         {label}
       </GDSCText>
     </Button>

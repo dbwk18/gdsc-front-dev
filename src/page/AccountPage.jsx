@@ -21,6 +21,14 @@ const Container = styled.div`
   padding: 20px 30px;
 `;
 
+const PaginationContainer = styled.div`
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  justify-content: right;
+  background-color: ${Colors.GREY20};
+`;
+
 // todo: replace toydata to api get
 
 const AccountPage = () => {
@@ -29,7 +37,7 @@ const AccountPage = () => {
   const [toastOpen, setToastOpen] = useState(false);
   const [addRow, setAddRow] = useState([]);
 
-  const COUNT_PER_PAGE = 8;
+  const COUNT_PER_PAGE = 12;
   const offset = (page - 1) * COUNT_PER_PAGE;
 
   const renderData = data => {
@@ -67,13 +75,16 @@ const AccountPage = () => {
 
   return (
     <Container>
-      <ChartHeader headerText={'통장거래내역!'} setIsOpen={setIsOpen} />
+      <ChartHeader headerText={'피감기구 계정 관리'} setIsOpen={setIsOpen} />
       <AccountChart account={renderData([...toydata, ...addRow])} addRow={addRow} page={page} />
-      <GDSCPagination
-        count={Math.ceil([...toydata, ...addRow].length / COUNT_PER_PAGE)}
-        page={page}
-        setPage={setPage}
-      />
+      <PaginationContainer>
+        <GDSCPagination
+          count={Math.ceil([...toydata, ...addRow].length / COUNT_PER_PAGE)}
+          page={page}
+          setPage={setPage}
+        />
+      </PaginationContainer>
+
       <GDSCModal open={isOpen} onClose={() => setIsOpen(false)}>
         <AccountModal setIsOpen={setIsOpen} setAddRow={setAddRow} setToastOpen={setToastOpen} />
       </GDSCModal>
