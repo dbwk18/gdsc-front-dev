@@ -35,8 +35,14 @@ const LoginPage = () => {
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    Authentication.shared.login(email, password).then(() => {
-      navigate('/main');
+    Authentication.shared.login(email, password).then(role => {
+      if (role === 'admin') {
+        navigate('/main');
+      } else if (role === 'user') {
+        navigate('/main');
+      } else {
+        alert('로그인에 실패했습니다.');
+      }
     });
   };
 
