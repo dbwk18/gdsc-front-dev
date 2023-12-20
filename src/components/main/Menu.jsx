@@ -18,20 +18,11 @@ const Container = styled.div`
   }
 `;
 
-function Menu({ iconBlack, iconBlue, menuName, onClick }) {
+function Menu({ iconBlack, iconBlue, menuName, selected, onClick }) {
   const [isPressed, setIsPressed] = useState(false);
 
   const menuStyles = {
-    background: isPressed ? '#E1ECFE' : '#FFFFFF',
-  };
-
-  const menuNameStyles = {
-    fontFamily: 'Pretendard Variable',
-    fontSize: 16,
-    fontStyle: 'normal',
-    fontWeight: 600,
-    lineHeight: 18,
-    color: isPressed ? '#3680F7' : '#223047',
+    background: isPressed || selected ? '#E1ECFE' : '#FFFFFF',
   };
 
   const handleButtonClick = () => {
@@ -43,7 +34,6 @@ function Menu({ iconBlack, iconBlue, menuName, onClick }) {
       style={menuStyles}
       onClick={() => {
         if (onClick) onClick();
-        console.log(onClick);
       }}
       onMouseEnter={() => {
         setIsPressed(true);
@@ -53,8 +43,8 @@ function Menu({ iconBlack, iconBlue, menuName, onClick }) {
       }}
     >
       <div className="Frame481">
-        {isPressed ? <img src={iconBlue} alt="blue" /> : <img src={iconBlack} alt="black" />}
-        <GDSCText size={16} fontType={TextType.MEDIUM} color={isPressed ? '#3680F7' : '#223047'}>
+        {isPressed || selected ? <img src={iconBlue} alt="blue" /> : <img src={iconBlack} alt="black" />}
+        <GDSCText size={16} fontType={TextType.MEDIUM} color={isPressed || selected ? '#3680F7' : '#223047'}>
           {menuName}
         </GDSCText>
         {/* <p style={menuNameStyles}>{menuName}</p> */}

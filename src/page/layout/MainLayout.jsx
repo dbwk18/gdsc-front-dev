@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { Outlet, useNavigate } from 'react-router-dom';
 import MainLeftNavigationBar from '../../templates/main/MainLeftNavigationBar';
-import MainHeader from '../../templates/main/MainHeader';
 import Colors from '../../style/Colors';
 import { useRecoilValue } from 'recoil';
 import { authTypeAtom } from '../../store/atoms/authAtoms';
@@ -18,7 +17,7 @@ const Container = styled.div`
 
 const Body = styled.div`
   width: 100%;
-  flex-grow: 1;
+  height: 100%;
   display: flex;
   flex-direction: row;
 `;
@@ -28,6 +27,7 @@ const OutletArea = styled.div`
   height: 100%;
   padding: 40px;
   display: flex;
+  overflow-y: auto;
   align-items: center;
   justify-content: center;
   background-color: ${Colors.BLUE_BACKGROUND};
@@ -43,13 +43,12 @@ const MainLayout = () => {
   }, []);
 
   useEffect(() => {
-    if (authType === AuthType.ADMIN) navigate('/main/groups');
+    if (authType === AuthType.ADMIN) navigate('/main/dashboard');
     else navigate('/main/budget');
   }, [authType]);
 
   return (
     <Container>
-      <MainHeader />
       <Body>
         <MainLeftNavigationBar />
         <OutletArea>
