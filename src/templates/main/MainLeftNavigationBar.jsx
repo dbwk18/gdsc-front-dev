@@ -23,6 +23,16 @@ const MainLeftNavigationBar = () => {
   return (
     <Container>
       <LNBItem
+        label="피감기구 대시보드"
+        selected={location.pathname.includes('organization-dashboard')}
+        onClick={() => navigate('/main/organization-dashboard')}
+      />
+      <LNBItem
+        label="감사원 대시보드"
+        selected={location.pathname.includes('admin-dashboard')}
+        onClick={() => navigate('/main/admin-dashboard')}
+      />
+      <LNBItem
         label="예결산안"
         selected={location.pathname.includes('budget')}
         onClick={() => navigate('/main/budget')}
