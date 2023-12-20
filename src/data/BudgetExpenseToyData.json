@@ -1,0 +1,86 @@
+[
+  {
+    "manager": "기획국",
+    "items": [
+      {
+        "item": "학과설명회",
+        "sub_items": [
+          {
+            "fund_source": "본회계",
+            "detail_item": "피자",
+            "item_code": "A1",
+            "budget": "400000",
+            "settlement": "340000",
+            "execution_rate": "85.0",
+            "remarks": ""
+          },
+          {
+            "fund_source": "학생",
+            "detail_item": "추첨상품",
+            "item_code": "A2",
+            "budget": "200000",
+            "settlement": "220000",
+            "execution_rate": "110.0",
+            "remarks": ""
+          }
+        ]
+      },
+      {
+        "item": "캠프 참가비",
+        "sub_items": [
+          {
+            "fund_source": "학생",
+            "detail_item": "교통비",
+            "item_code": "B1",
+            "budget": "100000",
+            "settlement": "70000",
+            "execution_rate": "70.0",
+            "remarks": ""
+          }
+        ]
+      }
+    ],
+    "total": [
+      {
+        "budget": "13000000",
+        "settlement": "11500000",
+        "execution_rate": "88.5%"
+      }
+    ]
+  },
+  {
+    "manager": "복지국",
+    "items": [
+      {
+        "item": "사석화 방지 캠페인",
+        "sub_items": [
+          {
+            "fund_source": "학생",
+            "detail_item": "포스터",
+            "item_code": "C1",
+            "budget": "300000",
+            "settlement": "320000",
+            "execution_rate": "106.7",
+            "remarks": ""
+          },
+          {
+            "fund_source": "학생",
+            "detail_item": "추첨상품",
+            "item_code": "C2",
+            "budget": "100000",
+            "settlement": "100000",
+            "execution_rate": "100.0",
+            "remarks": ""
+          }
+        ]
+      }
+    ],
+    "total": [
+      {
+        "budget": "13000000",
+        "settlement": "11500000",
+        "execution_rate": "88.5%"
+      }
+    ]
+  }
+]

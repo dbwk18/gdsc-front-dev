@@ -4,6 +4,7 @@ import Colors from '../style/Colors';
 import ChartHeader from '../components/main/ChartHeader';
 import GDSCText from '../components/core/GDSCText';
 import GDSCModal from '../components/core/GDSCModal';
+import BudgetTabPanels from '../components/main/budget/BudgetTabPanels';
 import BudgetModal from '../components/main/budget/BudgetModal';
 
 const Container = styled.div`
@@ -16,14 +17,15 @@ const Container = styled.div`
 
 const BudgetPage = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [addRow, setAddRow] = useState([]);
 
   return (
     <Container>
       <ChartHeader headerText={'예결산안'} setIsOpen={setIsOpen} />
-      <GDSCText size={13}>뭔가 들어갈 곳</GDSCText>
       <GDSCModal open={isOpen} onClose={() => setIsOpen(false)}>
-        <BudgetModal setIsOpen={setIsOpen} />
+        <BudgetModal setIsOpen={setIsOpen} setAddRow={setAddRow} />
       </GDSCModal>
+      <BudgetTabPanels addRow={addRow} />
     </Container>
   );
 };

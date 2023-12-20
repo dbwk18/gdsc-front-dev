@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { TableRow, TableCell, tableCellClasses } from '@mui/material';
+import { TableRow, TableCell, tableCellClasses, tableRowClasses } from '@mui/material';
 import GDSCText from '../../core/GDSCText';
 import Colors from '../../../style/Colors';
 
@@ -11,6 +11,13 @@ const StyledDiv = styled.div`
   align-items: center;
   justify-content: center;
 `;
+
+const StyledTableRow = styled(TableRow)(props => ({
+  [`& > .MuiTableCell-root`]: {
+    backgroundColor: props.rowHighlight ? Colors.BLUE_LIGHT : Colors.WHITE100,
+    transition: 'background-color 0.5s ease',
+  },
+}));
 
 const AccountRow = ({
   businessAt,
@@ -27,9 +34,26 @@ const AccountRow = ({
   accountNumber,
   receipts,
   remarks,
+  highlight,
+  page,
 }) => {
+  const [rowHighlight, setRowHighlight] = useState(false);
+
+  useEffect(() => {
+    setRowHighlight(highlight);
+  }, [page]);
+
+  useEffect(() => {
+    setRowHighlight(highlight);
+    const timeout = setTimeout(() => {
+      setRowHighlight(false);
+    }, 5000);
+
+    return () => clearTimeout(timeout);
+  }, [highlight]);
+
   return (
-    <TableRow>
+    <StyledTableRow rowHighlight={rowHighlight}>
       <TableCell>
         <StyledDiv>
           <GDSCText size={13} color={Colors.GREY80}>
@@ -119,7 +143,7 @@ const AccountRow = ({
           </GDSCText>
         </StyledDiv>
       </TableCell>
-    </TableRow>
+    </StyledTableRow>
   );
 };
 
