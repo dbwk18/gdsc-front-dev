@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import MainLeftNavigationBar from '../../templates/main/MainLeftNavigationBar';
-import MainHeader from '../../templates/main/MainHeader';
 import Colors from '../../style/Colors';
+import { useRecoilValue } from 'recoil';
+import { authTypeAtom } from '../../store/atoms/authAtoms';
+import { AuthType } from '../../store/Authentication';
+import { getForEntity } from '../../network/HttpRequests';
 
 const Container = styled.div`
   width: 100%;
@@ -14,7 +17,7 @@ const Container = styled.div`
 
 const Body = styled.div`
   width: 100%;
-  flex-grow: 1;
+  height: 100%;
   display: flex;
   flex-direction: row;
 `;
@@ -24,15 +27,28 @@ const OutletArea = styled.div`
   height: 100%;
   padding: 40px;
   display: flex;
+  overflow-y: auto;
   align-items: center;
   justify-content: center;
   background-color: ${Colors.BLUE_BACKGROUND};
 `;
 
 const MainLayout = () => {
+  const authType = useRecoilValue(authTypeAtom);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Auth 정상적으로 됐는지 시험용
+    getForEntity('/organizations').then(data => console.log(data));
+  }, []);
+
+  useEffect(() => {
+    if (authType === AuthType.ADMIN) navigate('/main/dashboard');
+    else navigate('/main/budget');
+  }, [authType]);
+
   return (
     <Container>
-      <MainHeader />
       <Body>
         <MainLeftNavigationBar />
         <OutletArea>

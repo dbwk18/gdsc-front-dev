@@ -3,17 +3,19 @@ import { createBrowserRouter, createRoutesFromElements, Route } from 'react-rout
 import { RootLayout, MainLayout } from './layout/index';
 import BudgetPage from './BudgetPage';
 import AccountPage from './AccountPage';
-import OrgDashboardPage from './OrgDashboardPage';
-import AdminDashboardPage from './AdminDashboardPage';
+import LoginPage from './LoginPage';
+import GroupListPage from './GroupListPage';
+import DashboardPage from './DashboardPage';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
+      <Route path="login" element={<LoginPage />} />
       <Route path="main" element={<MainLayout />}>
+        <Route path="groups" element={<GroupListPage />} />
         <Route path="budget" element={<BudgetPage />} />
         <Route path="account" element={<AccountPage />} />
-        <Route path="organization-dashboard" element={<OrgDashboardPage />} />
-        <Route path="admin-dashboard" element={<AdminDashboardPage />} />
+        <Route path="dashboard" element={<DashboardPage />} />
       </Route>
     </Route>,
   ),
