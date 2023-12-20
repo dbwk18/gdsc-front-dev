@@ -1,0 +1,44 @@
+[
+  {
+    "fund_source": "학생",
+    "items": [
+      {
+        "item": "전반기 이월금",
+        "item_code": "AA",
+        "budget": "3000000",
+        "settlement": "2500000",
+        "execution_rate": "83.3",
+        "remarks": ""
+      },
+      {
+        "item": "학생회비",
+        "item_code": "AB",
+        "budget": "10000000",
+        "settlement": "9000000",
+        "execution_rate": "90.0",
+        "remarks": ""
+      }
+    ]
+  },
+  {
+    "fund_source": "자치",
+    "items": [
+      {
+        "item": "LT 지원금",
+        "item_code": "BA",
+        "budget": "1500000",
+        "settlement": "1600000",
+        "execution_rate": "106.6",
+        "remarks": ""
+      },
+      {
+        "item": "MT 수익자부담 회비",
+        "item_code": "CB",
+        "budget": "1000000",
+        "settlement": "1200000",
+        "execution_rate": "120.0",
+        "remarks": ""
+      }
+    ]
+  }
+]
