@@ -25,7 +25,7 @@ const columnName = [
   '비고',
 ];
 
-const AccountChart = ({ account }) => {
+const AccountChart = ({ account, addRow, page }) => {
   return (
     <StyledEngineProvider injectFirst>
       <Container>
@@ -34,7 +34,7 @@ const AccountChart = ({ account }) => {
             <AccountChartHeader columnName={columnName} />
           </TableHead>
           <TableBody>
-            {account.map(input => {
+            {account.map((input, idx) => {
               return (
                 <AccountRow
                   businessAt={input.business_at}
@@ -51,6 +51,8 @@ const AccountChart = ({ account }) => {
                   accountNumber={input.account_number}
                   receipts={input.receipts}
                   remarks={input.remarks}
+                  highlight={input === addRow[0]}
+                  page={page}
                 />
               );
             })}
