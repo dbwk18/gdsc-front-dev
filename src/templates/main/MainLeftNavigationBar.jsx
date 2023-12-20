@@ -94,7 +94,12 @@ const MainLeftNavigationBar = () => {
             <p className="ChipName">감사원</p>
           </div>
         </Frame492>
-        <Menu iconBlack={HomeBlack} iconBlue={HomeBlue} menuName="홈" onClick={() => navigate('/main/admin-dashboard')} />
+        <Menu
+          iconBlack={HomeBlack}
+          iconBlue={HomeBlue}
+          menuName="홈"
+          onClick={() => navigate('/main/admin-dashboard')}
+        />
         <Menu iconBlack={UserSquareBlack} iconBlue={UserSquareBlue} menuName="피감기구 계정관리" />
         <Divider />
         <Menu
