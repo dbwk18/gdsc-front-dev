@@ -18,10 +18,13 @@ import DollarBlue from '../../style/img/dollar-blue.svg';
 import HomeBlue from '../../style/img/home-blue.svg';
 import SettingsBlue from '../../style/img/settings-blue.svg';
 import UserSquareBlue from '../../style/img/user-square-blue.svg';
+import { useRecoilValue } from 'recoil';
+import { authTypeAtom, userAtom } from '../../store/atoms/authAtoms';
+import { AuthType } from '../../store/Authentication';
 
 const Container = styled.div`
   display: flex;
-  height: 1024px;
+  height: 100%;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
@@ -81,6 +84,8 @@ const Divider = styled.div`
 const MainLeftNavigationBar = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const userName = useRecoilValue(userAtom);
+  const authType = useRecoilValue(authTypeAtom);
 
   return (
     <Container>
@@ -91,27 +96,38 @@ const MainLeftNavigationBar = () => {
         <Frame492>
           <div className="Chip">
             <img src={Icecream} width="20" height="20" alt="icecream" />
-            <p className="ChipName">감사원</p>
+            <p className="ChipName">{`${userName}`}</p>
           </div>
         </Frame492>
         <Menu
           iconBlack={HomeBlack}
           iconBlue={HomeBlue}
           menuName="홈"
-          onClick={() => navigate('/main/admin-dashboard')}
+          selected={location.pathname === '/main/dashboard'}
+          onClick={() => navigate('/main/dashboard')}
         />
-        <Menu iconBlack={UserSquareBlack} iconBlue={UserSquareBlue} menuName="피감기구 계정관리" />
+        {authType === AuthType.ADMIN && (
+          <Menu
+            iconBlack={UserSquareBlack}
+            iconBlue={UserSquareBlue}
+            menuName="피감기구 계정관리"
+            selected={location.pathname === '/main/groups'}
+            onClick={() => navigate('/main/groups')}
+          />
+        )}
         <Divider />
         <Menu
           iconBlack={DollarBlack}
           iconBlue={DollarBlue}
           menuName="예결산안"
+          selected={location.pathname === '/main/budget'}
           onClick={() => navigate('/main/budget')}
         />
         <Menu
           iconBlack={ClipboardBlack}
           iconBlue={ClipboardBlue}
           menuName="통장거래내역"
+          selected={location.pathname === '/main/account'}
           onClick={() => navigate('/main/account')}
         />
         <Divider />
