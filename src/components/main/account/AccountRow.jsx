@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { TableRow, TableCell, tableCellClasses, tableRowClasses } from '@mui/material';
-import GDSCText from '../../core/GDSCText';
+import GDSCText, { TextType } from '../../core/GDSCText';
 import Colors from '../../../style/Colors';
+import GDSCStatusButton from '../../core/GDSCStatusButton';
 
 const StyledDiv = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
 `;
 
 const StyledTableRow = styled(TableRow)(props => ({
