@@ -6,7 +6,7 @@ import OrgManageChartHeader from './OrgManageChartHeader';
 
 const Container = styled.div`
   width: 100%;
-  height: 1080px;
+  /* height: 1080px; */
   padding: 0 12px;
 `;
 
