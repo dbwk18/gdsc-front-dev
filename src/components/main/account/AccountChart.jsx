@@ -24,11 +24,22 @@ const AccountChart = ({ account, addRow, page }) => {
             {account.map((input, idx) => {
               return (
                 <AccountRow
-                  organisation={input.organisation}
-                  email={input.email}
-                  id={input.id}
-                  password={input.password}
-                  accountStatus={input.accountStatus}
+                  businessAt={input.business_at}
+                  manager={input.manager}
+                  itemSub={input.item_sub}
+                  itemCode={input.item_code}
+                  transactionType={input.transaction_type}
+                  income={input.income}
+                  expense={input.expense}
+                  balance={input.balance}
+                  transactionAt={input.transaction_at}
+                  bankName={input.bank_name}
+                  accountHolder={input.account_holder}
+                  accountNumber={input.account_number}
+                  receipts={input.receipts}
+                  remarks={input.remarks}
+                  highlight={input === addRow[0]}
+                  page={page}
                 />
               );
             })}

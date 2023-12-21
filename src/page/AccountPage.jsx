@@ -21,6 +21,7 @@ const Container = styled.div`
   padding: 20px 30px;
 `;
 
+// todo: replace toydata to api get
 const PaginationContainer = styled.div`
   width: 100%;
   height: fit-content;
@@ -37,7 +38,7 @@ const AccountPage = () => {
   const [toastOpen, setToastOpen] = useState(false);
   const [addRow, setAddRow] = useState([]);
 
-  const COUNT_PER_PAGE = 12;
+  const COUNT_PER_PAGE = 8;
   const offset = (page - 1) * COUNT_PER_PAGE;
 
   const renderData = data => {

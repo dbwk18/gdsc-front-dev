@@ -39,15 +39,15 @@ export const ButtonType = {
   MAIN: 'main',
 };
 
-const GDSCButton = ({ label, onClick, inactive = true, buttonType = ButtonType.MAIN }) => {
+const GDSCButton = ({ label, onClick, inactive = false, buttonType = ButtonType.MAIN, ...props }) => {
   const buttonClassName = `${buttonType} ${inactive ? 'inactive' : ''}`;
-  const handleClick = () => {
-    if (!inactive) onClick();
+  const handleClick = e => {
+    if (!inactive) onClick(e);
   };
 
   return (
-    <Button onClick={handleClick} className={buttonClassName}>
-      <GDSCText size={14} fontType={TextType.REGULAR} color={Colors.BLACK100}>
+    <Button onClick={handleClick} className={buttonClassName} props>
+      <GDSCText size={14} fontType={TextType.BOLD} color={Colors.WHITE100}>
         {label}
       </GDSCText>
     </Button>

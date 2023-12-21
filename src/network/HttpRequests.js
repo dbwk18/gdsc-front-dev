@@ -1,5 +1,8 @@
 import Axios from 'axios';
 import qs from 'qs';
+import { Cookies } from 'react-cookie';
+
+const cookies = new Cookies(document.cookie);
 
 const HttpMethod = {
   GET: 'get',
@@ -9,14 +12,19 @@ const HttpMethod = {
 };
 
 const requestForEntity = async (method, url, params, data, arrayNoBrackets) => {
+  // const headers = {
+  //   Authorization: `${cookies.get('Authorization')}`,
+  // };
+
   try {
     const axiosResult = await Axios.request({
       url,
       method,
       params,
       data,
-      // baseURL: process.env.SERVER_URL,
+      baseURL: process.env.REACT_APP_SERVER_URL,
       paramsSerializer: arrayNoBrackets ? param => qs.stringify(param, { arrayFormat: 'repeat' }) : undefined,
+      withCredentials: true,
     });
     return axiosResult.data;
   } catch (e) {
