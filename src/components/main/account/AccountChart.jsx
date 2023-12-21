@@ -10,7 +10,20 @@ const Container = styled.div`
   padding: 0 12px;
 `;
 
-const columnName = ['피감기관명', '이메일', '아이디', '비밀번호', '계정 상태'];
+const columnName = [
+  '사업일',
+  '담당자',
+  '집행내용',
+  '코드',
+  '거래형태',
+  '수입',
+  '지출',
+  '잔액',
+  '통장거래일',
+  '이체계좌번호',
+  '영수증',
+  '비고',
+];
 
 const AccountChart = ({ account, addRow, page }) => {
   return (

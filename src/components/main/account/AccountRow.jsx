@@ -58,6 +58,41 @@ const AccountRow = ({
       <TableCell>
         <StyledDiv>
           <GDSCText size={13} color={Colors.GREY80}>
+            {businessAt}
+          </GDSCText>
+        </StyledDiv>
+      </TableCell>
+      <TableCell>
+        <StyledDiv>
+          <GDSCText size={13} color={Colors.GREY80}>
+            {manager}
+          </GDSCText>
+        </StyledDiv>
+      </TableCell>
+      <TableCell>
+        <StyledDiv>
+          <GDSCText size={10} color={Colors.GREY80}>
+            {itemSub}
+          </GDSCText>
+        </StyledDiv>
+      </TableCell>
+      <TableCell>
+        <StyledDiv>
+          <GDSCText size={13} color={Colors.GREY80}>
+            {itemCode}
+          </GDSCText>
+        </StyledDiv>
+      </TableCell>
+      <TableCell>
+        <StyledDiv>
+          <GDSCText size={13} color={Colors.GREY80}>
+            {transactionType}
+          </GDSCText>
+        </StyledDiv>
+      </TableCell>
+      <TableCell>
+        <StyledDiv>
+          <GDSCText size={13} color={Colors.GREY80}>
             {income}
           </GDSCText>
         </StyledDiv>

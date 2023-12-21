@@ -11,7 +11,14 @@ import { Button } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 
-import toydata from '../data/AccountToyData.json';
+const toydata = [
+  {
+    organisation: '감사원',
+    email: 'gamsawon@kaist.ac.kr',
+    id: 'gamsawon',
+    password: 'password1234',
+  },
+];
 
 const Container = styled.div`
   width: 100%;

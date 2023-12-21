@@ -76,7 +76,7 @@ const AccountPage = () => {
 
   return (
     <Container>
-      <ChartHeader headerText={'피감기구 계정 관리'} setIsOpen={setIsOpen} />
+      <ChartHeader headerText={'통장거래내역'} setIsOpen={setIsOpen} />
       <AccountChart account={renderData([...toydata, ...addRow])} addRow={addRow} page={page} />
       <PaginationContainer>
         <GDSCPagination
