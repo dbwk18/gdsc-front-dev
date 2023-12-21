@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { TableRow, TableCell, tableCellClasses, tableRowClasses } from '@mui/material';
+import { TableRow, TableCell } from '@mui/material';
 import GDSCText, { TextType } from '../../core/GDSCText';
 import Colors from '../../../style/Colors';
 import GDSCStatusButton from '../../core/GDSCStatusButton';
@@ -16,8 +16,10 @@ const StyledTableRow = styled(TableRow)(props => ({
   [`& > .MuiTableCell-root`]: {
     backgroundColor: props.rowHighlight ? Colors.BLUE_LIGHT : Colors.WHITE100,
     transition: 'background-color 0.5s ease',
+  },
+}));
 
-const AccountRow = ({ organisation, email, id, password, accountStatus }) => {
+const ManagementRow = ({ organisation, email, id, password }) => {
   return (
     <StyledTableRow>
       <TableCell>
@@ -57,4 +59,4 @@ const AccountRow = ({ organisation, email, id, password, accountStatus }) => {
   );
 };
 
-export default AccountRow;
+export default ManagementRow;

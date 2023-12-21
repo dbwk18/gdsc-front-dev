@@ -1,31 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
 import Colors from '../../../style/Colors';
-import GDSCText, { TextType } from '../../core/GDSCText';
-import { TableRow, TableCell, tableCellClasses } from '@mui/material';
+import GDSCText from '../../core/GDSCText';
+import { TableCell, tableCellClasses } from '@mui/material';
 
 const StyledTableCell = styled(TableCell)(() => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: Colors.WHITE100,
+    backgroundColor: Colors.BLUE_LIGHT,
     color: 'black',
   },
 }));
 
-const AccountChartHeader = ({ columnName }) => {
+const AccountChartHeader = ({ title }) => {
   return (
-    <TableRow>
-      {columnName.map(name => {
-        return (
-          <StyledTableCell>
-            <div className="centered">
-              <GDSCText size={13} fontType={TextType.BOLD}>
-                {name}
-              </GDSCText>
-            </div>
-          </StyledTableCell>
-        );
-      })}
-    </TableRow>
+    <StyledTableCell>
+      <div className="centered">
+        <GDSCText size={12}>{title}</GDSCText>
+      </div>
+    </StyledTableCell>
   );
 };
 

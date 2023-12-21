@@ -1,34 +1,60 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Table, TableHead, TableBody, StyledEngineProvider } from '@mui/material';
-import AccountRow from './AccountRow';
+import AccountCell from './AccountCell';
 import AccountChartHeader from './AccountChartHeader';
 
 const Container = styled.div`
   width: 100%;
-  height: 1080px;
+  height: 700px;
   padding: 0 12px;
+
+  .centered {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
-const columnName = ['피감기관명', '이메일', '아이디', '비밀번호', '계정 상태'];
-
-const AccountChart = ({ account, addRow, page }) => {
+const AccountChart = ({ account }) => {
   return (
     <StyledEngineProvider injectFirst>
       <Container>
         <Table>
           <TableHead>
-            <AccountChartHeader columnName={columnName} />
+            <AccountChartHeader title={'사업일'} />
+            <AccountChartHeader title={'담당자'} />
+            <AccountChartHeader title={'집행내용'} />
+            <AccountChartHeader title={'코드'} />
+            <AccountChartHeader title={'거래형태'} />
+            <AccountChartHeader title={'수입'} />
+            <AccountChartHeader title={'지출'} />
+            <AccountChartHeader title={'잔액'} />
+            <AccountChartHeader title={'통장거래일'} />
+            <AccountChartHeader title={'이체계좌번호'} />
+            <AccountChartHeader title={'영수증'} />
+            <AccountChartHeader title={'비고'} />
           </TableHead>
           <TableBody>
-            {account.map((input, idx) => {
+            {account.map(input => {
               return (
-                <AccountRow
-                  organisation={input.organisation}
-                  email={input.email}
-                  id={input.id}
-                  password={input.password}
-                  accountStatus={input.accountStatus}
+                <AccountCell
+                  businessAt={input.business_at}
+                  manager={input.manager}
+                  itemSub={input.item_sub}
+                  itemCode={input.item_code}
+                  transactionType={input.transaction_type}
+                  income={input.income}
+                  expense={input.expense}
+                  balance={input.balance}
+                  transactionAt={input.transaction_at}
+                  bankName={input.bank_name}
+                  accountHolder={input.account_holder}
+                  accountNumber={input.account_number}
+                  receipts={input.receipts}
+                  remarks={input.remarks}
                 />
               );
             })}

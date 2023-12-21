@@ -1,152 +1,18 @@
 [
   {
-    "organisation": "감사원",
-    "email": "gamsawon@kaist.ac.kr",
-    "id": "gamsawon",
-    "password": "password1234"
-  },
-  {
-    "organisation": "감사원",
-    "email": "gamsawon@kaist.ac.kr",
-    "id": "gamsawon",
-    "password": "password1234"
-  },
-  {
-    "organisation": "감사원",
-    "email": "gamsawon@kaist.ac.kr",
-    "id": "gamsawon",
-    "password": "password1234"
-  },
-  {
-    "organisation": "감사원",
-    "email": "gamsawon@kaist.ac.kr",
-    "id": "gamsawon",
-    "password": "password1234"
-  },
-  {
-    "organisation": "감사원",
-    "email": "gamsawon@kaist.ac.kr",
-    "id": "gamsawon",
-    "password": "password1234"
-  },
-  {
-    "organisation": "감사원",
-    "email": "gamsawon@kaist.ac.kr",
-    "id": "gamsawon",
-    "password": "password1234"
-  },
-  {
-    "organisation": "감사원",
-    "email": "gamsawon@kaist.ac.kr",
-    "id": "gamsawon",
-    "password": "password1234"
-  },
-  {
-    "organisation": "감사원",
-    "email": "gamsawon@kaist.ac.kr",
-    "id": "gamsawon",
-    "password": "password1234"
-  },
-  {
-    "organisation": "감사원",
-    "email": "gamsawon@kaist.ac.kr",
-    "id": "gamsawon",
-    "password": "password1234"
-  },
-  {
-    "organisation": "감사원",
-    "email": "gamsawon@kaist.ac.kr",
-    "id": "gamsawon",
-    "password": "password1234"
-  },
-  {
-    "organisation": "감사원",
-    "email": "gamsawon@kaist.ac.kr",
-    "id": "gamsawon",
-    "password": "password1234"
-  },
-  {
-    "organisation": "감사원",
-    "email": "gamsawon@kaist.ac.kr",
-    "id": "gamsawon",
-    "password": "password1234"
-  },
-  {
-    "organisation": "감사원",
-    "email": "gamsawon@kaist.ac.kr",
-    "id": "gamsawon",
-    "password": "password1234"
-  },
-  {
-    "organisation": "감사원",
-    "email": "gamsawon@kaist.ac.kr",
-    "id": "gamsawon",
-    "password": "password1234"
-  },
-  {
-    "organisation": "감사원",
-    "email": "gamsawon@kaist.ac.kr",
-    "id": "gamsawon",
-    "password": "password1234"
-  },
-  {
-    "organisation": "감사원",
-    "email": "gamsawon@kaist.ac.kr",
-    "id": "gamsawon",
-    "password": "password1234"
-  },
-  {
-    "organisation": "감사원",
-    "email": "gamsawon@kaist.ac.kr",
-    "id": "gamsawon",
-    "password": "password1234"
-  },
-  {
-    "organisation": "감사원",
-    "email": "gamsawon@kaist.ac.kr",
-    "id": "gamsawon",
-    "password": "password1234"
-  },
-  {
-    "organisation": "감사원",
-    "email": "gamsawon@kaist.ac.kr",
-    "id": "gamsawon",
-    "password": "password1234"
-  },
-  {
-    "organisation": "감사원",
-    "email": "gamsawon@kaist.ac.kr",
-    "id": "gamsawon",
-    "password": "password1234"
-  },
-  {
-    "organisation": "감사원",
-    "email": "gamsawon@kaist.ac.kr",
-    "id": "gamsawon",
-    "password": "password1234"
-  },
-  {
-    "organisation": "감사원",
-    "email": "gamsawon@kaist.ac.kr",
-    "id": "gamsawon",
-    "password": "password1234"
-  },
-  {
-    "organisation": "감사원",
-    "email": "gamsawon@kaist.ac.kr",
-    "id": "gamsawon",
-    "password": "password1234"
-  },
-  {
-    "organisation": "감사원",
-    "email": "gamsawon@kaist.ac.kr",
-    "id": "gamsawon",
-    "password": "password1234"
-  },
-  {
-    "organisation": "감사원",
-    "email": "gamsawon@kaist.ac.kr",
-    "id": "gamsawon",
-    "password": "password1234"
+    "businessAt": "00.00.00",
+    "manager": "항목",
+    "itemSub": "항목",
+    "itemCode": "100",
+    "transactionType": "항목",
+    "income": "100,000",
+    "expense": "100,000",
+    "balance": "100,000",
+    "transactionAt": "00.00.00",
+    "bankName": "00000000000000",
+    "accountHolder": "",
+    "accountNumber": "",
+    "receipts": "항목",
+    "remarks": "항목"
   }
 ]
