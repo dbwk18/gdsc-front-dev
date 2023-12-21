@@ -15,6 +15,10 @@ const GDSCPagination = ({ count, page, setPage }) => {
         display: 'flex',
         justifyContent: 'center',
         padding: '15px 0',
+        '& .Mui-selected': {
+          backgroundColor: 'transparent',
+          fontWeight: 'bold',
+        },
       }}
     />
   );

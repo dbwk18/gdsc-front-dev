@@ -24,15 +24,12 @@ const ChartHeader = ({ headerText, setIsOpen }) => {
   return (
     <Container>
       <div className="title">
-        <GDSCText size={22} fontType={TextType.BOLD} color={Colors.BLUE_DEEP}>
-          KAIST 학부총학생회
-        </GDSCText>
-        <GDSCText size={22} fontType={TextType.BOLD} color={Colors.BLACK100}>
-          {`23년도 상반기 ${headerText}`}
+        <GDSCText size={24} fontType={TextType.BOLD} color={Colors.BLACK100}>
+          {headerText}
         </GDSCText>
       </div>
       <GDSCButton
-        label={'+ 내역 추가'}
+        label={'새로 추가하기'}
         onClick={() => {
           setIsOpen(true);
         }}

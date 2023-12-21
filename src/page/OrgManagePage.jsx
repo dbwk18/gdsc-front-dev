@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Colors from '../style/Colors';
 import ChartHeader from '../components/main/ChartHeader';
-import AccountChart from '../components/main/account/AccountChart';
+import OrgManageChart from '../components/main/org_manage/OrgManageChart';
 import GDSCModal from '../components/core/GDSCModal';
 import GDSCPagination from '../components/core/GDSCPagination';
 import GDSCToast from '../components/core/GDSCToast';
@@ -11,7 +11,14 @@ import { Button } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 
-import toydata from '../data/AccountToyData.json';
+const toydata = [
+  {
+    organisation: '감사원',
+    email: 'gamsawon@kaist.ac.kr',
+    id: 'gamsawon',
+    password: 'password1234',
+  },
+];
 
 const Container = styled.div`
   width: 100%;
@@ -21,7 +28,6 @@ const Container = styled.div`
   padding: 20px 30px;
 `;
 
-// todo: replace toydata to api get
 const PaginationContainer = styled.div`
   width: 100%;
   height: fit-content;
@@ -32,13 +38,13 @@ const PaginationContainer = styled.div`
 
 // todo: replace toydata to api get
 
-const AccountPage = () => {
+const OrgManagePage = () => {
   const [page, setPage] = useState(1);
   const [isOpen, setIsOpen] = useState(false);
   const [toastOpen, setToastOpen] = useState(false);
   const [addRow, setAddRow] = useState([]);
 
-  const COUNT_PER_PAGE = 8;
+  const COUNT_PER_PAGE = 12;
   const offset = (page - 1) * COUNT_PER_PAGE;
 
   const renderData = data => {
@@ -76,8 +82,8 @@ const AccountPage = () => {
 
   return (
     <Container>
-      <ChartHeader headerText={'통장거래내역'} setIsOpen={setIsOpen} />
-      <AccountChart account={renderData([...toydata, ...addRow])} addRow={addRow} page={page} />
+      <ChartHeader headerText={'피감기구 계정 관리'} setIsOpen={setIsOpen} />
+      <OrgManageChart account={renderData([...toydata, ...addRow])} addRow={addRow} page={page} />
       <PaginationContainer>
         <GDSCPagination
           count={Math.ceil([...toydata, ...addRow].length / COUNT_PER_PAGE)}
@@ -100,4 +106,4 @@ const AccountPage = () => {
   );
 };
 
-export default AccountPage;
+export default OrgManagePage;
