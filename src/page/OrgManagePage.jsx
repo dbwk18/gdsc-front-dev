@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Colors from '../style/Colors';
 import ChartHeader from '../components/main/ChartHeader';
@@ -6,10 +6,11 @@ import OrgManageChart from '../components/main/org_manage/OrgManageChart';
 import GDSCModal from '../components/core/GDSCModal';
 import GDSCPagination from '../components/core/GDSCPagination';
 import GDSCToast from '../components/core/GDSCToast';
-import AccountModal from '../components/main/account/AccountModal';
 import { Button } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
+import { getForEntity } from '../network/HttpRequests';
+import OrgCreateModal from '../components/main/org_manage/OrgCreateModal';
 
 const toydata = [
   {
@@ -43,9 +44,16 @@ const OrgManagePage = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [toastOpen, setToastOpen] = useState(false);
   const [addRow, setAddRow] = useState([]);
+  const [orgs, setOrgs] = useState([]);
 
   const COUNT_PER_PAGE = 12;
   const offset = (page - 1) * COUNT_PER_PAGE;
+
+  useEffect(() => {
+    getForEntity(`${process.env.REACT_APP_SERVER_URL}/users`).then(response => {
+      setOrgs(response);
+    });
+  }, []);
 
   const renderData = data => {
     let result = [];
@@ -83,17 +91,13 @@ const OrgManagePage = () => {
   return (
     <Container>
       <ChartHeader headerText={'피감기구 계정 관리'} setIsOpen={setIsOpen} />
-      <OrgManageChart account={renderData([...toydata, ...addRow])} addRow={addRow} page={page} />
+      <OrgManageChart orgs={renderData([...orgs, ...addRow])} />
       <PaginationContainer>
-        <GDSCPagination
-          count={Math.ceil([...toydata, ...addRow].length / COUNT_PER_PAGE)}
-          page={page}
-          setPage={setPage}
-        />
+        <GDSCPagination count={Math.ceil([...orgs, ...addRow].length / COUNT_PER_PAGE)} page={page} setPage={setPage} />
       </PaginationContainer>
 
       <GDSCModal open={isOpen} onClose={() => setIsOpen(false)}>
-        <AccountModal setIsOpen={setIsOpen} setAddRow={setAddRow} setToastOpen={setToastOpen} />
+        <OrgCreateModal setIsOpen={setIsOpen} setAddRow={setAddRow} setToastOpen={setToastOpen} />
       </GDSCModal>
       <GDSCToast
         toastOpen={toastOpen}

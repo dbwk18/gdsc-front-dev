@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { TableRow, TableCell, tableCellClasses, tableRowClasses } from '@mui/material';
+import { TableRow, TableCell } from '@mui/material';
 import GDSCText, { TextType } from '../../core/GDSCText';
 import Colors from '../../../style/Colors';
 import GDSCStatusButton from '../../core/GDSCStatusButton';
@@ -19,7 +19,7 @@ const StyledTableRow = styled(TableRow)(props => ({
   },
 }));
 
-const OrgManageRow = ({ organisation, email, id, password, accountStatus }) => {
+const OrgManageRow = ({ organisation, email, password, isDisabled }) => {
   return (
     <StyledTableRow>
       <TableCell>
@@ -39,20 +39,13 @@ const OrgManageRow = ({ organisation, email, id, password, accountStatus }) => {
       <TableCell>
         <StyledDiv>
           <GDSCText size={13} fontType={TextType.BOLD} color={Colors.GREY80}>
-            {id}
-          </GDSCText>
-        </StyledDiv>
-      </TableCell>
-      <TableCell>
-        <StyledDiv>
-          <GDSCText size={13} fontType={TextType.BOLD} color={Colors.GREY80}>
             {password}
           </GDSCText>
         </StyledDiv>
       </TableCell>
       <TableCell>
         <StyledDiv>
-          <GDSCStatusButton label={'활성화'} />
+          {isDisabled ? <GDSCStatusButton label={'비활성화'} /> : <GDSCStatusButton label={'활성화'} />}
         </StyledDiv>
       </TableCell>
     </StyledTableRow>
