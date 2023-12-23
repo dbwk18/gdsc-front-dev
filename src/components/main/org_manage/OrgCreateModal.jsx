@@ -82,7 +82,6 @@ const ContentRow = ({ label, value, onChange }) => {
 
 const OrgCreateModal = ({ setIsOpen, setAddRow, setToastOpen }) => {
   const [orgName, setOrgName] = useState('');
-  const [manager, setManager] = useState('');
   const [email, setEmail] = useState('');
 
   const createOrg = async () => {
@@ -100,8 +99,7 @@ const OrgCreateModal = ({ setIsOpen, setAddRow, setToastOpen }) => {
     const password = 'password';
     setAddRow([
       {
-        orgName,
-        manager,
+        organization_name: orgName,
         email,
         password,
       },
@@ -124,7 +122,6 @@ const OrgCreateModal = ({ setIsOpen, setAddRow, setToastOpen }) => {
       <Contents>
         <ContentRows>
           <ContentRow label="피감기관명" value={orgName} onChange={e => setOrgName(e.target.value)} />
-          <ContentRow label="담당자" value={manager} onChange={e => setManager(e.target.value)} />
           <ContentRow label="이메일" value={email} onChange={e => setEmail(e.target.value)} />
         </ContentRows>
         <ButtonRow>
