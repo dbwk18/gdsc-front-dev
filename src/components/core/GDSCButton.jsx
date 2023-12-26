@@ -16,12 +16,12 @@ const Button = styled.button`
   cursor: pointer;
   border-radius: 8px;
   border: 1px solid;
+  border-color: ${Colors.GREY60};
   text-align: center;
 
   &.main {
     height: 40px;
     background-color: ${Colors.GREY20};
-    border-color: ${Colors.GREY60};
 
     &:hover {
       filter: brightness(110%);
