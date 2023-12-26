@@ -21,7 +21,7 @@ const BudgetPage = () => {
 
   return (
     <Container>
-      <ChartHeader headerText={'예결산안'} setIsOpen={setIsOpen} />
+      <ChartHeader headerText={'예결산안'} label={'PDF로 다운받기'} setIsOpen={setIsOpen} />
       <GDSCModal open={isOpen} onClose={() => setIsOpen(false)}>
         <BudgetModal setIsOpen={setIsOpen} setAddRow={setAddRow} />
       </GDSCModal>

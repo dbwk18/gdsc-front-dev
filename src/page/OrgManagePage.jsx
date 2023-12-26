@@ -82,7 +82,7 @@ const OrgManagePage = () => {
 
   return (
     <Container>
-      <ChartHeader headerText={'피감기구 계정 관리'} setIsOpen={setIsOpen} />
+      <ChartHeader headerText={'피감기구 계정 관리'} label={'새로 추가하기'} setIsOpen={setIsOpen} />
       <OrgManageChart account={renderData([...toydata, ...addRow])} addRow={addRow} page={page} />
       <PaginationContainer>
         <GDSCPagination
