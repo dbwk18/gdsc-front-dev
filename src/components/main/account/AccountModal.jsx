@@ -4,11 +4,12 @@ import GDSCText, { TextType } from '../../core/GDSCText';
 import GDSCButton from '../../core/GDSCButton';
 import Colors from '../../../style/Colors';
 import { TextField } from '@mui/material';
+import WordLimitTextfield from '../../newGDSCtextfield/WordLimitTextfield';
 
 const Container = styled.div`
   display: flex;
   width: 450px;
-  height: 850px;
+  height: 100vh;
   flex-direction: column;
   align-items: center;
   background-color: ${Colors.WHITE100};
@@ -81,6 +82,8 @@ const AccountModal = ({ setIsOpen, setAddRow, setToastOpen }) => {
   const [receipts, setReceipts] = useState('');
   const [remarks, setRemarks] = useState('');
 
+  const [isActive, setIsActive] = useState(true);
+
   return (
     <Container>
       <Header>
@@ -97,6 +100,7 @@ const AccountModal = ({ setIsOpen, setAddRow, setToastOpen }) => {
       </Header>
       <Contents>
         <ContentsColumn>
+          <WordLimitTextfield isActive={isActive} />
           <StyledTextField label="사업일" value={businessDate} onChange={e => setBusinessDate(e.target.value)} />
           <StyledTextField label="담당자" value={manager} onChange={e => setManager(e.target.value)} />
           <StyledTextField label="집행내용" value={itemSub} onChange={e => setItemSub(e.target.value)} />

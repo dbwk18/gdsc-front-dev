@@ -21,6 +21,14 @@ const Container = styled.div`
   padding: 20px 30px;
 `;
 
+const ExampleBox = styled.div`
+  width: 20%;
+  height: 100vh;
+  background-color: ${Colors.WHITE100};
+  //border-radius: 16px;
+  //padding: 20px 30px;
+`;
+
 // todo: replace toydata to api get
 
 const AccountPage = () => {
@@ -75,6 +83,7 @@ const AccountPage = () => {
         setPage={setPage}
       />
       <GDSCModal open={isOpen} onClose={() => setIsOpen(false)}>
+        {/* <ExampleBox>hello</ExampleBox> */}
         <AccountModal setIsOpen={setIsOpen} setAddRow={setAddRow} setToastOpen={setToastOpen} />
       </GDSCModal>
       <GDSCToast
