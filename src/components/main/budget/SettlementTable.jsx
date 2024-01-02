@@ -7,14 +7,92 @@ import Colors from '../../../style/Colors';
 
 const SettlementTabel = () => {
   return (
-    <TableContainer>
+    <TableContainer sx={{ maxHeight: 600, overflow: 'scroll' }}>
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell colSpan={2} sx={{ backgroundColor: Colors.BLUE_LIGHT }} />
-            <StyledTableCell size={14} fontType={TextType.BOLD} text={'예산'} backgroundColor={Colors.BLUE_LIGHT} />
-            <StyledTableCell size={14} fontType={TextType.BOLD} text={'결산'} backgroundColor={Colors.BLUE_LIGHT} />
-            <StyledTableCell size={14} fontType={TextType.BOLD} text={'집행률'} backgroundColor={Colors.BLUE_LIGHT} />
+            <TableCell colSpan={2} />
+            <StyledTableCell size={14} fontType={TextType.BOLD} text={'예산'} />
+            <StyledTableCell size={14} fontType={TextType.BOLD} text={'결산'} />
+            <StyledTableCell size={14} fontType={TextType.BOLD} text={'집행률'} />
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          <TableRow>
+            <TableCell rowSpan={4}>학생회비</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>수입</TableCell>
+            <TableCell>{settlementData.학생회비.수입.예산}</TableCell>
+            <TableCell>{settlementData.학생회비.수입.결산}</TableCell>
+            <TableCell>{settlementData.학생회비.수입.비율}</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>지출</TableCell>
+            <TableCell>{settlementData.학생회비.지출.예산}</TableCell>
+            <TableCell>{settlementData.학생회비.지출.결산}</TableCell>
+            <TableCell>{settlementData.학생회비.지출.비율}</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>잔액</TableCell>
+            <TableCell>{settlementData.학생회비.잔액.예산}</TableCell>
+            <TableCell>{settlementData.학생회비.잔액.결산}</TableCell>
+            <TableCell />
+          </TableRow>
+        </TableBody>
+        <TableBody>
+          <TableRow>
+            <TableCell rowSpan={4}>본회계</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>수입</TableCell>
+            <TableCell>{settlementData.본회계.수입.예산}</TableCell>
+            <TableCell>{settlementData.본회계.수입.결산}</TableCell>
+            <TableCell>{settlementData.본회계.수입.비율}</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>지출</TableCell>
+            <TableCell>{settlementData.본회계.지출.예산}</TableCell>
+            <TableCell>{settlementData.본회계.지출.결산}</TableCell>
+            <TableCell>{settlementData.본회계.지출.비율}</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>잔액</TableCell>
+            <TableCell>{settlementData.본회계.잔액.예산}</TableCell>
+            <TableCell>{settlementData.본회계.잔액.결산}</TableCell>
+            <TableCell />
+          </TableRow>
+        </TableBody>
+        <TableBody>
+          <TableRow>
+            <TableCell rowSpan={4}>자치</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>수입</TableCell>
+            <TableCell>{settlementData.자치.수입.예산}</TableCell>
+            <TableCell>{settlementData.자치.수입.결산}</TableCell>
+            <TableCell>{settlementData.자치.수입.비율}</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>지출</TableCell>
+            <TableCell>{settlementData.자치.지출.예산}</TableCell>
+            <TableCell>{settlementData.자치.지출.결산}</TableCell>
+            <TableCell>{settlementData.자치.지출.비율}</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>잔액</TableCell>
+            <TableCell>{settlementData.자치.잔액.예산}</TableCell>
+            <TableCell>{settlementData.자치.잔액.결산}</TableCell>
+            <TableCell />
+          </TableRow>
+        </TableBody>
+        <br />
+        <TableHead>
+          <TableRow>
+            <TableCell colSpan={2} />
+            <StyledTableCell size={14} fontType={TextType.BOLD} text={'예산'} />
+            <StyledTableCell size={14} fontType={TextType.BOLD} text={'결산'} />
+            <StyledTableCell size={14} fontType={TextType.BOLD} text={'집행률'} />
           </TableRow>
         </TableHead>
         <TableBody>
