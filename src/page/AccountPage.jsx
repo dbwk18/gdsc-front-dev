@@ -38,7 +38,7 @@ const AccountPage = () => {
   const [toastOpen, setToastOpen] = useState(false);
   const [addRow, setAddRow] = useState([]);
 
-  const COUNT_PER_PAGE = 20;
+  const COUNT_PER_PAGE = 10;
   const offset = (page - 1) * COUNT_PER_PAGE;
 
   const renderData = data => {

@@ -29,9 +29,9 @@ const TabPanels = ({ addRow }) => {
     <div>
       <div>
         <Tabs value={activeTab}>
-          <Tab label="예산" value="INCOME" onClick={() => handleTabClick('INCOME')} />
-          <Tab label="지출" value="EXPENSE" onClick={() => handleTabClick('EXPENSE')} />
-          <Tab label="결산" value="SETTLEMENT" onClick={() => handleTabClick('SETTLEMENT')} />
+          <Tab disableIndicator label="수입" value="INCOME" onClick={() => handleTabClick('INCOME')} />
+          <Tab disableIndicator label="지출" value="EXPENSE" onClick={() => handleTabClick('EXPENSE')} />
+          <Tab disableIndicator label="결산" value="SETTLEMENT" onClick={() => handleTabClick('SETTLEMENT')} />
         </Tabs>
         <LineGrey style={{ backgroundColor: Colors.GREY40 }} />
         <LineWhite style={{ backgroundColor: Colors.WHITE100 }} />
