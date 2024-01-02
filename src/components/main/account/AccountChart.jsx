@@ -6,8 +6,9 @@ import AccountChartHeader from './AccountChartHeader';
 
 const Container = styled.div`
   width: 100%;
-  /* height: 1080px; */
   padding: 0 12px;
+  height: 700px;
+  overflow-y: scroll;
 `;
 
 const columnName = [
@@ -29,8 +30,8 @@ const AccountChart = ({ account, addRow, page }) => {
   return (
     <StyledEngineProvider injectFirst>
       <Container>
-        <Table>
-          <TableHead>
+        <Table stickyHeader>
+          <TableHead sx={{ position: 'sticky' }}>
             <AccountChartHeader columnName={columnName} />
           </TableHead>
           <TableBody>

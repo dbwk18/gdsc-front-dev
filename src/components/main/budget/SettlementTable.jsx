@@ -11,15 +11,37 @@ const SettlementTabel = () => {
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell sx={{ backgroundColor: Colors.BLUE_LIGHT }}> </TableCell>
+            <TableCell colSpan={2} sx={{ backgroundColor: Colors.BLUE_LIGHT }} />
             <StyledTableCell size={14} fontType={TextType.BOLD} text={'예산'} backgroundColor={Colors.BLUE_LIGHT} />
             <StyledTableCell size={14} fontType={TextType.BOLD} text={'결산'} backgroundColor={Colors.BLUE_LIGHT} />
             <StyledTableCell size={14} fontType={TextType.BOLD} text={'집행률'} backgroundColor={Colors.BLUE_LIGHT} />
           </TableRow>
         </TableHead>
         <TableBody>
-          {settlementData.components.map(item =>
-            item.type === '총계' ? (
+          <TableRow>
+            <TableCell rowSpan={4}>총계</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>수입</TableCell>
+            <TableCell>{settlementData.총계.수입.예산}</TableCell>
+            <TableCell>{settlementData.총계.수입.결산}</TableCell>
+            <TableCell>{settlementData.총계.수입.비율}</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>지출</TableCell>
+            <TableCell>{settlementData.총계.지출.예산}</TableCell>
+            <TableCell>{settlementData.총계.지출.결산}</TableCell>
+            <TableCell>{settlementData.총계.지출.비율}</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>잔액</TableCell>
+            <TableCell>{settlementData.총계.잔액.예산}</TableCell>
+            <TableCell>{settlementData.총계.잔액.결산}</TableCell>
+            <TableCell />
+          </TableRow>
+
+          {/* {Object.values(settlementData.총계).map(item =>
+            item.type === '잔액' ? (
               <TableRow>
                 <StyledTableCell
                   size={14}
@@ -52,12 +74,12 @@ const SettlementTabel = () => {
                   text={item.type}
                   backgroundColor={Colors.BLUE_LIGHT}
                 />
-                <StyledTableCell size={14} text={`₩${item.budget}`} />
-                <StyledTableCell size={14} text={`₩${item.settlement}`} />
-                <StyledTableCell size={14} text={`${item.execute_rate}%`} />
+                <StyledTableCell size={14} text={`₩${item.예산}`} />
+                <StyledTableCell size={14} text={`₩${item.결산}`} />
+                <StyledTableCell size={14} text={`${item.비율}%`} />
               </TableRow>
             ),
-          )}
+          )} */}
         </TableBody>
       </Table>
     </TableContainer>
