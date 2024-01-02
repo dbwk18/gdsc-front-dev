@@ -181,8 +181,8 @@ const Divider = styled.div`
 
 const CardGrid = () => {
   return (
-    <Box sx={{ flexGrow: 1, padding: 2, width: '100%' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', marginRight: '30px' }}>
+    <Box sx={{ flexGrow: 1, padding: 2, width: '100%', height: '450px', overflow: 'scroll' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', marginRight: '30px', position: 'sticky' }}>
         <GDSCText size={17} fontType={TextType.MEDIUM}>
           피감기관명
         </GDSCText>
