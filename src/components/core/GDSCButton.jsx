@@ -39,6 +39,27 @@ const Button = styled.button`
     }
   }
 
+  &.normal {
+    height: 40px;
+    background-color: ${Colors.GREY20};
+
+    p {
+      color: ${Colors.BLACK100};
+    }
+
+    &:hover {
+      filter: brightness(50%);
+    }
+
+    &.inactive {
+      background-color: ${Colors.GREY40};
+
+      &:hover {
+        filter: brightness(100%);
+      }
+    }
+  }
+
   &.sub {
     height: 40px;
     background-color: ${Colors.GREY20};
@@ -63,6 +84,7 @@ const Button = styled.button`
 
 export const ButtonType = {
   MAIN: 'main',
+  NORMAL: 'normal',
   SUB: 'sub',
 };
 

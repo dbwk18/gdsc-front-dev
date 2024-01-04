@@ -34,6 +34,7 @@ const ChartHeader = ({ headerText, label, setIsOpen }) => {
           setIsOpen(true);
         }}
         inactive={false}
+        buttonType="normal"
       />
     </Container>
   );

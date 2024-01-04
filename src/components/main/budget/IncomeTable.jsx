@@ -111,7 +111,7 @@ const IncomeTable = ({ addRow }) => {
             fontType={TextType.BOLD}
             text={'총계'}
             color={Colors.BLACK100}
-            colSpan={3}
+            colSpan={4}
             // backgroundColor={Colors.BLUE_DEEP}
           />
           <StyledTableCell
