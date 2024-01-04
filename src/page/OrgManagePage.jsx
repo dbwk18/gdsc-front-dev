@@ -6,7 +6,7 @@ import OrgManageChart from '../components/main/org_manage/OrgManageChart';
 import GDSCModal from '../components/core/GDSCModal';
 import GDSCPagination from '../components/core/GDSCPagination';
 import GDSCToast from '../components/core/GDSCToast';
-import AccountModal from '../components/main/account/AccountModal';
+import OrgManageModal from '../components/main/org_manage/OrgManageModal';
 import { Button } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
@@ -93,7 +93,7 @@ const OrgManagePage = () => {
       </PaginationContainer>
 
       <GDSCModal open={isOpen} onClose={() => setIsOpen(false)}>
-        <AccountModal setIsOpen={setIsOpen} setAddRow={setAddRow} setToastOpen={setToastOpen} />
+        <OrgManageModal setIsOpen={setIsOpen} setAddRow={setAddRow} setToastOpen={setToastOpen} />
       </GDSCModal>
       <GDSCToast
         toastOpen={toastOpen}
