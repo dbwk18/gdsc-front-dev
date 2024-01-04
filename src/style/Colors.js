@@ -7,6 +7,7 @@ const Colors = {
   BLACK08: 'rgba(0, 0, 0, 0.08)',
 
   WHITE100: '#FFFFFF',
+  RED100: '#EA5A5B',
 
   GREY80: '#474747',
   GREY60: '#7F828D',
@@ -14,7 +15,7 @@ const Colors = {
   GREY20: '#F0F0F0',
 
   BLUE_DEEP: '#0052CC',
-  BLUE_MEDIUM: '#0151CA',
+  BLUE_MEDIUM: '#2D9AFF',
   BLUE_LIGHT: '#E8F1FF',
   BLUE_BACKGROUND: '#F2F6FC',
 };
