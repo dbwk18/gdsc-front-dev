@@ -12,11 +12,10 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: ${Colors.WHITE100};
-  overflow-y: scroll;
 `;
 
 const Header = styled.div`
-  height: 81px;
+  height: 80px;
   width: 450px;
   display: flex;
   padding: 0px 40px;
@@ -34,13 +33,18 @@ const Contents = styled.div`
   align-self: stretch;
   padding: 0px 40px;
   justify-content: space-between;
+  overflow-y: scroll;
 `;
 
 const ButtonRow = styled.div`
+  height: 100px;
   display: flex;
-  padding: 40px;
+  position: sticky;
+  padding: 0 40px;
   flex-direction: row;
+  align-self: stretch;
   justify-content: space-between;
+  align-items: center;
 `;
 
 const ContentsColumn = styled.div`
@@ -84,34 +88,34 @@ const OrgManageModal = ({ setIsOpen, setAddRow, setToastOpen }) => {
           <StyledTextField label="아이디" value={id} onChange={e => setId(e.target.value)} />
           <StyledTextField label="비밀번호" value={password} onChange={e => setPassword(e.target.value)} />
         </ContentsColumn>
-        <ButtonRow>
-          <GDSCButton
-            label={'닫기'}
-            onClick={() => {
-              setIsOpen(false);
-            }}
-            inactive={false}
-            buttonType="sub"
-          />
-          <GDSCButton
-            label={'등록'}
-            onClick={() => {
-              setIsOpen(false);
-              setToastOpen(true);
-              setAddRow([
-                {
-                  org_name: orgName,
-                  email,
-                  id,
-                  password,
-                },
-                // todo:  add api post
-              ]);
-            }}
-            inactive={false}
-          />
-        </ButtonRow>
       </Contents>
+      <ButtonRow>
+        <GDSCButton
+          label={'닫기'}
+          onClick={() => {
+            setIsOpen(false);
+          }}
+          inactive={false}
+          buttonType="sub"
+        />
+        <GDSCButton
+          label={'등록'}
+          onClick={() => {
+            setIsOpen(false);
+            setToastOpen(true);
+            setAddRow([
+              {
+                org_name: orgName,
+                email,
+                id,
+                password,
+              },
+              // todo:  add api post
+            ]);
+          }}
+          inactive={false}
+        />
+      </ButtonRow>
     </Container>
   );
 };

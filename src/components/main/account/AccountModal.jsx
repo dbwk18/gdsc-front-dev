@@ -8,22 +8,21 @@ import { TextField } from '@mui/material';
 const Container = styled.div`
   display: flex;
   width: 450px;
-  height: 850px;
+  height: 100vh;
   flex-direction: column;
   align-items: center;
   background-color: ${Colors.WHITE100};
-  overflow-y: scroll;
 `;
 
 const Header = styled.div`
-  height: 81px;
+  height: 80px;
   width: 450px;
   display: flex;
   padding: 0px 40px;
   justify-content: space-between;
   flex-shrink: 0;
   align-items: center;
-  background-color: ${Colors.BLUE_DEEP};
+  background-color: ${Colors.GREY20};
 `;
 
 const Contents = styled.div`
@@ -34,12 +33,18 @@ const Contents = styled.div`
   align-self: stretch;
   padding: 0px 40px;
   justify-content: space-between;
+  overflow-y: scroll;
 `;
 
-const ButtonColumn = styled.div`
+const ButtonRow = styled.div`
+  height: 100px;
   display: flex;
-  padding: 40px;
-  flex-direction: column;
+  position: sticky;
+  padding: 0 40px;
+  flex-direction: row;
+  align-self: stretch;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const ContentsColumn = styled.div`
@@ -84,16 +89,9 @@ const AccountModal = ({ setIsOpen, setAddRow, setToastOpen }) => {
   return (
     <Container>
       <Header>
-        <GDSCText size={20} fontType={TextType.BOLD} color={Colors.WHITE100}>
+        <GDSCText size={20} fontType={TextType.BOLD} color={Colors.BLACK100}>
           통장거래내역 추가
         </GDSCText>
-        <GDSCButton
-          label={'X'}
-          onClick={() => {
-            setIsOpen(false);
-          }}
-          inactive={false}
-        />
       </Header>
       <Contents>
         <ContentsColumn>
@@ -124,36 +122,44 @@ const AccountModal = ({ setIsOpen, setAddRow, setToastOpen }) => {
           <StyledTextField label="영수증" value={receipts} onChange={e => setReceipts(e.target.value)} />
           <StyledTextField label="비고" value={remarks} onChange={e => setRemarks(e.target.value)} />
         </ContentsColumn>
-        <ButtonColumn>
-          <GDSCButton
-            label={'등록'}
-            onClick={() => {
-              setIsOpen(false);
-              setToastOpen(true);
-              setAddRow([
-                {
-                  business_at: businessDate,
-                  manager,
-                  item_sub: itemSub,
-                  item_code: itemCode,
-                  transaction_type: transactionType,
-                  income,
-                  expense,
-                  balance,
-                  transaction_at: transactionDate,
-                  bank_name: bankName,
-                  account_holder: accountHolder,
-                  account_number: accountNumber,
-                  receipts,
-                  remarks,
-                },
-                // todo:  add api post
-              ]);
-            }}
-            inactive={false}
-          />
-        </ButtonColumn>
       </Contents>
+      <ButtonRow>
+        <GDSCButton
+          label={'닫기'}
+          onClick={() => {
+            setIsOpen(false);
+          }}
+          inactive={false}
+          buttonType="sub"
+        />
+        <GDSCButton
+          label={'등록'}
+          onClick={() => {
+            setIsOpen(false);
+            setToastOpen(true);
+            setAddRow([
+              {
+                business_at: businessDate,
+                manager,
+                item_sub: itemSub,
+                item_code: itemCode,
+                transaction_type: transactionType,
+                income,
+                expense,
+                balance,
+                transaction_at: transactionDate,
+                bank_name: bankName,
+                account_holder: accountHolder,
+                account_number: accountNumber,
+                receipts,
+                remarks,
+              },
+              // todo:  add api post
+            ]);
+          }}
+          inactive={false}
+        />
+      </ButtonRow>
     </Container>
   );
 };
