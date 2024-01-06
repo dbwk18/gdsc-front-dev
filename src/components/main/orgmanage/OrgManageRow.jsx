@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { TableRow, TableCell, tableCellClasses, tableRowClasses } from '@mui/material';
+import { TableRow, TableCell } from '@mui/material';
 import GDSCText, { TextType } from '../../core/GDSCText';
 import Colors from '../../../style/Colors';
-import GDSCStatusButton from '../../core/GDSCStatusButton';
+import GDSCStatusChip from '../../core/GDSCStatusChip';
 
 const StyledDiv = styled.div`
   width: 100%;
@@ -19,7 +19,7 @@ const StyledTableRow = styled(TableRow)(props => ({
   },
 }));
 
-const OrgManageRow = ({ organisation, email, id, password, accountStatus }) => {
+const OrgManageRow = ({ organisation, email, password, isDisabled }) => {
   return (
     <StyledTableRow>
       <TableCell>
@@ -38,21 +38,20 @@ const OrgManageRow = ({ organisation, email, id, password, accountStatus }) => {
       </TableCell>
       <TableCell>
         <StyledDiv>
-          <GDSCText size={13} fontType={TextType.BOLD} color={Colors.GREY80}>
-            {id}
-          </GDSCText>
+          {password ? (
+            <GDSCText size={13} fontType={TextType.BOLD} color={Colors.GREY80}>
+              {password}
+            </GDSCText>
+          ) : (
+            <GDSCText size={13} fontType={TextType.BOLD} color={Colors.GREY80}>
+              {'변경됨'}
+            </GDSCText>
+          )}
         </StyledDiv>
       </TableCell>
       <TableCell>
         <StyledDiv>
-          <GDSCText size={13} fontType={TextType.BOLD} color={Colors.GREY80}>
-            {password}
-          </GDSCText>
-        </StyledDiv>
-      </TableCell>
-      <TableCell>
-        <StyledDiv>
-          <GDSCStatusButton label={'활성화'} />
+          {isDisabled ? <GDSCStatusChip label={'비활성화'} red /> : <GDSCStatusChip label={'활성화'} />}
         </StyledDiv>
       </TableCell>
     </StyledTableRow>

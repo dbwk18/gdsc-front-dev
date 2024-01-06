@@ -7,6 +7,7 @@ const InfoItemContainer = styled.div`
   margin-right: 60px;
   display: flex;
   flex-direction: column;
+  gap: 5px;
 `;
 
 const InfoItem = ({ title, content }) => {

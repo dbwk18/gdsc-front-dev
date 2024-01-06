@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Colors from '../style/Colors';
 import ChartHeader from '../components/main/ChartHeader';
@@ -6,19 +6,11 @@ import OrgManageChart from '../components/main/orgmanage/OrgManageChart';
 import GDSCModal from '../components/core/GDSCModal';
 import GDSCPagination from '../components/core/GDSCPagination';
 import GDSCToast from '../components/core/GDSCToast';
-import OrgManageModal from '../components/main/orgmanage/OrgManageModal';
 import { Button } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
-
-const toydata = [
-  {
-    organisation: '감사원',
-    email: 'gamsawon@kaist.ac.kr',
-    id: 'gamsawon',
-    password: 'password1234',
-  },
-];
+import { getForEntity } from '../network/HttpRequests';
+import OrgCreateModal from '../components/main/orgmanage/OrgCreateModal';
 
 const Container = styled.div`
   width: 100%;
@@ -36,16 +28,21 @@ const PaginationContainer = styled.div`
   background-color: ${Colors.GREY20};
 `;
 
-// todo: replace toydata to api get
-
 const OrgManagePage = () => {
   const [page, setPage] = useState(1);
   const [isOpen, setIsOpen] = useState(false);
   const [toastOpen, setToastOpen] = useState(false);
   const [addRow, setAddRow] = useState([]);
+  const [orgs, setOrgs] = useState([]);
 
   const COUNT_PER_PAGE = 12;
   const offset = (page - 1) * COUNT_PER_PAGE;
+
+  useEffect(() => {
+    getForEntity(`/users`).then(response => {
+      setOrgs(response);
+    });
+  }, []);
 
   const renderData = data => {
     let result = [];
@@ -56,8 +53,7 @@ const OrgManagePage = () => {
   };
 
   const handleToastAction = () => {
-    // todo: [...toydata, ...addRow] -> fetched data
-    const rowidx = [...toydata, ...addRow].findIndex(e => e === addRow[0]);
+    const rowidx = [...orgs, ...addRow].findIndex(e => e === addRow[0]);
     setPage(Math.floor(rowidx / COUNT_PER_PAGE) + 1);
     setToastOpen(false);
   };
@@ -83,17 +79,13 @@ const OrgManagePage = () => {
   return (
     <Container>
       <ChartHeader headerText={'피감기구 계정 관리'} label={'새로 추가하기'} setIsOpen={setIsOpen} />
-      <OrgManageChart account={renderData([...toydata, ...addRow])} addRow={addRow} page={page} />
+      <OrgManageChart orgs={renderData([...orgs, ...addRow])} />
       <PaginationContainer>
-        <GDSCPagination
-          count={Math.ceil([...toydata, ...addRow].length / COUNT_PER_PAGE)}
-          page={page}
-          setPage={setPage}
-        />
+        <GDSCPagination count={Math.ceil([...orgs, ...addRow].length / COUNT_PER_PAGE)} page={page} setPage={setPage} />
       </PaginationContainer>
 
       <GDSCModal open={isOpen} onClose={() => setIsOpen(false)}>
-        <OrgManageModal setIsOpen={setIsOpen} setAddRow={setAddRow} setToastOpen={setToastOpen} />
+        <OrgCreateModal setIsOpen={setIsOpen} setAddRow={setAddRow} setToastOpen={setToastOpen} />
       </GDSCModal>
       <GDSCToast
         toastOpen={toastOpen}
