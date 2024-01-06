@@ -85,18 +85,17 @@ const OrgCreateModal = ({ setIsOpen, setAddRow, setToastOpen }) => {
   const [email, setEmail] = useState('');
 
   const createOrg = async () => {
-    /* 잘못된 데이터 생성 방지를 위한 주석처리 */
-    // await postForEntity(`${process.env.REACT_APP_SERVER_URL}/organizations`, {
-    //   name: orgName,
-    // });
+    await postForEntity(`/organizations`, {
+      name: orgName,
+    });
 
-    // const password = await postForEntity(`${process.env.REACT_APP_SERVER_URL}/users`, {
-    //   email,
-    //   organization_name: orgName,
-    // });
+    const response = await postForEntity(`/users`, {
+      email,
+      organization_name: orgName,
+    });
 
-    // 목록을 보여줄 때 api를 호출해서 데이터를 가져온다면 불필요한 코드
-    const password = 'password';
+    const { password } = response;
+
     setAddRow([
       {
         organization_name: orgName,

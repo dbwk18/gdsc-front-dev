@@ -21,13 +21,14 @@ const OrgManageChart = ({ orgs }) => {
             <OrgManageChartHeader columnName={columnName} />
           </TableHead>
           <TableBody>
-            {orgs.map((input, idx) => {
+            {orgs.map(org => {
               return (
                 <OrgManageRow
-                  organisation={input.organization_name}
-                  email={input.email}
-                  password={input.password}
-                  isDisabled={input.isDisabled}
+                  key={org.organization_id}
+                  organisation={org.organization_name}
+                  email={org.email}
+                  password={org.password}
+                  isDisabled={org.isDisabled}
                 />
               );
             })}

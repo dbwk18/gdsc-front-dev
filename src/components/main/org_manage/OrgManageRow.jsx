@@ -38,9 +38,15 @@ const OrgManageRow = ({ organisation, email, password, isDisabled }) => {
       </TableCell>
       <TableCell>
         <StyledDiv>
-          <GDSCText size={13} fontType={TextType.BOLD} color={Colors.GREY80}>
-            {password}
-          </GDSCText>
+          {password ? (
+            <GDSCText size={13} fontType={TextType.BOLD} color={Colors.GREY80}>
+              {password}
+            </GDSCText>
+          ) : (
+            <GDSCText size={13} fontType={TextType.BOLD} color={Colors.GREY80}>
+              {'변경됨'}
+            </GDSCText>
+          )}
         </StyledDiv>
       </TableCell>
       <TableCell>

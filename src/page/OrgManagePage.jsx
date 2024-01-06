@@ -50,7 +50,7 @@ const OrgManagePage = () => {
   const offset = (page - 1) * COUNT_PER_PAGE;
 
   useEffect(() => {
-    getForEntity(`${process.env.REACT_APP_SERVER_URL}/users`).then(response => {
+    getForEntity(`/users`).then(response => {
       setOrgs(response);
     });
   }, []);
