@@ -1,9 +1,13 @@
+import { useState } from 'react';
 import InfoCard from '../../../../components/main/dashboard/InfoCard';
 import InfoItem from '../../../../components/main/dashboard/InfoItem';
 import InfoRowItem from '../../../../components/main/dashboard/InfoRowItem';
 import GDSCButton from '../../../../components/core/GDSCButton';
+import GDSCDialog from '../../../../components/core/GDSCDialog';
+import BudgetPeriodStartModal from '../../../../components/main/dashboard/BudgetPeriodStartModal';
 
 const AdminEditPeriod = () => {
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <InfoCard title={'회계 감사 자료 수정 기간'}>
       <InfoItem title={'최근 수정 기간'} content={''} />
@@ -11,8 +15,17 @@ const AdminEditPeriod = () => {
       <InfoRowItem title={'23년도 상반기 자료 수정 기간'} content={'2021.10.01 ~ 2021.10.31'} />
       <InfoRowItem title={'23년도 상반기 자료 입력 기간'} content={'2021.10.01 ~ 2021.10.31'} />
       <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '20px' }}>
-        <GDSCButton label={'감사 시작하기'} onClick={() => {}} inactive={false} />
+        <GDSCButton
+          label={'감사 시작하기'}
+          onClick={() => {
+            setIsOpen(true);
+          }}
+          inactive={false}
+        />
       </div>
+      <GDSCDialog open={isOpen} onClose={() => setIsOpen(false)}>
+        <BudgetPeriodStartModal setIsOpen={setIsOpen} />
+      </GDSCDialog>
     </InfoCard>
   );
 };

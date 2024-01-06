@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { TableRow, TableCell, tableCellClasses, tableRowClasses } from '@mui/material';
 import GDSCText, { TextType } from '../../core/GDSCText';
 import Colors from '../../../style/Colors';
-import GDSCStatusButton from '../../core/GDSCStatusButton';
 
 const StyledDiv = styled.div`
   width: 100%;

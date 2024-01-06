@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { TableRow, TableCell } from '@mui/material';
 import GDSCText, { TextType } from '../../core/GDSCText';
 import Colors from '../../../style/Colors';
-import GDSCStatusButton from '../../core/GDSCStatusButton';
+import GDSCStatusChip from '../../core/GDSCStatusChip';
 
 const StyledDiv = styled.div`
   width: 100%;
@@ -51,7 +51,7 @@ const OrgManageRow = ({ organisation, email, password, isDisabled }) => {
       </TableCell>
       <TableCell>
         <StyledDiv>
-          {isDisabled ? <GDSCStatusButton label={'비활성화'} /> : <GDSCStatusButton label={'활성화'} />}
+          {isDisabled ? <GDSCStatusChip label={'비활성화'} red /> : <GDSCStatusChip label={'활성화'} />}
         </StyledDiv>
       </TableCell>
     </StyledTableRow>

@@ -12,15 +12,6 @@ import CloseIcon from '@mui/icons-material/Close';
 import { getForEntity } from '../network/HttpRequests';
 import OrgCreateModal from '../components/main/org_manage/OrgCreateModal';
 
-const toydata = [
-  {
-    organisation: '감사원',
-    email: 'gamsawon@kaist.ac.kr',
-    id: 'gamsawon',
-    password: 'password1234',
-  },
-];
-
 const Container = styled.div`
   width: 100%;
   height: 100%;
@@ -36,8 +27,6 @@ const PaginationContainer = styled.div`
   justify-content: right;
   background-color: ${Colors.GREY20};
 `;
-
-// todo: replace toydata to api get
 
 const OrgManagePage = () => {
   const [page, setPage] = useState(1);
@@ -64,8 +53,7 @@ const OrgManagePage = () => {
   };
 
   const handleToastAction = () => {
-    // todo: [...toydata, ...addRow] -> fetched data
-    const rowidx = [...toydata, ...addRow].findIndex(e => e === addRow[0]);
+    const rowidx = [...orgs, ...addRow].findIndex(e => e === addRow[0]);
     setPage(Math.floor(rowidx / COUNT_PER_PAGE) + 1);
     setToastOpen(false);
   };
