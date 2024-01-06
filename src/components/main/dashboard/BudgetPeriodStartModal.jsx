@@ -61,7 +61,7 @@ const BudgetPeriodStartModal = ({ setIsOpen }) => {
       </TextContainer>
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
         <GDSCButton
-          label={'감사 시작하기'}
+          label={'시작하기'}
           onClick={() => {
             alert('감사 시작');
           }}
