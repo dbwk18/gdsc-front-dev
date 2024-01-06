@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import GDSCText, { TextType } from '../../core/GDSCText';
 import Colors from '../../../style/Colors';
 import styled from 'styled-components';
-import { orgs } from './CardGrid';
 import LinearProgress from '@mui/material/LinearProgress';
 import CreditScoreIcon from '@mui/icons-material/CreditScore';
+import { getForEntity } from '../../../network/HttpRequests';
 
 const Container = styled.div`
   width: 100%;
@@ -13,7 +13,7 @@ const Container = styled.div`
   padding: 20px 20px;
 `;
 
-const Ratio = () => {
+const Ratio = ({ numerator, denominator }) => {
   return (
     <div
       style={{
@@ -26,7 +26,7 @@ const Ratio = () => {
     >
       <div style={{ display: 'flex' }}>
         <GDSCText size={25} fontType={TextType.BOLD} color={Colors.BLACK100}>
-          {orgs.filter(org => org.status === '제출완료').length}
+          {numerator}
         </GDSCText>
         <p
           style={{
@@ -35,7 +35,7 @@ const Ratio = () => {
             marginTop: '8px',
           }}
         >
-          /{orgs.length}
+          /{denominator}
         </p>
       </div>
     </div>
@@ -43,7 +43,16 @@ const Ratio = () => {
 };
 
 const CardStatus = () => {
-  const submittedRatio = (orgs.filter(org => org.status === '제출완료').length / orgs.length) * 100;
+  const [orgs, setOrgs] = React.useState([]);
+  const [submittedCount, setSubmittedCount] = React.useState(0);
+
+  useEffect(() => {
+    getForEntity(`/users`).then(response => {
+      setOrgs(response.filter(org => org.role === 'user'));
+      setSubmittedCount(orgs.filter(org => org.status === '제출완료').length);
+    });
+  }, []);
+
   return (
     <Container>
       <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
@@ -52,14 +61,16 @@ const CardStatus = () => {
           카드 제출 현황
         </GDSCText>
       </div>
-      <div style={{ display: 'flex', alignItems: 'center', marginTop: '3px' }}>
-        <Ratio />
-        <LinearProgress
-          variant="determinate"
-          value={submittedRatio}
-          sx={{ height: 12, width: '100%', borderRadius: 1 }}
-        />
-      </div>
+      {orgs && (
+        <div style={{ display: 'flex', alignItems: 'center', marginTop: '3px' }}>
+          <Ratio numerator={submittedCount} denominator={orgs.length} />
+          <LinearProgress
+            variant="determinate"
+            value={(submittedCount / orgs.length) * 100}
+            sx={{ height: 12, width: '100%', borderRadius: 1 }}
+          />
+        </div>
+      )}
     </Container>
   );
 };

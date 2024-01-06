@@ -1,7 +1,10 @@
 import React from 'react';
 import GDSCText, { TextType } from '../../core/GDSCText';
+import GDSCButton from '../../core/GDSCButton';
 import Colors from '../../../style/Colors';
 import styled from 'styled-components';
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
+import IconButton from '@mui/material/IconButton';
 
 const Container = styled.div`
   padding: 16px;
@@ -19,7 +22,7 @@ const Title = styled.div`
   margin-bottom: 16px;
 `;
 
-const InfoCard = ({ title, minWidth = '300px', children }) => {
+const AdminMyInfoCard = ({ title, minWidth = '300px', children }) => {
   return (
     <Container minWidth={minWidth}>
       {title && (
@@ -27,11 +30,15 @@ const InfoCard = ({ title, minWidth = '300px', children }) => {
           <GDSCText size={20} fontType={TextType.BOLD} color={Colors.BLACK100}>
             {title}
           </GDSCText>
+          <IconButton onClick={() => alert('편집하기')}>
+            <EditOutlinedIcon />
+          </IconButton>
         </Title>
       )}
+
       {children}
     </Container>
   );
 };
 
-export default InfoCard;
+export default AdminMyInfoCard;

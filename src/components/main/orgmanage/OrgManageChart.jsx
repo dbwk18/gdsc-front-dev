@@ -10,9 +10,9 @@ const Container = styled.div`
   padding: 0 12px;
 `;
 
-const columnName = ['피감기관명', '이메일', '아이디', '비밀번호', '계정 상태'];
+const columnName = ['피감기관명', '이메일', '비밀번호', '계정 상태'];
 
-const OrgManageChart = ({ account, addRow, page }) => {
+const OrgManageChart = ({ orgs }) => {
   return (
     <StyledEngineProvider injectFirst>
       <Container>
@@ -21,14 +21,14 @@ const OrgManageChart = ({ account, addRow, page }) => {
             <OrgManageChartHeader columnName={columnName} />
           </TableHead>
           <TableBody>
-            {account.map((input, idx) => {
+            {orgs.map(org => {
               return (
                 <OrgManageRow
-                  organisation={input.organisation}
-                  email={input.email}
-                  id={input.id}
-                  password={input.password}
-                  accountStatus={input.accountStatus}
+                  key={org.organization_id}
+                  organisation={org.organization_name}
+                  email={org.email}
+                  password={org.password}
+                  isDisabled={org.isDisabled}
                 />
               );
             })}
