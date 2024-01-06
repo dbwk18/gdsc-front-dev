@@ -23,102 +23,120 @@ const IncomeTable = ({ addRow }) => {
   }, [addRow]);
 
   return (
-    <TableContainer>
+    <TableContainer sx={{ maxHeight: 600, overflow: 'scroll' }}>
       <Table>
         <TableHead>
           <TableRow>
-            <StyledTableCell fontType={TextType.BOLD} text={'출처'} backgroundColor={Colors.BLUE_LIGHT} />
-            <StyledTableCell fontType={TextType.BOLD} text={'항목'} backgroundColor={Colors.BLUE_LIGHT} />
-            <StyledTableCell fontType={TextType.BOLD} text={'코드'} backgroundColor={Colors.BLUE_LIGHT} />
-            <StyledTableCell fontType={TextType.BOLD} text={'예산'} backgroundColor={Colors.BLUE_LIGHT} />
-            <StyledTableCell fontType={TextType.BOLD} text={'결산'} backgroundColor={Colors.BLUE_LIGHT} />
-            <StyledTableCell fontType={TextType.BOLD} text={'집행률'} backgroundColor={Colors.BLUE_LIGHT} />
-            <StyledTableCell fontType={TextType.BOLD} text={'비고'} backgroundColor={Colors.BLUE_LIGHT} />
+            <StyledTableCell fontType={TextType.BOLD} text={'재원'} />
+            <StyledTableCell fontType={TextType.BOLD} text={'예산분류'} />
+            <StyledTableCell fontType={TextType.BOLD} text={'항목'} />
+            <StyledTableCell fontType={TextType.BOLD} text={'코드'} />
+            <StyledTableCell fontType={TextType.BOLD} text={'예산'} />
+            <StyledTableCell fontType={TextType.BOLD} text={'결산'} />
+            <StyledTableCell fontType={TextType.BOLD} text={'집행률'} />
+            <StyledTableCell fontType={TextType.BOLD} text={'비고'} />
           </TableRow>
         </TableHead>
         <TableBody>
           <>
-            {mergedData.map(fundSource => (
-              <>
-                {fundSource.items.map(item => (
-                  <TableRow>
-                    <StyledTableCell size={13} text={fundSource.fund_source} />
-                    <StyledTableCell size={10} text={item.item} />
-                    <StyledTableCell size={13} text={item.item_code} />
-                    <StyledTableCell size={13} text={`₩${item.budget}`} />
-                    <StyledTableCell size={13} text={`₩${item.settlement}`} />
-                    <StyledTableCell size={13} text={`${item.execution_rate}%`} />
-                    <StyledTableCell size={13} text={item.remarks} />
-                  </TableRow>
-                ))}
-                {fundSource.total.map(item => (
-                  <TableRow>
-                    <StyledTableCell
-                      size={10}
-                      fontType={TextType.BOLD}
-                      text={'계'}
-                      colSpan={3}
-                      backgroundColor={Colors.BLACK08}
-                    />
-                    <StyledTableCell
-                      size={13}
-                      fontType={TextType.BOLD}
-                      text={`₩${item.budget}`}
-                      backgroundColor={Colors.BLACK08}
-                    />
-                    <StyledTableCell
-                      size={13}
-                      fontType={TextType.BOLD}
-                      text={`₩${item.settlement}`}
-                      backgroundColor={Colors.BLACK08}
-                    />
-                    <StyledTableCell
-                      size={13}
-                      fontType={TextType.BOLD}
-                      text={`${item.execution_rate}%`}
-                      backgroundColor={Colors.BLACK08}
-                    />
-                    <TableCell sx={{ backgroundColor: Colors.BLACK08 }} />
-                  </TableRow>
-                ))}
-              </>
-            ))}
-
-            {/* todo : backend data 구조 확인 후 수정 */}
-            <TableRow>
-              <StyledTableCell
-                size={14}
-                fontType={TextType.BOLD}
-                text={'총계'}
-                color={Colors.WHITE100}
-                colSpan={3}
-                backgroundColor={Colors.BLUE_DEEP}
-              />
-              <StyledTableCell
-                size={14}
-                fontType={TextType.BOLD}
-                color={Colors.WHITE100}
-                text={`₩${15500000}`}
-                backgroundColor={Colors.BLUE_DEEP}
-              />
-              <StyledTableCell
-                size={14}
-                fontType={TextType.BOLD}
-                color={Colors.WHITE100}
-                text={`₩${14300000}`}
-                backgroundColor={Colors.BLUE_DEEP}
-              />
-              <StyledTableCell
-                size={14}
-                fontType={TextType.BOLD}
-                color={Colors.WHITE100}
-                text={`${92.3}%`}
-                backgroundColor={Colors.BLUE_DEEP}
-              />
-              <TableCell sx={{ backgroundColor: Colors.BLUE_DEEP }} />
-            </TableRow>
+            {mergedData.수입.map(
+              fundSource =>
+                fundSource.items.length !== 0 && (
+                  <>
+                    <TableRow>
+                      <TableCell
+                        rowSpan={
+                          fundSource.items.reduce(
+                            (accumulator, currentValue) => accumulator + currentValue.items.length + 1,
+                            0,
+                          ) + 2
+                        }
+                      >
+                        {fundSource.재원}
+                      </TableCell>
+                    </TableRow>
+                    {fundSource.items.map(item => (
+                      <>
+                        <TableRow>
+                          <TableCell rowSpan={item.items.length + 1}>{item.예산분류}</TableCell>
+                        </TableRow>
+                        {item.items.map(subitem => (
+                          <TableRow>
+                            <StyledTableCell size={10} text={subitem.항목} />
+                            <StyledTableCell size={13} text={subitem.코드} />
+                            <StyledTableCell size={13} text={`₩${subitem.예산}`} />
+                            <StyledTableCell size={13} text={`₩${subitem.결산}`} />
+                            <StyledTableCell size={13} text={`${subitem.비율}%`} />
+                            <StyledTableCell size={13} text={subitem.비고} />
+                          </TableRow>
+                        ))}
+                      </>
+                    ))}
+                    <TableRow>
+                      <StyledTableCell
+                        size={10}
+                        fontType={TextType.BOLD}
+                        text={'계'}
+                        colSpan={3}
+                        backgroundColor={Colors.BLACK08}
+                      />
+                      <StyledTableCell
+                        size={13}
+                        fontType={TextType.BOLD}
+                        text={`₩${fundSource.수입소계.예산}`}
+                        backgroundColor={Colors.BLACK08}
+                      />
+                      <StyledTableCell
+                        size={13}
+                        fontType={TextType.BOLD}
+                        text={`₩${fundSource.수입소계.결산}`}
+                        backgroundColor={Colors.BLACK08}
+                      />
+                      <StyledTableCell
+                        size={13}
+                        fontType={TextType.BOLD}
+                        text={`${fundSource.수입소계.비율}%`}
+                        backgroundColor={Colors.BLACK08}
+                      />
+                      <TableCell sx={{ backgroundColor: Colors.BLACK08 }} />
+                    </TableRow>
+                  </>
+                ),
+            )}
           </>
         </TableBody>
+        <TableRow>
+          <StyledTableCell
+            size={14}
+            fontType={TextType.BOLD}
+            text={'총계'}
+            color={Colors.BLACK100}
+            colSpan={4}
+            // backgroundColor={Colors.BLUE_DEEP}
+          />
+          <StyledTableCell
+            size={14}
+            fontType={TextType.BOLD}
+            color={Colors.BLACK100}
+            text={`₩${mergedData.수입총계.예산}`}
+            // backgroundColor={Colors.BLUE_DEEP}
+          />
+          <StyledTableCell
+            size={14}
+            fontType={TextType.BOLD}
+            color={Colors.BLACK100}
+            text={`₩${mergedData.수입총계.결산}`}
+            // backgroundColor={Colors.BLUE_DEEP}
+          />
+          <StyledTableCell
+            size={14}
+            fontType={TextType.BOLD}
+            color={Colors.BLACK100}
+            text={`${mergedData.수입총계.비율}%`}
+            // backgroundColor={Colors.BLUE_DEEP}
+          />
+          {/* <TableCell sx={{ backgroundColor: Colors.BLUE_DEEP }} /> */}
+        </TableRow>
       </Table>
     </TableContainer>
   );

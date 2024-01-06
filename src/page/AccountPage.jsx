@@ -38,7 +38,7 @@ const AccountPage = () => {
   const [toastOpen, setToastOpen] = useState(false);
   const [addRow, setAddRow] = useState([]);
 
-  const COUNT_PER_PAGE = 8;
+  const COUNT_PER_PAGE = 10;
   const offset = (page - 1) * COUNT_PER_PAGE;
 
   const renderData = data => {
@@ -76,7 +76,7 @@ const AccountPage = () => {
 
   return (
     <Container>
-      <ChartHeader headerText={'통장거래내역'} setIsOpen={setIsOpen} />
+      <ChartHeader headerText={'통장거래내역'} label={'PDF로 다운받기'} setIsOpen={setIsOpen} />
       <AccountChart account={renderData([...toydata, ...addRow])} addRow={addRow} page={page} />
       <PaginationContainer>
         <GDSCPagination

@@ -7,7 +7,7 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
-  margin-right: 30px;
+  margin-right: 20px;
 `;
 
 const OrgCardRow = ({ orgName, cards }) => {
@@ -15,12 +15,12 @@ const OrgCardRow = ({ orgName, cards }) => {
   return (
     <Container>
       <div style={{ width: '150px' }}>{orgName}</div>
-      {/* <div style={{ display: 'flex', justifyContent: 'center', gap: 15, width: '100%', marginRight: 5 }}>
-        {org.cards.map(item => (
-            <CardMedia component="img" image={item} alt={item} sx={{ width: 80, height: 80, marginBottom: 3 }} />
-          ))}
-        </div> */}
-      <GDSCStatusChip label={submitStatus} red={submitStatus === '미제출'} />
+      <div style={{ display: 'flex', justifyContent: 'center', gap: 15, width: '100%', marginRight: 5 }}>
+        {cards.map(item => (
+          <CardMedia component="img" image={item} alt={item} sx={{ width: 80, height: 80, marginBottom: 3 }} />
+        ))}
+      </div>
+      <GDSCStatusChip label={submitStatus} width={'120px'} red={submitStatus === '미제출'} />
     </Container>
   );
 };

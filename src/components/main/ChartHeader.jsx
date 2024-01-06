@@ -20,7 +20,7 @@ const Container = styled.div`
   }
 `;
 
-const ChartHeader = ({ headerText, setIsOpen }) => {
+const ChartHeader = ({ headerText, label, setIsOpen }) => {
   return (
     <Container>
       <div className="title">
@@ -29,11 +29,12 @@ const ChartHeader = ({ headerText, setIsOpen }) => {
         </GDSCText>
       </div>
       <GDSCButton
-        label={'새로 추가하기'}
+        label={label}
         onClick={() => {
           setIsOpen(true);
         }}
         inactive={false}
+        buttonType="normal"
       />
     </Container>
   );

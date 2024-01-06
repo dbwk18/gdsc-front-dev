@@ -13,7 +13,7 @@ const Container = styled.div`
   gap: 4px;
 
   background-color: ${props => props.backgroundColor};
-  width: 65px;
+  width: ${props => props.width};
   height: 24px;
 `;
 
@@ -29,12 +29,12 @@ export const ButtonType = {
   MAIN: 'main',
 };
 
-const GDSCStatusChip = ({ label, red = false }) => {
+const GDSCStatusChip = ({ label, width = '65px', red = false }) => {
   const backgroundColor = red ? '#ffe6e6' : '#dff7e0';
   const color = red ? '#ff0000' : '#28c82e';
 
   return (
-    <Container backgroundColor={backgroundColor}>
+    <Container backgroundColor={backgroundColor} width={width}>
       <Dot color={color} />
       <GDSCText size={12} fontType={TextType.BOLD} color={color}>
         {label}

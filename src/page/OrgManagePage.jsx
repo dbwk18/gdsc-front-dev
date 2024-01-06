@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Colors from '../style/Colors';
 import ChartHeader from '../components/main/ChartHeader';
-import OrgManageChart from '../components/main/org_manage/OrgManageChart';
+import OrgManageChart from '../components/main/orgmanage/OrgManageChart';
 import GDSCModal from '../components/core/GDSCModal';
 import GDSCPagination from '../components/core/GDSCPagination';
 import GDSCToast from '../components/core/GDSCToast';
@@ -10,7 +10,7 @@ import { Button } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import { getForEntity } from '../network/HttpRequests';
-import OrgCreateModal from '../components/main/org_manage/OrgCreateModal';
+import OrgCreateModal from '../components/main/orgmanage/OrgCreateModal';
 
 const Container = styled.div`
   width: 100%;
@@ -78,7 +78,7 @@ const OrgManagePage = () => {
 
   return (
     <Container>
-      <ChartHeader headerText={'피감기구 계정 관리'} setIsOpen={setIsOpen} />
+      <ChartHeader headerText={'피감기구 계정 관리'} label={'새로 추가하기'} setIsOpen={setIsOpen} />
       <OrgManageChart orgs={renderData([...orgs, ...addRow])} />
       <PaginationContainer>
         <GDSCPagination count={Math.ceil([...orgs, ...addRow].length / COUNT_PER_PAGE)} page={page} setPage={setPage} />

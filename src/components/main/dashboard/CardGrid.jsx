@@ -22,8 +22,8 @@ const CardGrid = () => {
   }, []);
 
   return (
-    <Box sx={{ flexGrow: 1, padding: 2, width: '100%' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', marginRight: '30px' }}>
+    <Box sx={{ flexGrow: 1, padding: 2, width: '100%', height: '450px', overflow: 'scroll' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', marginRight: '30px', position: 'sticky' }}>
         <GDSCText size={17} fontType={TextType.MEDIUM}>
           피감기관명
         </GDSCText>
@@ -38,7 +38,14 @@ const CardGrid = () => {
       {orgs && (
         <div>
           {orgs.map(org => (
-            <OrgCardRow key={org.id} orgName={org.organization_name} cards={[]} />
+            <OrgCardRow
+              key={org.id}
+              orgName={org.organization_name}
+              cards={[
+                'https://i.ibb.co/XjRnWN8/credit-card-1369111-1280.png',
+                'https://i.ibb.co/XjRnWN8/credit-card-1369111-1280.png',
+              ]}
+            />
           ))}
         </div>
       )}
