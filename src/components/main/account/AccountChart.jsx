@@ -26,7 +26,7 @@ const columnName = [
   '비고',
 ];
 
-const AccountChart = ({ account, addRow, page }) => {
+const AccountChart = ({ accountData, addRow, page }) => {
   return (
     <StyledEngineProvider injectFirst>
       <Container>
@@ -35,7 +35,7 @@ const AccountChart = ({ account, addRow, page }) => {
             <AccountChartHeader columnName={columnName} />
           </TableHead>
           <TableBody>
-            {account.map((input, idx) => {
+            {accountData.map((input, idx) => {
               return (
                 <AccountRow
                   businessAt={input.business_at}

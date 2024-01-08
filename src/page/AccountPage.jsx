@@ -37,8 +37,10 @@ const AccountPage = () => {
   const [page, setPage] = useState(1);
   const [isOpen, setIsOpen] = useState(false);
   const [toastOpen, setToastOpen] = useState(false);
+  const [accountData, setAccontData] = useState(null);
   const [addRow, setAddRow] = useState([]);
 
+  // todo: 해당연도/분기에 맞게끔 초기화
   const [orgId, setOrgId] = useState(4);
   const [year, setYear] = useState(2023);
   const [half, setHalf] = useState('spring');
@@ -61,19 +63,18 @@ const AccountPage = () => {
       });
       if (response.status === 200) {
         const incomedata = response.data;
+        setAccontData(accountData);
         console.log('transactions get api', incomedata);
-        return incomedata;
       }
-      return null;
     } catch (error) {
       console.log('transactions get api', error);
-      return null;
     }
   };
 
   useEffect(() => {
-    const transactiondata = getAccountData();
-  }, []);
+    getAccountData();
+    console.log(accountData);
+  });
 
   const handleToastAction = () => {
     // todo: [...toydata, ...addRow] -> fetched data
@@ -103,7 +104,7 @@ const AccountPage = () => {
   return (
     <Container>
       <ChartHeader headerText={'통장거래내역'} label={'PDF로 다운받기'} setIsOpen={setIsOpen} />
-      <AccountChart account={renderData([...toydata, ...addRow])} addRow={addRow} page={page} />
+      <AccountChart accountData={renderData([...toydata, ...addRow])} addRow={addRow} page={page} />
       <PaginationContainer>
         <GDSCPagination
           count={Math.ceil([...toydata, ...addRow].length / COUNT_PER_PAGE)}

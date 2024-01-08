@@ -88,7 +88,7 @@ const BudgetModal = ({ setIsOpen, setAddRow }) => {
       </Header>
       <Contents>
         <ContentsColumn>
-          <GDSCDropdown value={fundSource} setValue={setFundSource} items={['학생', '본회계', '자치']} />
+          <GDSCDropdown value={fundSource} setValue={setFundSource} items={['학생회비', '본회계', '자치']} />
           <StyledTextField label="항목" onChange={e => setItem(e.target.value)} />
           <StyledTextField label="코드" onChange={e => setItemCode(e.target.value)} />
           <StyledTextField label="예산" onChange={e => setBudget(e.target.value)} />
