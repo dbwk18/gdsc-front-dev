@@ -1,11 +1,11 @@
 import React from 'react';
 import { Table, TableBody, TableCell, TableHead, TableRow, TableContainer } from '@mui/material';
-import settlementData from '../../../data/BudgetTotalToyData.json';
+// import settlementData from '../../../data/BudgetTotalToyData.json';
 import StyledTableCell from './StyledTableCell';
 import { TextType } from '../../core/GDSCText';
-import Colors from '../../../style/Colors';
 
-const SettlementTabel = () => {
+const SettlementTabel = ({ totalData }) => {
+  console.log(totalData);
   return (
     <TableContainer sx={{ maxHeight: 600, overflow: 'scroll' }}>
       <Table>
@@ -23,20 +23,20 @@ const SettlementTabel = () => {
           </TableRow>
           <TableRow>
             <TableCell>수입</TableCell>
-            <TableCell>{settlementData.학생회비.수입.예산}</TableCell>
-            <TableCell>{settlementData.학생회비.수입.결산}</TableCell>
-            <TableCell>{settlementData.학생회비.수입.비율}</TableCell>
+            <TableCell>{totalData.학생회비.수입.예산}</TableCell>
+            <TableCell>{totalData.학생회비.수입.결산}</TableCell>
+            <TableCell>{totalData.학생회비.수입.비율}</TableCell>
           </TableRow>
           <TableRow>
             <TableCell>지출</TableCell>
-            <TableCell>{settlementData.학생회비.지출.예산}</TableCell>
-            <TableCell>{settlementData.학생회비.지출.결산}</TableCell>
-            <TableCell>{settlementData.학생회비.지출.비율}</TableCell>
+            <TableCell>{totalData.학생회비.지출.예산}</TableCell>
+            <TableCell>{totalData.학생회비.지출.결산}</TableCell>
+            <TableCell>{totalData.학생회비.지출.비율}</TableCell>
           </TableRow>
           <TableRow>
             <TableCell>잔액</TableCell>
-            <TableCell>{settlementData.학생회비.잔액.예산}</TableCell>
-            <TableCell>{settlementData.학생회비.잔액.결산}</TableCell>
+            <TableCell>{totalData.학생회비.잔액.예산}</TableCell>
+            <TableCell>{totalData.학생회비.잔액.결산}</TableCell>
             <TableCell />
           </TableRow>
         </TableBody>
@@ -46,20 +46,20 @@ const SettlementTabel = () => {
           </TableRow>
           <TableRow>
             <TableCell>수입</TableCell>
-            <TableCell>{settlementData.본회계.수입.예산}</TableCell>
-            <TableCell>{settlementData.본회계.수입.결산}</TableCell>
-            <TableCell>{settlementData.본회계.수입.비율}</TableCell>
+            <TableCell>{totalData.본회계.수입.예산}</TableCell>
+            <TableCell>{totalData.본회계.수입.결산}</TableCell>
+            <TableCell>{totalData.본회계.수입.비율}</TableCell>
           </TableRow>
           <TableRow>
             <TableCell>지출</TableCell>
-            <TableCell>{settlementData.본회계.지출.예산}</TableCell>
-            <TableCell>{settlementData.본회계.지출.결산}</TableCell>
-            <TableCell>{settlementData.본회계.지출.비율}</TableCell>
+            <TableCell>{totalData.본회계.지출.예산}</TableCell>
+            <TableCell>{totalData.본회계.지출.결산}</TableCell>
+            <TableCell>{totalData.본회계.지출.비율}</TableCell>
           </TableRow>
           <TableRow>
             <TableCell>잔액</TableCell>
-            <TableCell>{settlementData.본회계.잔액.예산}</TableCell>
-            <TableCell>{settlementData.본회계.잔액.결산}</TableCell>
+            <TableCell>{totalData.본회계.잔액.예산}</TableCell>
+            <TableCell>{totalData.본회계.잔액.결산}</TableCell>
             <TableCell />
           </TableRow>
         </TableBody>
@@ -69,20 +69,20 @@ const SettlementTabel = () => {
           </TableRow>
           <TableRow>
             <TableCell>수입</TableCell>
-            <TableCell>{settlementData.자치.수입.예산}</TableCell>
-            <TableCell>{settlementData.자치.수입.결산}</TableCell>
-            <TableCell>{settlementData.자치.수입.비율}</TableCell>
+            <TableCell>{totalData.자치.수입.예산}</TableCell>
+            <TableCell>{totalData.자치.수입.결산}</TableCell>
+            <TableCell>{totalData.자치.수입.비율}</TableCell>
           </TableRow>
           <TableRow>
             <TableCell>지출</TableCell>
-            <TableCell>{settlementData.자치.지출.예산}</TableCell>
-            <TableCell>{settlementData.자치.지출.결산}</TableCell>
-            <TableCell>{settlementData.자치.지출.비율}</TableCell>
+            <TableCell>{totalData.자치.지출.예산}</TableCell>
+            <TableCell>{totalData.자치.지출.결산}</TableCell>
+            <TableCell>{totalData.자치.지출.비율}</TableCell>
           </TableRow>
           <TableRow>
             <TableCell>잔액</TableCell>
-            <TableCell>{settlementData.자치.잔액.예산}</TableCell>
-            <TableCell>{settlementData.자치.잔액.결산}</TableCell>
+            <TableCell>{totalData.자치.잔액.예산}</TableCell>
+            <TableCell>{totalData.자치.잔액.결산}</TableCell>
             <TableCell />
           </TableRow>
         </TableBody>
@@ -101,20 +101,20 @@ const SettlementTabel = () => {
           </TableRow>
           <TableRow>
             <TableCell>수입</TableCell>
-            <TableCell>{settlementData.총계.수입.예산}</TableCell>
-            <TableCell>{settlementData.총계.수입.결산}</TableCell>
-            <TableCell>{settlementData.총계.수입.비율}</TableCell>
+            <TableCell>{totalData.총계.수입.예산}</TableCell>
+            <TableCell>{totalData.총계.수입.결산}</TableCell>
+            <TableCell>{totalData.총계.수입.비율}</TableCell>
           </TableRow>
           <TableRow>
             <TableCell>지출</TableCell>
-            <TableCell>{settlementData.총계.지출.예산}</TableCell>
-            <TableCell>{settlementData.총계.지출.결산}</TableCell>
-            <TableCell>{settlementData.총계.지출.비율}</TableCell>
+            <TableCell>{totalData.총계.지출.예산}</TableCell>
+            <TableCell>{totalData.총계.지출.결산}</TableCell>
+            <TableCell>{totalData.총계.지출.비율}</TableCell>
           </TableRow>
           <TableRow>
             <TableCell>잔액</TableCell>
-            <TableCell>{settlementData.총계.잔액.예산}</TableCell>
-            <TableCell>{settlementData.총계.잔액.결산}</TableCell>
+            <TableCell>{totalData.총계.잔액.예산}</TableCell>
+            <TableCell>{totalData.총계.잔액.결산}</TableCell>
             <TableCell />
           </TableRow>
 

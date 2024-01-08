@@ -43,6 +43,7 @@ const MainLayout = () => {
   }, []);
 
   useEffect(() => {
+    console.log(authType, AuthType);
     if (authType === AuthType.ADMIN) navigate('/main/dashboard');
     else navigate('/main/budget');
   }, [authType]);

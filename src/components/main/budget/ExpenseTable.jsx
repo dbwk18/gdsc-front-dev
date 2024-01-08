@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import { Table, TableBody, TableCell, TableHead, TableRow, TableContainer } from '@mui/material';
-import expenseData from '../../../data/BudgetExpenseToyData.json';
+// import expenseData from '../../../data/BudgetExpenseToyData.json';
 import StyledTableCell from './StyledTableCell';
 import { TextType } from '../../core/GDSCText';
 import Colors from '../../../style/Colors';
 
-const ExpenseTable = () => {
-  const [mergedData, setMergedData] = useState(expenseData);
-
+const ExpenseTable = ({ expenseData }) => {
   return (
     <TableContainer sx={{ maxHeight: 600, overflow: 'scroll' }}>
       <Table>
@@ -26,7 +24,7 @@ const ExpenseTable = () => {
         </TableHead>
         <TableBody>
           <>
-            {mergedData.지출.map(
+            {expenseData.지출.map(
               managerData =>
                 managerData.items.length !== 0 && (
                   <>
@@ -124,21 +122,21 @@ const ExpenseTable = () => {
             size={14}
             fontType={TextType.BOLD}
             color={Colors.BLACK100}
-            text={`₩${mergedData.지출총계.예산}`}
+            text={`₩${expenseData.지출총계.예산}`}
             // backgroundColor={Colors.BLUE_DEEP}
           />
           <StyledTableCell
             size={14}
             fontType={TextType.BOLD}
             color={Colors.BLACK100}
-            text={`₩${mergedData.지출총계.결산}`}
+            text={`₩${expenseData.지출총계.결산}`}
             // backgroundColor={Colors.BLUE_DEEP}
           />
           <StyledTableCell
             size={14}
             fontType={TextType.BOLD}
             color={Colors.BLACK100}
-            text={`${mergedData.지출총계.비율}%`}
+            text={`${expenseData.지출총계.비율}%`}
             // backgroundColor={Colors.BLUE_DEEP}
           />
           {/* <TableCell sx={{ backgroundColor: Colors.BLUE_DEEP }} /> */}
