@@ -122,7 +122,6 @@ const IncomeTable = ({ incomeData, addRow }) => {
               color={Colors.BLACK100}
               text={`${incomeData.수입총계.비율}%`}
             />
-            {/* <TableCell sx={{ backgroundColor: Colors.BLUE_DEEP }} /> */}
           </TableRow>
         )}
       </Table>

@@ -34,6 +34,25 @@ const requestForEntity = async (method, url, params, data, arrayNoBrackets) => {
   }
 };
 
+const requestForBudget = async (method, url, params, data, arrayNoBrackets) => {
+  try {
+    const axiosResult = await Axios.request({
+      url,
+      method,
+      params,
+      data,
+      baseURL: process.env.REACT_APP_SERVER_URL,
+      paramsSerializer: arrayNoBrackets ? param => qs.stringify(param, { arrayFormat: 'repeat' }) : undefined,
+      withCredentials: true,
+    });
+    return axiosResult.data;
+  } catch (e) {
+    // TODO: 차후 에러 처리를 여기서 할 것
+    if (e.code === 200) return Promise.resolve();
+    throw e;
+  }
+};
+
 export const getForEntity = (url, params, arrayNoBrackets) => {
   return requestForEntity(HttpMethod.GET, url, params, null, arrayNoBrackets);
 };
@@ -48,4 +67,8 @@ export const postForEntity = (url, data) => {
 
 export const putForEntity = (url, data) => {
   return requestForEntity(HttpMethod.PUT, url, null, data);
+};
+
+export const getForBudget = (url, params, arrayNoBrackets) => {
+  return requestForBudget(HttpMethod.GET, url, params, null, arrayNoBrackets);
 };

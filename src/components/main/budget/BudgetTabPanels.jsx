@@ -4,9 +4,9 @@ import styled from 'styled-components';
 import Colors from '../../../style/Colors';
 import IncomeTable from './IncomeTable';
 import ExpenseTable from './ExpenseTable';
-import SettlementTabel from './SettlementTable';
+import SettlementTable from './SettlementTable';
 import Axios from 'axios';
-import { ContentPasteOffOutlined } from '@mui/icons-material';
+import { getForBudget } from '../../../network/HttpRequests';
 
 const LineGrey = styled.div`
   width: 100%;
@@ -35,49 +35,16 @@ const TabPanels = ({ addRow }) => {
     setActiveTab(tab);
   };
 
-  const getIncomeData = async () => {
-    try {
-      const response = await Axios.get(`${process.env.REACT_APP_SERVER_URL}/budgets/income/${orgId}/${year}/${half}`, {
-        withCredentials: true,
-      });
-      if (response.status === 200) {
-        setIncomeData(response.data);
-      }
-    } catch (error) {
-      console.log('error: income get api', error);
-    }
-  };
-
-  const getExpenseData = async () => {
-    try {
-      const response = await Axios.get(`${process.env.REACT_APP_SERVER_URL}/budgets/expense/${orgId}/${year}/${half}`, {
-        withCredentials: true,
-      });
-      if (response.status === 200) {
-        setExpenseData(response.data);
-      }
-    } catch (error) {
-      console.log('error: expense get api', error);
-    }
-  };
-
-  const getTotalData = async () => {
-    try {
-      const response = await Axios.get(`${process.env.REACT_APP_SERVER_URL}/budgets/total/${orgId}/${year}/${half}`, {
-        withCredentials: true,
-      });
-      if (response.status === 200) {
-        setTotalData(response.data);
-      }
-    } catch (error) {
-      console.log('error: total get api', error);
-    }
-  };
-
   useEffect(() => {
-    getIncomeData();
-    getExpenseData();
-    getTotalData();
+    getForBudget(`/budgets/income/${orgId}/${year}/${half}`).then(response => {
+      setIncomeData(response);
+    });
+    getForBudget(`/budgets/expense/${orgId}/${year}/${half}`).then(response => {
+      setExpenseData(response);
+    });
+    getForBudget(`/budgets/total/${orgId}/${year}/${half}`).then(response => {
+      setTotalData(response);
+    });
   }, []);
 
   return (
@@ -94,7 +61,7 @@ const TabPanels = ({ addRow }) => {
 
       {activeTab === 'INCOME' && <IncomeTable incomeData={incomeData} addRow={addRow} />}
       {activeTab === 'EXPENSE' && <ExpenseTable expenseData={expenseData} />}
-      {activeTab === 'SETTLEMENT' && <SettlementTabel totalData={totalData} />}
+      {activeTab === 'SETTLEMENT' && <SettlementTable totalData={totalData} />}
     </div>
   );
 };
