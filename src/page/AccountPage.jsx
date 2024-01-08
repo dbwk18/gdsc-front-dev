@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Colors from '../style/Colors';
 import ChartHeader from '../components/main/ChartHeader';
@@ -10,6 +10,7 @@ import AccountModal from '../components/main/account/AccountModal';
 import { Button } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
+import Axios from 'axios';
 
 import toydata from '../data/AccountToyData.json';
 
@@ -38,6 +39,10 @@ const AccountPage = () => {
   const [toastOpen, setToastOpen] = useState(false);
   const [addRow, setAddRow] = useState([]);
 
+  const [orgId, setOrgId] = useState(4);
+  const [year, setYear] = useState(2023);
+  const [half, setHalf] = useState('spring');
+
   const COUNT_PER_PAGE = 10;
   const offset = (page - 1) * COUNT_PER_PAGE;
 
@@ -48,6 +53,27 @@ const AccountPage = () => {
     }
     return result;
   };
+
+  const getAccountData = async () => {
+    try {
+      const response = await Axios.get(`${process.env.REACT_APP_SERVER_URL}/transactions/${orgId}/${year}/${half}`, {
+        withCredentials: true,
+      });
+      if (response.status === 200) {
+        const incomedata = response.data;
+        console.log('transactions get api', incomedata);
+        return incomedata;
+      }
+      return null;
+    } catch (error) {
+      console.log('transactions get api', error);
+      return null;
+    }
+  };
+
+  useEffect(() => {
+    const transactiondata = getAccountData();
+  }, []);
 
   const handleToastAction = () => {
     // todo: [...toydata, ...addRow] -> fetched data
