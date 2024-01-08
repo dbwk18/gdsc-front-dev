@@ -8,7 +8,7 @@ import { postForEntity } from '../../../network/HttpRequests';
 const Container = styled.div`
   display: flex;
   width: 450px;
-  height: 850px;
+  height: 100vh;
   flex-direction: column;
   align-items: center;
   background-color: ${Colors.WHITE100};
@@ -16,14 +16,14 @@ const Container = styled.div`
 `;
 
 const Header = styled.div`
-  height: 81px;
+  height: 80px;
   width: 450px;
   display: flex;
   padding: 0px 40px;
   justify-content: space-between;
   flex-shrink: 0;
   align-items: center;
-  background-color: ${Colors.BLUE_DEEP};
+  background-color: ${Colors.GREY20};
   margin-bottom: 20px;
 `;
 
@@ -114,7 +114,7 @@ const OrgCreateModal = ({ setIsOpen, setAddRow, setToastOpen }) => {
   return (
     <Container>
       <Header>
-        <GDSCText size={20} fontType={TextType.BOLD} color={Colors.WHITE100}>
+        <GDSCText size={20} fontType={TextType.BOLD} color={Colors.BLACK100}>
           피감기구 계정 생성하기
         </GDSCText>
       </Header>
@@ -124,7 +124,7 @@ const OrgCreateModal = ({ setIsOpen, setAddRow, setToastOpen }) => {
           <ContentRow label="이메일" value={email} onChange={e => setEmail(e.target.value)} />
         </ContentRows>
         <ButtonRow>
-          <GDSCButton label={'닫기'} onClick={() => setIsOpen(false)} inactive={false} />
+          <GDSCButton label={'닫기'} onClick={() => setIsOpen(false)} inactive={false} buttonType="sub" />
           <GDSCButton label={'저장하기'} onClick={saveOrg} inactive={false} />
         </ButtonRow>
       </Contents>

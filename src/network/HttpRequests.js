@@ -72,3 +72,7 @@ export const putForEntity = (url, data) => {
 export const getForBudget = (url, params, arrayNoBrackets) => {
   return requestForBudget(HttpMethod.GET, url, params, null, arrayNoBrackets);
 };
+
+export const postForBudget = (url, data) => {
+  return requestForBudget(HttpMethod.POST, url, null, data);
+};
