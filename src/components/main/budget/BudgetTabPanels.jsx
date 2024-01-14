@@ -7,6 +7,7 @@ import ExpenseTable from './ExpenseTable';
 import SettlementTable from './SettlementTable';
 import Axios from 'axios';
 import { getForBudget } from '../../../network/HttpRequests';
+import GDSCText, { TextType } from '../../core/GDSCText';
 
 const LineGrey = styled.div`
   width: 100%;
@@ -50,12 +51,60 @@ const TabPanels = ({ addRow }) => {
   return (
     <div>
       <div>
-        <Tabs value={activeTab}>
-          <Tab disableIndicator label="수입" value="INCOME" onClick={() => handleTabClick('INCOME')} />
-          <Tab disableIndicator label="지출" value="EXPENSE" onClick={() => handleTabClick('EXPENSE')} />
-          <Tab disableIndicator label="결산" value="SETTLEMENT" onClick={() => handleTabClick('SETTLEMENT')} />
+        <Tabs
+          value={activeTab}
+          TabIndicatorProps={{
+            style: {
+              height: '3px',
+              backgroundColor: Colors.BLACK100,
+              borderRadius: '30px',
+            },
+          }}
+        >
+          <Tab
+            disableIndicator
+            label={
+              <GDSCText
+                size={20}
+                fontType={TextType.BOLD}
+                color={activeTab === 'INCOME' ? Colors.BLACK100 : Colors.GREY40}
+              >
+                수입
+              </GDSCText>
+            }
+            value="INCOME"
+            onClick={() => handleTabClick('INCOME')}
+          />
+          <Tab
+            disableIndicator
+            label={
+              <GDSCText
+                size={20}
+                fontType={TextType.BOLD}
+                color={activeTab === 'EXPENSE' ? Colors.BLACK100 : Colors.GREY40}
+              >
+                지출
+              </GDSCText>
+            }
+            value="EXPENSE"
+            onClick={() => handleTabClick('EXPENSE')}
+          />
+          <Tab
+            disableIndicator
+            label={
+              <GDSCText
+                size={20}
+                fontType={TextType.BOLD}
+                color={activeTab === 'SETTLEMENT' ? Colors.BLACK100 : Colors.GREY40}
+              >
+                결산
+              </GDSCText>
+            }
+            value="SETTLEMENT"
+            onClick={() => handleTabClick('SETTLEMENT')}
+          />
         </Tabs>
-        <LineGrey style={{ backgroundColor: Colors.GREY40 }} />
+        {/* <LineGrey style={{ backgroundColor: Colors.GREY40 }} /> */}
         <LineWhite style={{ backgroundColor: Colors.WHITE100 }} />
       </div>
 

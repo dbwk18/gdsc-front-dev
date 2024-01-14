@@ -7,11 +7,13 @@ import LoginPage from './LoginPage';
 import GroupListPage from './GroupListPage';
 import DashboardPage from './DashboardPage';
 import OrgManagePage from './OrgManagePage';
-
+import AdminBudgetPage from './AdminBudgetPage';
+import OrgBudgetPage from './OrgBudgetPage';
+// LoginPage
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
-      <Route path="login" element={<LoginPage />} />
+      <Route path="login" element={<AdminBudgetPage />} />
       <Route path="main" element={<MainLayout />}>
         <Route path="groups" element={<OrgManagePage />} />
         <Route path="budget" element={<BudgetPage />} />

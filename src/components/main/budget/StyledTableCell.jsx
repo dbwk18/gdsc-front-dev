@@ -12,7 +12,7 @@ const CenteredTableCell = styled(TableCell)`
 `;
 
 const StyledTableCell = ({
-  size = 12,
+  size = 15,
   fontType = TextType.REGULAR,
   color = Colors.BLACK100,
   text,
