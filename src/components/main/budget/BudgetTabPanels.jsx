@@ -62,6 +62,7 @@ const TabPanels = ({ addRow }) => {
           }}
         >
           <Tab
+            sx={{ padding: 0, minWidth: 0, marginRight: 1 }}
             disableIndicator
             label={
               <GDSCText
@@ -76,6 +77,7 @@ const TabPanels = ({ addRow }) => {
             onClick={() => handleTabClick('INCOME')}
           />
           <Tab
+            sx={{ padding: 0, minWidth: 0, marginRight: 1 }}
             disableIndicator
             label={
               <GDSCText
@@ -90,6 +92,7 @@ const TabPanels = ({ addRow }) => {
             onClick={() => handleTabClick('EXPENSE')}
           />
           <Tab
+            sx={{ padding: 0, minWidth: 0, marginRight: 1 }}
             disableIndicator
             label={
               <GDSCText
