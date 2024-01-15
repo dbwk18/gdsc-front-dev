@@ -21,6 +21,12 @@ const LineWhite = styled.div`
   display: flex;
 `;
 
+const StyledTab = styled.Tab`
+  padding: 0;
+  min-width: 0;
+  margin-right: 1;
+`;
+
 const TabPanels = ({ addRow }) => {
   const [activeTab, setActiveTab] = useState('INCOME');
   const [incomeData, setIncomeData] = useState(null);
@@ -61,8 +67,7 @@ const TabPanels = ({ addRow }) => {
             },
           }}
         >
-          <Tab
-            sx={{ padding: 0, minWidth: 0, marginRight: 1 }}
+          <StyledTab
             disableIndicator
             label={
               <GDSCText
@@ -76,8 +81,7 @@ const TabPanels = ({ addRow }) => {
             value="INCOME"
             onClick={() => handleTabClick('INCOME')}
           />
-          <Tab
-            sx={{ padding: 0, minWidth: 0, marginRight: 1 }}
+          <StyledTab
             disableIndicator
             label={
               <GDSCText
@@ -91,8 +95,7 @@ const TabPanels = ({ addRow }) => {
             value="EXPENSE"
             onClick={() => handleTabClick('EXPENSE')}
           />
-          <Tab
-            sx={{ padding: 0, minWidth: 0, marginRight: 1 }}
+          <StyledTab
             disableIndicator
             label={
               <GDSCText
