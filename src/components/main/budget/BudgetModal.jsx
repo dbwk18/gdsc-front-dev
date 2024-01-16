@@ -51,18 +51,29 @@ const ButtonRow = styled.div`
 const ContentsColumn = styled.div`
   display: flex;
   flex-direction: column;
-  /* align-items: stretch;
-  justify-content: space-between; */
-  padding: 40px;
+  gap: 16px;
+  padding: 32px;
   flex: 1 0 0;
 `;
 
-const StyledTextField = styled(TextField)`
+const InputBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+`;
+
+const InputTitle = styled.div`
+  height: 16px;
+  display: flex;
+`;
+
+/* const StyledTextField = styled(TextField)`
   border-radius: 10px;
   border: 1px solid #e0e0e0;
   width: 100%;
   height: 80px;
 `;
+*/
 
 const ImgField = styled.div`
   border-radius: 10px;
@@ -72,28 +83,85 @@ const ImgField = styled.div`
 `;
 
 const BudgetModal = ({ setIsOpen, setAddRow }) => {
-  const [fundSource, setFundSource] = useState(null);
-  const [item, setItem] = useState(null);
-  const [itemCode, setItemCode] = useState(null);
-  const [budget, setBudget] = useState(null);
-  const [settlement, setSettlement] = useState(null);
-  const [remarks, setRemarks] = useState(null);
+  const [fundSource, setFundSource] = useState(null); // 재원
+  const [budgetType, setBudgetType] = useState(null); // 예산분류
+  const [item, setItem] = useState(null); // 항목
+  const [itemCode, setItemCode] = useState(null); // 코드
+  const [budget, setBudget] = useState(null); // 예산
+  const [remarks, setRemarks] = useState(null); // 비고
 
   return (
     <Container>
       <Header>
         <GDSCText size={20} fontType={TextType.BOLD} color={Colors.BLACK100}>
-          예결산안 내역 추가하기
+          내역 추가하기
         </GDSCText>
       </Header>
       <Contents>
         <ContentsColumn>
-          <GDSCDropdown value={fundSource} setValue={setFundSource} items={['학생회비', '본회계', '자치']} />
-          <StyledTextField label="항목" onChange={e => setItem(e.target.value)} />
-          <StyledTextField label="코드" onChange={e => setItemCode(e.target.value)} />
-          <StyledTextField label="예산" onChange={e => setBudget(e.target.value)} />
-          <StyledTextField label="결산" onChange={e => setSettlement(e.target.value)} />
-          <StyledTextField label="비고" onChange={e => setRemarks(e.target.value)} />
+          <InputBox>
+            <InputTitle>
+              <GDSCText size={13} fontType={TextType.REGULAR} color={Colors.BLACK100}>
+                재원
+              </GDSCText>
+            </InputTitle>
+            <GDSCDropdown value={fundSource} setValue={setFundSource} items={['학생회비', '본회계', '자치']} />
+          </InputBox>
+          <InputBox>
+            <GDSCText size={13} fontType={TextType.REGULAR} color={Colors.BLACK100}>
+              예산분류
+            </GDSCText>
+            <TextField
+              id="standard-helperText"
+              placeholder="입력해주세요"
+              variant="standard"
+              onChange={e => setBudgetType(e.target.value)}
+            />
+          </InputBox>
+          <InputBox>
+            <GDSCText size={13} fontType={TextType.REGULAR} color={Colors.BLACK100}>
+              항목
+            </GDSCText>
+            <TextField
+              id="standard-helperText"
+              placeholder="입력해주세요"
+              variant="standard"
+              onChange={e => setItem(e.target.value)}
+            />
+          </InputBox>
+          <InputBox>
+            <GDSCText size={13} fontType={TextType.REGULAR} color={Colors.BLACK100}>
+              코드
+            </GDSCText>
+            <TextField
+              id="standard-helperText"
+              placeholder="입력해주세요"
+              variant="standard"
+              onChange={e => setItemCode(e.target.value)}
+            />
+          </InputBox>
+          <InputBox>
+            <GDSCText size={13} fontType={TextType.REGULAR} color={Colors.BLACK100}>
+              예산
+            </GDSCText>
+            <TextField
+              id="standard-helperText"
+              placeholder="입력해주세요"
+              variant="standard"
+              onChange={e => setBudget(e.target.value)}
+            />
+          </InputBox>
+          <InputBox>
+            <GDSCText size={13} fontType={TextType.REGULAR} color={Colors.BLACK100}>
+              비고
+            </GDSCText>
+            <TextField
+              id="standard-helperText"
+              placeholder="입력해주세요"
+              variant="standard"
+              onChange={e => setRemarks(e.target.value)}
+            />
+          </InputBox>
         </ContentsColumn>
       </Contents>
       <ButtonRow>
@@ -114,10 +182,10 @@ const BudgetModal = ({ setIsOpen, setAddRow }) => {
                 fund_source: fundSource,
                 items: [
                   {
+                    budgetType,
                     item,
-                    item_code: itemCode,
+                    itemCode,
                     budget,
-                    settlement,
                     remarks,
                   },
                 ],

@@ -13,10 +13,12 @@ const GDSCDropdown = ({ value, setValue, items }) => {
   return (
     <StyledBox>
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">출처</InputLabel>
+        {/* <InputLabel variant="standard" htmlFor="uncontrolled-native">
+          재원
+        </InputLabel> */}
         <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
+          // labelId="demo-simple-select-label"
+          id="uncontrolled-native"
           value={value}
           onChange={e => {
             setValue(e.target.value);
