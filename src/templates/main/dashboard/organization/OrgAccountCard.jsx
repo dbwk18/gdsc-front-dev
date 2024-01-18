@@ -6,6 +6,7 @@ import { useState } from 'react';
 import GDSCModal from '../../../../components/core/GDSCModal';
 import OrgAccountModal from './OrgAccountModal';
 import OrgAccountDetailItem from '../../../../components/main/dashboard/OrgAccountDetailItem';
+import OrgCardModal from './OrgCardModal';
 
 const Container = styled.div`
   flex-grow: 1;
@@ -53,6 +54,7 @@ const EmptyDesc = styled.div`
 
 const OrgAccountCard = () => {
   const [isModalOpen, setModalOpen] = useState(false);
+  const [isCardModalOpen, setCardModalOpen] = useState(false);
 
   return (
     <Container>
@@ -80,7 +82,11 @@ const OrgAccountCard = () => {
           <GDSCText size={20} fontType={TextType.BOLD}>
             카드
           </GDSCText>
-          <GDSCButton label={'+ 카드정보 추가하기'} onClick={() => {}} buttonType={ButtonType.NORMAL} />
+          <GDSCButton
+            label={'+ 카드정보 추가하기'}
+            onClick={() => setCardModalOpen(true)}
+            buttonType={ButtonType.NORMAL}
+          />
         </div>
         <EmptyDesc>
           <GDSCText size={14} fontType={TextType.MEDIUM}>
@@ -88,6 +94,7 @@ const OrgAccountCard = () => {
           </GDSCText>
         </EmptyDesc>
       </Cell>
+      <OrgCardModal isOpen={isCardModalOpen} onClose={() => setCardModalOpen(false)} />
     </Container>
   );
 };
