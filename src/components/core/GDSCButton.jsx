@@ -48,7 +48,7 @@ const Button = styled.button`
     }
 
     &:hover {
-      filter: brightness(50%);
+      filter: brightness(90%);
     }
 
     &.inactive {
@@ -69,7 +69,7 @@ const Button = styled.button`
     }
 
     &:hover {
-      filter: brightness(50%);
+      filter: brightness(90%);
     }
 
     &.inactive {

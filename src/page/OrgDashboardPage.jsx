@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import GDSCText, { TextType } from '../components/core/GDSCText';
 import OrgStatus from '../templates/main/dashboard/organization/OrgStatus';
 import OrgEditPeriod from '../templates/main/dashboard/organization/OrgEditPeriod';
+import OrgAccountCard from '../templates/main/dashboard/organization/OrgAccountCard';
 
 const Container = styled.div`
   width: 100%;
@@ -25,6 +26,7 @@ const SecondRowContainer = styled.div`
   height: fit-content;
   display: flex;
   flex-direction: row;
+  gap: 15px;
 `;
 
 const OrgDashboardPage = () => {
@@ -38,6 +40,7 @@ const OrgDashboardPage = () => {
       <OrgStatus />
       <SecondRowContainer>
         <OrgEditPeriod />
+        <OrgAccountCard />
       </SecondRowContainer>
     </Container>
   );

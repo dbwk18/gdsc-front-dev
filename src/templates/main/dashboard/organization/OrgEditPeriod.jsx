@@ -4,6 +4,7 @@ import GDSCText, { TextType } from '../../../../components/core/GDSCText';
 
 const Container = styled.div`
   width: 520px;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   padding: 32px;
