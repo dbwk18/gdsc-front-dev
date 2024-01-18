@@ -27,7 +27,7 @@ const Button = styled.button`
     }
 
     &:hover {
-      filter: brightness(50%);
+      filter: brightness(110%);
     }
 
     &.inactive {
