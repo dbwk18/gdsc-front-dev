@@ -3,6 +3,8 @@ import GDSCText, { TextType } from '../components/core/GDSCText';
 import OrgStatus from '../templates/main/dashboard/organization/OrgStatus';
 import OrgEditPeriod from '../templates/main/dashboard/organization/OrgEditPeriod';
 import OrgAccountCard from '../templates/main/dashboard/organization/OrgAccountCard';
+import { useState, useEffect } from 'react';
+import { getForEntity } from '../network/HttpRequests';
 
 const Container = styled.div`
   width: 100%;
@@ -30,6 +32,16 @@ const SecondRowContainer = styled.div`
 `;
 
 const OrgDashboardPage = () => {
+  const [targetYear, setTargetYear] = useState(null);
+  const [targetHalf, setTargetHalf] = useState(null);
+
+  useEffect(() => {
+    // TODO: 차후 실제 감사 기간 가져와서 판단
+    const date = new Date();
+    setTargetYear(date.getFullYear());
+    setTargetHalf(date.getMonth() < 6 ? 'spring' : 'fall');
+  }, []);
+
   return (
     <Container>
       <TitleContainer>
@@ -40,7 +52,7 @@ const OrgDashboardPage = () => {
       <OrgStatus />
       <SecondRowContainer>
         <OrgEditPeriod />
-        <OrgAccountCard />
+        <OrgAccountCard year={targetYear} half={targetHalf} />
       </SecondRowContainer>
     </Container>
   );

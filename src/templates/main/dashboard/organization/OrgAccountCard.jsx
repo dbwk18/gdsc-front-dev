@@ -2,11 +2,14 @@ import styled from 'styled-components';
 import Colors from '../../../../style/Colors';
 import GDSCText, { TextType } from '../../../../components/core/GDSCText';
 import GDSCButton, { ButtonType } from '../../../../components/core/GDSCButton';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import GDSCModal from '../../../../components/core/GDSCModal';
 import OrgAccountModal from './OrgAccountModal';
 import OrgAccountDetailItem from '../../../../components/main/dashboard/OrgAccountDetailItem';
 import OrgCardModal from './OrgCardModal';
+import { useRecoilValue } from 'recoil';
+import { userAtom } from '../../../../store/atoms/authAtoms';
+import { getForEntity } from '../../../../network/HttpRequests';
 
 const Container = styled.div`
   flex-grow: 1;
@@ -52,9 +55,28 @@ const EmptyDesc = styled.div`
   justify-content: center;
 `;
 
-const OrgAccountCard = () => {
+const OrgAccountCard = ({ year, half }) => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [isCardModalOpen, setCardModalOpen] = useState(false);
+  const userInfo = useRecoilValue(userAtom);
+  const [accounts, setAccounts] = useState([]);
+  const [cards, setCards] = useState([]);
+
+  useEffect(() => {
+    if (!userInfo) return;
+    refresh();
+  }, []);
+
+  const refresh = () => {
+    getForEntity(`accounts/${userInfo.organizationId}/${year}/${half}`).then(data => {
+      console.log('ACCOUNTS', data);
+      setAccounts(data);
+    });
+    getForEntity(`cards/${userInfo.organizationId}/${year}/${half}`).then(data => {
+      console.log('CARDS', data);
+      setCards(data);
+    });
+  };
 
   return (
     <Container>
@@ -65,16 +87,19 @@ const OrgAccountCard = () => {
           </GDSCText>
           <GDSCButton label={'+ 계좌번호 추가하기'} onClick={() => setModalOpen(true)} buttonType={ButtonType.NORMAL} />
         </div>
-        <EmptyDesc>
-          <GDSCText size={14} fontType={TextType.MEDIUM}>
-            등록된 계좌번호가 없습니다
-          </GDSCText>
-        </EmptyDesc>
-        {/* <AccountList>
-          <OrgAccountDetailItem nickname={'주거래계좌'} bankName={'우리은행'} accountNumber={'000-000-00-000'} />
-        </AccountList> */}
+        {accounts.length === 0 ? (
+          <EmptyDesc>
+            <GDSCText size={14} fontType={TextType.MEDIUM}>
+              등록된 계좌번호가 없습니다
+            </GDSCText>
+          </EmptyDesc>
+        ) : (
+          <AccountList>
+            <OrgAccountDetailItem nickname={'주거래계좌'} bankName={'우리은행'} accountNumber={'000-000-00-000'} />
+          </AccountList>
+        )}
         <GDSCModal open={isModalOpen} onClose={() => setModalOpen(false)}>
-          <OrgAccountModal onClose={() => setModalOpen(false)} />
+          <OrgAccountModal year={year} half={half} refresh={refresh} onClose={() => setModalOpen(false)} />
         </GDSCModal>
       </Cell>
       <Cell>

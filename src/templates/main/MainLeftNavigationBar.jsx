@@ -84,7 +84,7 @@ const Divider = styled.div`
 const MainLeftNavigationBar = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const userName = useRecoilValue(userAtom);
+  const userInfo = useRecoilValue(userAtom);
   const authType = useRecoilValue(authTypeAtom);
 
   return (
@@ -96,7 +96,7 @@ const MainLeftNavigationBar = () => {
         <Frame492>
           <div className="Chip">
             <img src={Icecream} width="20" height="20" alt="icecream" />
-            <p className="ChipName">{`${userName}`}</p>
+            <p className="ChipName">{`${userInfo.organizationName}`}</p>
           </div>
         </Frame492>
         <Menu

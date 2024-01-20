@@ -20,12 +20,12 @@ class Authentication {
   }
 
   // 가급적 private하게 유지
-  async setLoginInfo(role, organizationName) {
+  async setLoginInfo(role, organizationName, id, disabled) {
     if (this.setLoginState) this.setLoginState(true);
     // TODO: User 정보를 받아오는 API 후 어드민인지 여부를 확인해서 setAuthType을 호출해서 저장하고, 유저 정보는 setUserInfo를 호출해서 저장 필요
     // TODO: 실패 시 logout
     if (this.setAuthType) this.setAuthType(role === 'admin' ? AuthType.ADMIN : AuthType.USER);
-    if (this.setUserInfo) this.setUserInfo(organizationName);
+    if (this.setUserInfo) this.setUserInfo({ organizationName, organizationId: id, disabled });
   }
 
   async login(email, password) {
@@ -37,7 +37,7 @@ class Authentication {
       );
       if (response.status === 200) {
         const { id, is_disabled: isDisabled, role, organization_name: organizationName } = response.data;
-        this.setLoginInfo(role, organizationName);
+        this.setLoginInfo(role, organizationName, id, isDisabled);
         return role;
       }
       return null;

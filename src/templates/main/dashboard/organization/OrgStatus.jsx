@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import Colors from '../../../../style/Colors';
 import GDSCText, { TextType } from '../../../../components/core/GDSCText';
+import { useRecoilValue } from 'recoil';
+import { userAtom } from '../../../../store/atoms/authAtoms';
 
 const Container = styled.div`
   width: 100%;
@@ -22,13 +24,14 @@ const StateRowContainer = styled.div`
 `;
 
 const OrgStatus = () => {
+  const userInfo = useRecoilValue(userAtom);
   return (
     <Container>
       <GDSCText size={24} fontType={TextType.BOLD}>
-        GDSC님 상태
+        {`${userInfo.organizationName}님 상태`}
       </GDSCText>
       <StateRowContainer>
-        <StateBox title={'계정 상태'} content={'활성화'} />
+        <StateBox title={'계정 상태'} content={userInfo.disabled ? '비활성화' : '활성화'} />
         <StateBox title={'수정 권한'} content={'수정 가능'} />
         <StateBox title={'계좌번호'} content={'미제출'} />
         <StateBox title={'카드'} content={'미제출'} />

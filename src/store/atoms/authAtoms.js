@@ -12,7 +12,7 @@ export const authTypeAtom = atom({
   default: null,
 });
 
-// User 네임 | null
+// {organizationName, organizationId, disabled} | null
 export const userAtom = atom({
   key: 'userInfo',
   default: null,

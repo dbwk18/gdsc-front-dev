@@ -3,6 +3,10 @@ import Colors from '../../../../style/Colors';
 import { TextField } from '@mui/material';
 import GDSCText, { TextType } from '../../../../components/core/GDSCText';
 import GDSCButton, { ButtonType } from '../../../../components/core/GDSCButton';
+import { useState } from 'react';
+import { postForEntity } from '../../../../network/HttpRequests';
+import { useRecoilValue } from 'recoil';
+import { userAtom } from '../../../../store/atoms/authAtoms';
 
 const Container = styled.div`
   display: flex;
@@ -38,7 +42,30 @@ const ButtonArea = styled.div`
   margin-top: auto;
 `;
 
-const OrgAccountModal = ({ onClose }) => {
+const OrgAccountModal = ({ year, half, refresh, onClose }) => {
+  const userInfo = useRecoilValue(userAtom);
+  const [bank, setBank] = useState('');
+  const [accountNumber, setAccountNumber] = useState('');
+  const [accountOwner, setAccountOwner] = useState('');
+  const [name, setName] = useState('');
+
+  const postAccount = () => {
+    if (!userInfo) return;
+    postForEntity(`accounts/${userInfo.organizationId}/${year}/${half}`, {
+      name,
+      accountNumber,
+      accountOwner,
+      accountBank: bank,
+    })
+      .then(data => {
+        window.alert('계좌 등록 성공');
+        onClose();
+      })
+      .catch(data => {
+        window.alert('계좌 등록 실패!');
+      });
+  };
+
   return (
     <Container>
       <Header>
@@ -47,9 +74,20 @@ const OrgAccountModal = ({ onClose }) => {
         </GDSCText>
       </Header>
       <Contents>
-        <TextField id="standard-basic" label="은행" variant="standard" />
-        <TextField id="standard-basic" label="계좌번호" variant="standard" />
-        <TextField id="standard-basic" label="별명" variant="standard" />
+        <TextField label="은행" value={bank} onChange={e => setBank(e.target.value)} variant="standard" />
+        <TextField
+          label="계좌번호"
+          value={accountNumber}
+          onChange={e => setAccountNumber(e.target.value)}
+          variant="standard"
+        />
+        <TextField
+          label="예금주"
+          value={accountOwner}
+          onChange={e => setAccountOwner(e.target.value)}
+          variant="standard"
+        />
+        <TextField label="별명" value={name} onChange={e => setName(e.target.value)} variant="standard" />
       </Contents>
       <ButtonArea>
         <GDSCButton
@@ -62,7 +100,7 @@ const OrgAccountModal = ({ onClose }) => {
         <GDSCButton
           label={'추가하기'}
           onClick={() => {
-            onClose();
+            postAccount();
           }}
           buttonType={ButtonType.MAIN}
         />
