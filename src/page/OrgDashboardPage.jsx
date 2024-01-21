@@ -5,6 +5,7 @@ import OrgEditPeriod from '../templates/main/dashboard/organization/OrgEditPerio
 import OrgAccountCard from '../templates/main/dashboard/organization/OrgAccountCard';
 import { useState, useEffect } from 'react';
 import { getForEntity } from '../network/HttpRequests';
+import Colors from '../style/Colors';
 
 const Container = styled.div`
   width: 100%;
@@ -36,18 +37,35 @@ const OrgDashboardPage = () => {
   const [targetHalf, setTargetHalf] = useState(null);
 
   useEffect(() => {
-    // TODO: 차후 실제 감사 기간 가져와서 판단
-    const date = new Date();
-    setTargetYear(date.getFullYear());
-    setTargetHalf(date.getMonth() < 6 ? 'spring' : 'fall');
+    getForEntity('budgets/period').then(data => {
+      function checkDateInRange(start, end) {
+        const today = new Date();
+        const startDate = new Date(start);
+        const endDate = new Date(end);
+        return today >= startDate && today <= endDate;
+      }
+      const ablePeriod = data.filter(d => checkDateInRange(d.start, d.end));
+      if (ablePeriod.length !== 0) {
+        const selected = ablePeriod[0];
+        setTargetYear(selected.year);
+        setTargetHalf(selected.half);
+      }
+    });
   }, []);
 
   return (
     <Container>
       <TitleContainer>
-        <GDSCText size={32} fontType={TextType.BOLD}>
-          2024년 상반기
-        </GDSCText>
+        {(targetYear === null || targetHalf === null) && (
+          <GDSCText size={32} fontType={TextType.BOLD} color={Colors.BLACK40}>
+            해당 감사기간이 없습니다
+          </GDSCText>
+        )}
+        {targetYear && targetHalf && (
+          <GDSCText size={32} fontType={TextType.BOLD}>
+            {`${targetYear}년 ${targetHalf}`}
+          </GDSCText>
+        )}
       </TitleContainer>
       <OrgStatus />
       <SecondRowContainer>

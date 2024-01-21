@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import Colors from '../../../../style/Colors';
 import GDSCText, { TextType } from '../../../../components/core/GDSCText';
+import { useState, useEffect } from 'react';
+import { getForEntity } from '../../../../network/HttpRequests';
 
 const Container = styled.div`
   width: 520px;
@@ -32,6 +34,14 @@ const Contents = styled.div`
 `;
 
 const OrgEditPeriod = () => {
+  const [periods, setPeriods] = useState([]);
+
+  useEffect(() => {
+    getForEntity('budgets/period').then(data => {
+      setPeriods(data);
+    });
+  }, []);
+
   return (
     <Container>
       <GDSCText size={24} fontType={TextType.BOLD}>
@@ -42,18 +52,19 @@ const OrgEditPeriod = () => {
           최근 수정 기간
         </GDSCText>
         <div className="periods">
-          <div className="item">
-            <GDSCText size={13}>23년도 하반기 자료 입력 기간</GDSCText>
-            <GDSCText size={13}>2023.10.01 ~ 2023.10.15</GDSCText>
-          </div>
-          <div className="item">
-            <GDSCText size={13}>23년도 하반기 자료 입력 기간</GDSCText>
-            <GDSCText size={13}>2023.10.01 ~ 2023.10.15</GDSCText>
-          </div>
-          <div className="item">
-            <GDSCText size={13}>23년도 하반기 자료 입력 기간</GDSCText>
-            <GDSCText size={13}>2023.10.01 ~ 2023.10.15</GDSCText>
-          </div>
+          {periods.map(period => {
+            return (
+              <div className="item">
+                <GDSCText size={13}>{`${period.year}년도 ${period.half} 자료 입력 기간`}</GDSCText>
+                <GDSCText size={13}>{`${period.start} ~ ${period.end}`}</GDSCText>
+              </div>
+            );
+          })}
+          {periods.length === 0 && (
+            <GDSCText size={12} color={Colors.BLACK60}>
+              최근 자료 입력 기간 정보가 없습니다
+            </GDSCText>
+          )}
         </div>
       </Contents>
     </Container>
