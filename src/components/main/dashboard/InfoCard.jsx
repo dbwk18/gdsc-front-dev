@@ -6,9 +6,8 @@ import styled from 'styled-components';
 const Container = styled.div`
   padding: 16px;
   margin: 16px;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: #ffffff; // Replace with your theme's background.paper color
+  border-radius: 8px;
+  background-color: ${Colors.WHITE100};
   min-width: ${props => props.minWidth};
 `;
 

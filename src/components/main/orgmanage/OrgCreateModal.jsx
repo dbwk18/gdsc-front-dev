@@ -106,6 +106,10 @@ const OrgCreateModal = ({ setIsOpen, setAddRow, setToastOpen }) => {
   };
 
   const saveOrg = async () => {
+    if (!orgName || !email) {
+      alert('피감기관명/이메일을 입력해주세요.');
+      return;
+    }
     await createOrg();
     setIsOpen(false);
     setToastOpen(true);

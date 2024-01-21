@@ -13,8 +13,9 @@ const Container = styled.div`
   gap: 4px;
 
   background-color: ${props => props.backgroundColor};
-  width: ${props => props.width};
+  width: fit-content;
   height: 24px;
+  padding: 10px;
 `;
 
 const Dot = styled.div`
@@ -29,14 +30,14 @@ export const ButtonType = {
   MAIN: 'main',
 };
 
-const GDSCStatusChip = ({ label, width = '65px', red = false }) => {
-  const backgroundColor = red ? '#ffe6e6' : '#dff7e0';
-  const color = red ? '#ff0000' : '#28c82e';
+const GDSCStatusChip = ({ label, width = '65px', red = false, backgroundColor = '#dff7e0', textColor = '#28c82e' }) => {
+  const chipBackgroundColor = red ? '#ffe6e6' : backgroundColor;
+  const chipTextColor = red ? '#ff0000' : textColor;
 
   return (
-    <Container backgroundColor={backgroundColor} width={width}>
-      <Dot color={color} />
-      <GDSCText size={12} fontType={TextType.BOLD} color={color}>
+    <Container backgroundColor={chipBackgroundColor} width={width}>
+      <Dot color={chipTextColor} />
+      <GDSCText size={12} fontType={TextType.BOLD} color={chipTextColor}>
         {label}
       </GDSCText>
     </Container>

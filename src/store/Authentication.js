@@ -37,7 +37,11 @@ class Authentication {
       );
       if (response.status === 200) {
         const { id, is_disabled: isDisabled, role, organization_name: organizationName } = response.data;
-        this.setLoginInfo(role, organizationName, id, isDisabled);
+        if (role === 'admin') {
+          this.setLoginInfo(role, '감사원', id, false);
+        } else {
+          this.setLoginInfo(role, organizationName, id, isDisabled);
+        }
         return role;
       }
       return null;

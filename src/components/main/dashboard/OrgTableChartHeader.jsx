@@ -11,7 +11,7 @@ const StyledTableCell = styled(TableCell)(() => ({
   },
 }));
 
-const OrgManageChartHeader = ({ columnName }) => {
+const OrgTableChartHeader = ({ columnName }) => {
   return (
     <TableRow>
       {columnName.map(name => {
@@ -29,4 +29,4 @@ const OrgManageChartHeader = ({ columnName }) => {
   );
 };
 
-export default OrgManageChartHeader;
+export default OrgTableChartHeader;
