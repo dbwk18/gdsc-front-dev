@@ -61,7 +61,8 @@ const BudgetPeriodStartModal = ({
   setToastMessage,
   year,
   half,
-  isIndividual = false,
+  isIndividual,
+  orgName,
 }) => {
   const [startDate, setStartDate] = useState(null);
   const [startTime, setStartTime] = useState(null);
@@ -73,7 +74,8 @@ const BudgetPeriodStartModal = ({
   useEffect(() => {
     if (isIndividual) {
       setPeriodPostUrl(`budgets/period/orgID/${year}/${half}/`);
-      setToastMessage(`수정 권한이 설정되었습니다`);
+      const message = orgName === '' ? '수정 권한이 설정되었습니다' : `${orgName}의 수정 권한이 설정되었습니다`;
+      setToastMessage(message);
       setTitleText('개별 감사 시작하기');
     } else {
       setPeriodPostUrl(`budgets/period/orgID/${year}/${half}/`);
@@ -101,7 +103,6 @@ const BudgetPeriodStartModal = ({
     })
       .then(res => {
         setIsModalOpen(false);
-        setToastMessage('감사기간이 설정되었습니다');
         setIsToastOpen(true);
       })
       .catch(err => {

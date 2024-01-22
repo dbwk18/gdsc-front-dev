@@ -3,7 +3,14 @@ import BudgetPeriodStartModal from './BudgetPeriodStartModal';
 import GDSCDialog from '../../core/GDSCDialog';
 import { useState } from 'react';
 
-const BudgetPeriodDialogToast = ({ isModalOpen, setIsModalOpen, targetYear, targetHalf, isIndividual = false }) => {
+const BudgetPeriodDialogToast = ({
+  isModalOpen,
+  setIsModalOpen,
+  targetYear,
+  targetHalf,
+  isIndividual = false,
+  orgName = '',
+}) => {
   const [isToastOpen, setIsToastOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
 
@@ -17,10 +24,12 @@ const BudgetPeriodDialogToast = ({ isModalOpen, setIsModalOpen, targetYear, targ
           year={targetYear}
           half={targetHalf}
           isIndividual={isIndividual}
+          orgName={orgName}
         />
       </GDSCDialog>
       <Snackbar
         open={isToastOpen}
+        onClose={() => setIsToastOpen(false)}
         autoHideDuration={5000}
         message={toastMessage}
         sx={{

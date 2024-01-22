@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Table, TableHead, TableBody } from '@mui/material';
 import OrgTableRow from './OrgTableRow';
 import OrgTableChartHeader from './OrgTableChartHeader';
+import BudgetPeriodDialogToast from './BudgetPeriodDialogToast';
 
 const Container = styled.div`
   width: 100%;
-  /* height: 1080px; */
   padding: 0 12px;
 `;
 
 const OrgTable = ({ orgs }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedOrgName, setSelectedOrgName] = useState('');
+
   return (
     <Container>
       {orgs && (
@@ -27,12 +30,20 @@ const OrgTable = ({ orgs }) => {
                   orgEmail={org.email}
                   orgCardPDF={org.card}
                   orgEditPermission={false}
+                  setIsModalOpen={setIsModalOpen}
+                  setSelectedOrgName={setSelectedOrgName}
                 />
               );
             })}
           </TableBody>
         </Table>
       )}
+      <BudgetPeriodDialogToast
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+        isIndividual
+        orgName={selectedOrgName}
+      />
     </Container>
   );
 };
