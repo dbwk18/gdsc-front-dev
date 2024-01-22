@@ -7,9 +7,7 @@ import AdminEditPeriod from '../templates/main/dashboard/admin/AdminEditPeriod';
 import AdminOrgList from '../templates/main/dashboard/admin/AdminOrgList';
 import GDSCText, { TextType } from '../components/core/GDSCText';
 import { convertPeriodToLongFormat } from '../utils/DateUtils';
-import { Alert, Snackbar } from '@mui/material';
-import GDSCDialog from '../components/core/GDSCDialog';
-import BudgetPeriodStartModal from '../components/main/dashboard/BudgetPeriodStartModal';
+import BudgetPeriodText from '../components/main/dashboard/BudgetPeriodText';
 
 const Container = styled.div`
   width: 100%;
@@ -43,13 +41,6 @@ const AdminDashboardPage = () => {
   const [targetYear, setTargetYear] = useState(null);
   const [targetHalf, setTargetHalf] = useState(null);
   const [formattedPeriod, setFormattedPeriod] = useState(null);
-  const [toastOpen, setToastOpen] = useState(false);
-  const [toastMessage, setToastMessage] = useState('설정되었습니다');
-  const [modalOpen, setModalOpen] = useState(false);
-
-  const toastAction = () => {
-    alert('toast');
-  };
 
   useEffect(() => {
     getForEntity(`/users`).then(response => {
@@ -87,7 +78,7 @@ const AdminDashboardPage = () => {
           </GDSCText>
         )}
         {targetYear && targetHalf && (
-          <BudgetPeriod targetYear={targetYear} targetHalf={targetHalf} formattedPeriod={formattedPeriod} />
+          <BudgetPeriodText targetYear={targetYear} targetHalf={targetHalf} formattedPeriod={formattedPeriod} />
         )}
       </TitleContainer>
       <AdminMyInfo
@@ -96,69 +87,10 @@ const AdminDashboardPage = () => {
         submittedOrgsCount={submittedOrgsCount}
       />
       <SecondRowContainer>
-        <AdminEditPeriod setModalOpen={setModalOpen} />
-        <AdminOrgList orgs={orgs} setModalOpen={setModalOpen} />
+        <AdminEditPeriod targetYear={targetYear} targetHalf={targetHalf} />
+        <AdminOrgList orgs={orgs} />
       </SecondRowContainer>
-      <GDSCDialog open={modalOpen} onClose={() => setModalOpen(false)}>
-        <BudgetPeriodStartModal
-          setModalOpen={setModalOpen}
-          setToastOpen={setToastOpen}
-          setToastMessage={setToastMessage}
-          year={targetYear}
-          half={targetHalf}
-        />
-      </GDSCDialog>
-      <Snackbar
-        open={toastOpen}
-        autoHideDuration={5000}
-        message={toastMessage}
-        sx={{
-          marginLeft: '250px',
-          marginTop: '100px',
-        }}
-      >
-        <Alert severity="success" variant="filled" sx={{ width: '100%' }}>
-          {toastMessage}
-        </Alert>
-      </Snackbar>
     </Container>
-  );
-};
-
-const BudgetPeriodContainer = styled.div`
-  width: 100%;
-  height: 80px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-`;
-
-const BudgetPeriodDetail = styled.div`
-  width: 100%;
-  height: 80px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 15px;
-`;
-
-const BudgetPeriod = ({ targetYear, targetHalf, formattedPeriod }) => {
-  const targetHalfText = targetHalf === 'spring' ? '상반기' : '하반기';
-
-  return (
-    <BudgetPeriodContainer>
-      <GDSCText size={32} fontType={TextType.BOLD}>
-        {`${targetYear}년 ${targetHalfText}`}
-      </GDSCText>
-      <BudgetPeriodDetail>
-        <GDSCText size={14} fontType={TextType.BOLD}>
-          {'현재 감사 자료 작성기간입니다'}
-        </GDSCText>
-        <GDSCText size={14} fontType={TextType.MEDIUM}>
-          {formattedPeriod}
-        </GDSCText>
-      </BudgetPeriodDetail>
-    </BudgetPeriodContainer>
   );
 };
 

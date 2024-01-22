@@ -6,6 +6,7 @@ import InfoRowItem from '../../../../components/main/dashboard/InfoRowItem';
 import GDSCButton from '../../../../components/core/GDSCButton';
 import { getForEntity } from '../../../../network/HttpRequests';
 import { convertPeriodToShortFormat } from '../../../../utils/DateUtils';
+import BudgetPeriodDialogToast from '../../../../components/main/dashboard/BudgetPeriodDialogToast';
 
 const Container = styled.div`
   width: 100%;
@@ -35,8 +36,9 @@ const PeriodStartButton = styled.div`
   justify-content: flex-end;
 `;
 
-const AdminEditPeriod = ({ setModalOpen }) => {
+const AdminEditPeriod = ({ targetYear, targetHalf }) => {
   const [recentEditPeriods, setRecentEditPeriods] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const getTitle = (year, half) => {
     if (!year || !half) {
@@ -51,12 +53,13 @@ const AdminEditPeriod = ({ setModalOpen }) => {
 
   useEffect(() => {
     getForEntity('/budgets/period/').then(periods => {
-      periods.sort(function (a, b) {
+      periods.sort((a, b) => {
         return b.start - a.start;
       });
       setRecentEditPeriods(periods.slice(0, 3));
     });
   }, []);
+
   return (
     <Container>
       <GDSCText size={24} fontType={TextType.BOLD}>
@@ -81,11 +84,17 @@ const AdminEditPeriod = ({ setModalOpen }) => {
         <GDSCButton
           label={'감사 시작하기'}
           onClick={() => {
-            setModalOpen(true);
+            setIsModalOpen(true);
           }}
           inactive={false}
         />
       </PeriodStartButton>
+      <BudgetPeriodDialogToast
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+        targetYear={targetYear}
+        targetHalf={targetHalf}
+      />
     </Container>
   );
 };

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
@@ -55,11 +55,32 @@ const DateTimePicker = styled.div`
 
 dayjs.extend(utc);
 
-const BudgetPeriodStartModal = ({ setModalOpen, setToastOpen, setToastMessage, year, half, isIndividual = false }) => {
+const BudgetPeriodStartModal = ({
+  setIsModalOpen,
+  setIsToastOpen,
+  setToastMessage,
+  year,
+  half,
+  isIndividual = false,
+}) => {
   const [startDate, setStartDate] = useState(null);
   const [startTime, setStartTime] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [endTime, setEndTime] = useState(null);
+  const [titleText, setTitleText] = useState('');
+  const [periodPostUrl, setPeriodPostUrl] = useState('');
+
+  useEffect(() => {
+    if (isIndividual) {
+      setPeriodPostUrl(`budgets/period/orgID/${year}/${half}/`);
+      setToastMessage(`수정 권한이 설정되었습니다`);
+      setTitleText('개별 감사 시작하기');
+    } else {
+      setPeriodPostUrl(`budgets/period/orgID/${year}/${half}/`);
+      setToastMessage(`감사기간이 설정되었습니다`);
+      setTitleText('감사 시작하기');
+    }
+  }, []);
 
   const dateTimeToUTC = (date, time) => {
     const combinedDatetime = date.hour(time.hour()).minute(time.minute());
@@ -74,15 +95,14 @@ const BudgetPeriodStartModal = ({ setModalOpen, setToastOpen, setToastMessage, y
     const startDatetime = dateTimeToUTC(startDate, startTime);
     const endDatetime = dateTimeToUTC(endDate, endTime);
 
-    const postUrl = isIndividual ? `budgets/period/orgID/${year}/${half}/` : `budgets/period/${year}/${half}/`;
-    postForEntity(postUrl, {
+    postForEntity(periodPostUrl, {
       start: startDatetime,
       end: endDatetime,
     })
       .then(res => {
-        setModalOpen(false);
+        setIsModalOpen(false);
         setToastMessage('감사기간이 설정되었습니다');
-        setToastOpen(true);
+        setIsToastOpen(true);
       })
       .catch(err => {
         alert(`${err.message}\n감사기간 등록을 실패했습니다. 관리자에게 문의해주세요.`);
@@ -95,11 +115,11 @@ const BudgetPeriodStartModal = ({ setModalOpen, setToastOpen, setToastMessage, y
         <TextContainer>
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
             <GDSCText size={25} fontType={TextType.BOLD} color={Colors.BLACK100}>
-              {isIndividual ? '개별 감사 시작하기' : '감사 시작하기'}
+              {titleText}
             </GDSCText>
             <ClsoeButton
               onClick={() => {
-                setModalOpen(false);
+                setIsModalOpen(false);
               }}
             >
               {' '}

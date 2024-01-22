@@ -10,7 +10,7 @@ const Container = styled.div`
   padding: 0 12px;
 `;
 
-const OrgTable = ({ orgs, setModalOpen }) => {
+const OrgTable = ({ orgs }) => {
   return (
     <Container>
       {orgs && (
@@ -27,7 +27,6 @@ const OrgTable = ({ orgs, setModalOpen }) => {
                   orgEmail={org.email}
                   orgCardPDF={org.card}
                   orgEditPermission={false}
-                  setModalOpen={setModalOpen}
                 />
               );
             })}

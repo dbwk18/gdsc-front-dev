@@ -3,6 +3,8 @@ import { TableRow, TableCell } from '@mui/material';
 import GDSCText, { TextType } from '../../core/GDSCText';
 import Colors from '../../../style/Colors';
 import GDSCStatusChip from '../../core/GDSCStatusChip';
+import { useState } from 'react';
+import BudgetPeriodDialogToast from './BudgetPeriodDialogToast';
 
 const StyledDiv = styled.div`
   width: 100%;
@@ -28,10 +30,12 @@ const Button = styled.button`
   height: fit-content;
 `;
 
-const OrgTableRow = ({ orgName, orgEmail, orgCardPDF, orgEditPermission, setModalOpen }) => {
+const OrgTableRow = ({ orgName, orgEmail, orgCardPDF, orgEditPermission }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const handleChipClick = () => {
     if (!orgEditPermission) {
-      setModalOpen(true);
+      setIsModalOpen(true);
     }
   };
 
@@ -69,6 +73,7 @@ const OrgTableRow = ({ orgName, orgEmail, orgCardPDF, orgEditPermission, setModa
           <OrgButtonChip orgEditPermission={orgEditPermission} handleClick={handleChipClick} />
         </StyledDiv>
       </TableCell>
+      <BudgetPeriodDialogToast isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} isIndividual />
     </StyledTableRow>
   );
 };
