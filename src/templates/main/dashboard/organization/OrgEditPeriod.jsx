@@ -42,6 +42,10 @@ const OrgEditPeriod = () => {
     });
   }, []);
 
+  function formatDate(dateString) {
+    return dateString.split('T')[0].split('-').join('.');
+  }
+
   return (
     <Container>
       <GDSCText size={24} fontType={TextType.BOLD}>
@@ -56,7 +60,7 @@ const OrgEditPeriod = () => {
             return (
               <div className="item">
                 <GDSCText size={13}>{`${period.year}년도 ${period.half} 자료 입력 기간`}</GDSCText>
-                <GDSCText size={13}>{`${period.start} ~ ${period.end}`}</GDSCText>
+                <GDSCText size={13}>{`${formatDate(period.start)} ~ ${formatDate(period.end)}`}</GDSCText>
               </div>
             );
           })}

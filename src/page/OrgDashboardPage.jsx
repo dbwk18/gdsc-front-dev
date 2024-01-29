@@ -42,6 +42,7 @@ const OrgDashboardPage = () => {
         const today = new Date();
         const startDate = new Date(start);
         const endDate = new Date(end);
+        console.log(start, today, end, today >= startDate, today <= endDate);
         return today >= startDate && today <= endDate;
       }
       const ablePeriod = data.filter(d => checkDateInRange(d.start, d.end));

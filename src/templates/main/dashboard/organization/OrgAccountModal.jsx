@@ -59,6 +59,7 @@ const OrgAccountModal = ({ year, half, refresh, onClose }) => {
     })
       .then(data => {
         window.alert('계좌 등록 성공');
+        refresh();
         onClose();
       })
       .catch(data => {

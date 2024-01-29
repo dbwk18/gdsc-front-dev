@@ -65,7 +65,7 @@ const OrgAccountCard = ({ year, half }) => {
   useEffect(() => {
     if (!userInfo) return;
     refresh();
-  }, []);
+  }, [year, half]);
 
   const refresh = () => {
     getForEntity(`accounts/${userInfo.organizationId}/${year}/${half}`).then(data => {
@@ -95,7 +95,15 @@ const OrgAccountCard = ({ year, half }) => {
           </EmptyDesc>
         ) : (
           <AccountList>
-            <OrgAccountDetailItem nickname={'주거래계좌'} bankName={'우리은행'} accountNumber={'000-000-00-000'} />
+            {accounts.map(acc => {
+              return (
+                <OrgAccountDetailItem
+                  nickname={acc.name}
+                  bankName={acc.accountBank}
+                  accountNumber={acc.accountNumber}
+                />
+              );
+            })}
           </AccountList>
         )}
         <GDSCModal open={isModalOpen} onClose={() => setModalOpen(false)}>

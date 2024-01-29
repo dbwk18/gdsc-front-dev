@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
-import { postForEntity } from '../../../network/HttpRequests';
+import { postForEntity, putForEntity } from '../../../network/HttpRequests';
 import GDSCText, { TextType } from '../../core/GDSCText';
 import GDSCButton from '../../core/GDSCButton';
 import Colors from '../../../style/Colors';
@@ -69,16 +69,13 @@ const BudgetPeriodStartModal = ({
   const [endDate, setEndDate] = useState(null);
   const [endTime, setEndTime] = useState(null);
   const [titleText, setTitleText] = useState('');
-  const [periodPostUrl, setPeriodPostUrl] = useState('');
 
   useEffect(() => {
     if (isIndividual) {
-      setPeriodPostUrl(`budgets/period/orgID/${year}/${half}/`);
       const message = orgName === '' ? '수정 권한이 설정되었습니다' : `${orgName}의 수정 권한이 설정되었습니다`;
       setToastMessage(message);
       setTitleText('개별 감사 시작하기');
     } else {
-      setPeriodPostUrl(`budgets/period/orgID/${year}/${half}/`);
       setToastMessage(`감사기간이 설정되었습니다`);
       setTitleText('감사 시작하기');
     }
@@ -97,7 +94,9 @@ const BudgetPeriodStartModal = ({
     const startDatetime = dateTimeToUTC(startDate, startTime);
     const endDatetime = dateTimeToUTC(endDate, endTime);
 
-    postForEntity(periodPostUrl, {
+    const standardDate = new Date(startDate);
+
+    postForEntity(`budgets/period/${standardDate.getFullYear()}/${standardDate.getMonth() < 6 ? 'spring' : 'fall'}`, {
       start: startDatetime,
       end: endDatetime,
     })
