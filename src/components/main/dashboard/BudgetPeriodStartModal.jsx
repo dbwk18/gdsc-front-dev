@@ -41,43 +41,35 @@ const ClsoeButton = styled.button`
   font-weight: bold;
 `;
 
-const DateTimePickerContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-`;
-
 const DateTimePicker = styled.div`
   display: flex;
-  flex-direction: row;
   gap: 20px;
+
+  &.in-row {
+    flex-direction: row;
+  }
+
+  &.in-column {
+    flex-direction: column;
+  }
 `;
 
 dayjs.extend(utc);
 
-const BudgetPeriodStartModal = ({
-  setIsModalOpen,
-  setIsToastOpen,
-  setToastMessage,
-  year,
-  half,
-  isIndividual,
-  orgName,
-}) => {
+const BudgetPeriodStartModal = ({ setIsModalOpen, setIsToastOpen, setToastMessage, isIndividual, orgName }) => {
+  const titleText = isIndividual ? '개별 감사 시작하기' : '감사 시작하기';
+
   const [startDate, setStartDate] = useState(null);
   const [startTime, setStartTime] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [endTime, setEndTime] = useState(null);
-  const [titleText, setTitleText] = useState('');
 
   useEffect(() => {
     if (isIndividual) {
       const message = orgName === '' ? '수정 권한이 설정되었습니다' : `${orgName}의 수정 권한이 설정되었습니다`;
       setToastMessage(message);
-      setTitleText('개별 감사 시작하기');
     } else {
       setToastMessage(`감사기간이 설정되었습니다`);
-      setTitleText('감사 시작하기');
     }
   }, []);
 
@@ -135,7 +127,7 @@ const BudgetPeriodStartModal = ({
             </GDSCText>
           </div>
         </TextContainer>
-        <DateTimePickerContainer>
+        <DateTimePicker className="in-column">
           <GDSCText>시작</GDSCText>
           <DateTimePicker>
             <DatePicker label="Controlled picker" value={startDate} onChange={newValue => setStartDate(newValue)} />
@@ -143,11 +135,11 @@ const BudgetPeriodStartModal = ({
           </DateTimePicker>
 
           <GDSCText>종료</GDSCText>
-          <DateTimePicker>
+          <DateTimePicker className="in-row">
             <DatePicker label="Controlled picker" value={endDate} onChange={newValue => setEndDate(newValue)} />
             <TimePicker label="Controlled picker" value={endTime} onChange={newValue => setEndTime(newValue)} />
           </DateTimePicker>
-        </DateTimePickerContainer>
+        </DateTimePicker>
         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
           <GDSCButton
             label={'시작하기'}
