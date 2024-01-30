@@ -24,7 +24,7 @@ const OrgManageChart = ({ orgs }) => {
             {orgs.map(org => {
               return (
                 <OrgManageRow
-                  key={org.organization_id}
+                  key={org.id}
                   organisation={org.organization_name}
                   email={org.email}
                   password={org.password}

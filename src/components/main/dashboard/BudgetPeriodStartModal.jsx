@@ -1,12 +1,20 @@
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import { postForEntity, putForEntity } from '../../../network/HttpRequests';
 import GDSCText, { TextType } from '../../core/GDSCText';
 import GDSCButton from '../../core/GDSCButton';
 import Colors from '../../../style/Colors';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { TimePicker } from '@mui/x-date-pickers/TimePicker';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 
 const Container = styled.div`
   display: flex;
   width: 480px;
-  height: 261px;
+  height: fit-content;
   border-radius: 8px;
   flex-direction: column;
   justify-content: space-between;
@@ -33,42 +41,116 @@ const ClsoeButton = styled.button`
   font-weight: bold;
 `;
 
-const BudgetPeriodStartModal = ({ setIsOpen }) => {
+const DateTimePicker = styled.div`
+  display: flex;
+  gap: 20px;
+
+  &.in-row {
+    flex-direction: row;
+  }
+
+  &.in-column {
+    flex-direction: column;
+  }
+`;
+
+dayjs.extend(utc);
+
+const BudgetPeriodStartModal = ({ setIsModalOpen, setIsToastOpen, setToastMessage, isIndividual, orgName }) => {
+  const titleText = isIndividual ? '개별 감사 시작하기' : '감사 시작하기';
+
+  const [startDate, setStartDate] = useState(null);
+  const [startTime, setStartTime] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+  const [endTime, setEndTime] = useState(null);
+
+  useEffect(() => {
+    if (isIndividual) {
+      const message = orgName === '' ? '수정 권한이 설정되었습니다' : `${orgName}의 수정 권한이 설정되었습니다`;
+      setToastMessage(message);
+    } else {
+      setToastMessage(`감사기간이 설정되었습니다`);
+    }
+  }, []);
+
+  const dateTimeToUTC = (date, time) => {
+    const combinedDatetime = date.hour(time.hour()).minute(time.minute());
+    return combinedDatetime.utc().format('YYYY-MM-DDTHH:mm:ss.SSS[Z]');
+  };
+
+  const createBudgetPeriod = () => {
+    if (!startDate || !startTime || !endDate || !endTime) {
+      alert('기간을 입력해주세요.');
+      return;
+    }
+    const startDatetime = dateTimeToUTC(startDate, startTime);
+    const endDatetime = dateTimeToUTC(endDate, endTime);
+
+    const standardDate = new Date(startDate);
+
+    postForEntity(`budgets/period/${standardDate.getFullYear()}/${standardDate.getMonth() < 6 ? 'spring' : 'fall'}`, {
+      start: startDatetime,
+      end: endDatetime,
+    })
+      .then(res => {
+        setIsModalOpen(false);
+        setIsToastOpen(true);
+      })
+      .catch(err => {
+        alert(`${err.message}\n감사기간 등록을 실패했습니다. 관리자에게 문의해주세요.`);
+      });
+  };
+
   return (
-    <Container>
-      <TextContainer>
-        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <GDSCText size={25} fontType={TextType.BOLD} color={Colors.BLACK100}>
-            {'감사 시작하기'}
-          </GDSCText>
-          <ClsoeButton
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <Container>
+        <TextContainer>
+          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <GDSCText size={25} fontType={TextType.BOLD} color={Colors.BLACK100}>
+              {titleText}
+            </GDSCText>
+            <ClsoeButton
+              onClick={() => {
+                setIsModalOpen(false);
+              }}
+            >
+              {' '}
+              x{' '}
+            </ClsoeButton>
+          </div>
+          <div>
+            <GDSCText size={14} fontType={TextType.MEDIUM} color={Colors.BLACK100}>
+              {'감사기간을 시작합니다.'}
+            </GDSCText>
+            <GDSCText size={14} fontType={TextType.MEDIUM} color={Colors.BLACK100}>
+              {'감사 시작일과 종료일을 입력해주세요.'}
+            </GDSCText>
+          </div>
+        </TextContainer>
+        <DateTimePicker className="in-column">
+          <GDSCText>시작</GDSCText>
+          <DateTimePicker>
+            <DatePicker label="Controlled picker" value={startDate} onChange={newValue => setStartDate(newValue)} />
+            <TimePicker label="Controlled picker" value={startTime} onChange={newValue => setStartTime(newValue)} />
+          </DateTimePicker>
+
+          <GDSCText>종료</GDSCText>
+          <DateTimePicker className="in-row">
+            <DatePicker label="Controlled picker" value={endDate} onChange={newValue => setEndDate(newValue)} />
+            <TimePicker label="Controlled picker" value={endTime} onChange={newValue => setEndTime(newValue)} />
+          </DateTimePicker>
+        </DateTimePicker>
+        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+          <GDSCButton
+            label={'시작하기'}
             onClick={() => {
-              setIsOpen(false);
+              createBudgetPeriod();
             }}
-          >
-            {' '}
-            x{' '}
-          </ClsoeButton>
+            inactive={false}
+          />
         </div>
-        <div>
-          <GDSCText size={14} fontType={TextType.MEDIUM} color={Colors.BLACK100}>
-            {'감사기간을 시작합니다.'}
-          </GDSCText>
-          <GDSCText size={14} fontType={TextType.MEDIUM} color={Colors.BLACK100}>
-            {'2024년 1월 1일 오후 8시부터 7일간 설정됩니다.'}
-          </GDSCText>
-        </div>
-      </TextContainer>
-      <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <GDSCButton
-          label={'시작하기'}
-          onClick={() => {
-            alert('감사 시작');
-          }}
-          inactive={false}
-        />
-      </div>
-    </Container>
+      </Container>
+    </LocalizationProvider>
   );
 };
 
