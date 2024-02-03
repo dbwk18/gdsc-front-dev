@@ -98,9 +98,12 @@ const OrgAccountCard = ({ year, half }) => {
             {accounts.map(acc => {
               return (
                 <OrgAccountDetailItem
+                  id={acc.id}
                   nickname={acc.name}
                   bankName={acc.accountBank}
                   accountNumber={acc.accountNumber}
+                  accountOwner={acc.accountOwner}
+                  refresh={refresh}
                 />
               );
             })}

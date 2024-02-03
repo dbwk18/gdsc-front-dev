@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 import GDSCText, { TextType } from '../../core/GDSCText';
 import Colors from '../../../style/Colors';
+import { useState } from 'react';
+import GDSCModal from '../../core/GDSCModal';
+import OrgAccountEditModal from '../../../templates/main/dashboard/organization/OrgAccountEditModal';
 
 const Container = styled.div`
   width: fit-content;
@@ -8,6 +11,7 @@ const Container = styled.div`
   flex-direction: column;
   border-radius: 8px;
   border: 1px solid rgba(0, 0, 0, 0.08);
+  cursor: pointer;
 `;
 
 const Header = styled.div`
@@ -22,9 +26,10 @@ const Content = styled.div`
   gap: 8px;
 `;
 
-const OrgAccountDetailItem = ({ nickname, bankName, accountNumber }) => {
+const OrgAccountDetailItem = ({ id, nickname, bankName, accountNumber, accountOwner, refresh }) => {
+  const [isEditModalOpen, setEditModalOpen] = useState(false);
   return (
-    <Container>
+    <Container onClick={() => setEditModalOpen(true)}>
       <Header>
         <GDSCText size={14} fontType={TextType.MEDIUM}>
           {nickname}
@@ -38,6 +43,23 @@ const OrgAccountDetailItem = ({ nickname, bankName, accountNumber }) => {
           {accountNumber}
         </GDSCText>
       </Content>
+      <GDSCModal
+        open={isEditModalOpen}
+        onClose={e => {
+          e.stopPropagation();
+          setEditModalOpen(false);
+        }}
+      >
+        <OrgAccountEditModal
+          accountId={id}
+          name={nickname}
+          bank={bankName}
+          accountNumber={accountNumber}
+          accountOwner={accountOwner}
+          refresh={refresh}
+          onClose={() => setEditModalOpen(false)}
+        />
+      </GDSCModal>
     </Container>
   );
 };
