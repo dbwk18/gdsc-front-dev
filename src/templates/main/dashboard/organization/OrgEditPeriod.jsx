@@ -3,6 +3,7 @@ import Colors from '../../../../style/Colors';
 import GDSCText, { TextType } from '../../../../components/core/GDSCText';
 import { useState, useEffect } from 'react';
 import { getForEntity } from '../../../../network/HttpRequests';
+import { convertPeriodToShortFormat } from '../../../../utils/DateUtils';
 
 const Container = styled.div`
   width: 520px;
@@ -59,8 +60,10 @@ const OrgEditPeriod = () => {
           {periods.map(period => {
             return (
               <div className="item">
-                <GDSCText size={13}>{`${period.year}년도 ${period.half} 자료 입력 기간`}</GDSCText>
-                <GDSCText size={13}>{`${formatDate(period.start)} ~ ${formatDate(period.end)}`}</GDSCText>
+                <GDSCText size={13}>{`${period.year}년도 ${
+                  period.half === 'spring' ? '상반기' : '하반기'
+                } 자료 입력 기간`}</GDSCText>
+                <GDSCText size={13}>{`${convertPeriodToShortFormat(period.start, period.end)}`}</GDSCText>
               </div>
             );
           })}
