@@ -30,8 +30,6 @@ export const convertPeriodToLongFormat = (start, end) => {
 
   const startStr = formatDate(startDate);
   const endStr = formatDate(endDate);
-  console.log(end);
-  console.log(endStr);
 
   return `${startStr} ~ ${endStr}`;
 };
