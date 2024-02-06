@@ -16,7 +16,11 @@ const shortDateFormatter = new Intl.DateTimeFormat('ko-KR', {
 
 export const formatDate = date => {
   const dateString = dateFormatter.format(date);
-  const timeString = `${timeFormatter.format(date).replace(':', '시 ')}분`;
+  const formattedTime = timeFormatter.format(date);
+  const rawHour = parseInt(formattedTime.split(':')[0], 10);
+  const hour = rawHour >= 24 ? rawHour - 24 : rawHour;
+  const minute = formattedTime.split(':')[1];
+  const timeString = `${hour}시 ${minute}분`;
   return `${dateString} ${timeString}`;
 };
 
