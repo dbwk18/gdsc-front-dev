@@ -64,7 +64,9 @@ const AdminDashboardPage = () => {
         const selected = ablePeriod[0];
         setTargetYear(selected.year);
         setTargetHalf(selected.half);
-        setFormattedPeriod(convertPeriodToLongFormat(selected.start, selected.end));
+        const formatted = convertPeriodToLongFormat(selected.start, selected.end);
+        console.log(formatted);
+        setFormattedPeriod(formatted);
       }
     });
   }, []);
