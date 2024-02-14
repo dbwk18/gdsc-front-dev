@@ -38,6 +38,19 @@ const Cell = styled.div`
   }
 `;
 
+const CardFileArea = styled.div`
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 16px;
+  cursor: pointer;
+  &:hover {
+    background-color: ${Colors.BLACK08};
+  }
+`;
+
 const AccountList = styled.div`
   width: 100%;
   height: fit-content;
@@ -60,7 +73,7 @@ const OrgAccountCard = ({ year, half }) => {
   const [isCardModalOpen, setCardModalOpen] = useState(false);
   const userInfo = useRecoilValue(userAtom);
   const [accounts, setAccounts] = useState([]);
-  const [cards, setCards] = useState([]);
+  const [cards, setCards] = useState();
 
   useEffect(() => {
     if (!userInfo) return;
@@ -72,7 +85,7 @@ const OrgAccountCard = ({ year, half }) => {
       console.log('ACCOUNTS', data);
       setAccounts(data);
     });
-    getForEntity(`cards/${userInfo.organizationId}/${year}/${half}`).then(data => {
+    getForEntity(`card_records/${userInfo.organizationId}/${year}/${half}`).then(data => {
       console.log('CARDS', data);
       setCards(data);
     });
@@ -124,13 +137,27 @@ const OrgAccountCard = ({ year, half }) => {
             buttonType={ButtonType.NORMAL}
           />
         </div>
-        <EmptyDesc>
-          <GDSCText size={14} fontType={TextType.MEDIUM}>
-            등록된 카드 정보가 없습니다
-          </GDSCText>
-        </EmptyDesc>
+        {cards === undefined ? (
+          <EmptyDesc>
+            <GDSCText size={14} fontType={TextType.MEDIUM}>
+              등록된 카드 정보가 없습니다
+            </GDSCText>
+          </EmptyDesc>
+        ) : (
+          <CardFileArea onClick={() => window.open(cards.URI)}>
+            <GDSCText size={12} fontType={TextType.MEDIUM}>
+              제출한 파일 확인하기
+            </GDSCText>
+          </CardFileArea>
+        )}
       </Cell>
-      <OrgCardModal isOpen={isCardModalOpen} onClose={() => setCardModalOpen(false)} />
+      <OrgCardModal
+        isOpen={isCardModalOpen}
+        year={year}
+        half={half}
+        refresh={refresh}
+        onClose={() => setCardModalOpen(false)}
+      />
     </Container>
   );
 };

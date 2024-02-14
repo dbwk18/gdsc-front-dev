@@ -26,7 +26,7 @@ const UplaodBox = styled.div`
   }
 `;
 
-const FileUploadContainer = ({ inputId, onFilesSelect, fileType }) => {
+const FileUploadContainer = ({ inputId, onFilesSelect, fileType, hideButton = false }) => {
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const [isUploaded, setIsUploaded] = useState(false);
 
@@ -57,7 +57,9 @@ const FileUploadContainer = ({ inputId, onFilesSelect, fileType }) => {
             isUploaded={isUploaded}
             setIsUploaded={setIsUploaded}
           />
-          <FileUploadButton isUploaded={isUploaded} handleUpload={handleUpload} handleEdit={handleEdit} />
+          {!hideButton && (
+            <FileUploadButton isUploaded={isUploaded} handleUpload={handleUpload} handleEdit={handleEdit} />
+          )}
         </div>
       )}
     </div>
