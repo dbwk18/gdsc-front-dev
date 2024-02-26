@@ -10,7 +10,7 @@ const Container = styled.div`
   padding: 0 12px;
 `;
 
-const OrgTable = ({ orgs }) => {
+const OrgTable = ({ orgs, year, half }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedOrgName, setSelectedOrgName] = useState('');
 
@@ -26,12 +26,15 @@ const OrgTable = ({ orgs }) => {
               return (
                 <OrgTableRow
                   key={org.id}
+                  orgId={org.id}
                   orgName={org.organization_name}
                   orgEmail={org.email}
                   orgCardPDF={org.card}
                   orgEditPermission={false}
                   setIsModalOpen={setIsModalOpen}
                   setSelectedOrgName={setSelectedOrgName}
+                  year={year}
+                  half={half}
                 />
               );
             })}

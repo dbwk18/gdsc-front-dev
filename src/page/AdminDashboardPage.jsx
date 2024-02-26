@@ -89,7 +89,7 @@ const AdminDashboardPage = () => {
       />
       <SecondRowContainer>
         <AdminEditPeriod targetYear={targetYear} targetHalf={targetHalf} />
-        <AdminOrgList orgs={orgs} />
+        <AdminOrgList orgs={orgs} year={targetYear} half={targetHalf} />
       </SecondRowContainer>
     </Container>
   );

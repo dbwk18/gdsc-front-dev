@@ -3,6 +3,8 @@ import { TableRow, TableCell } from '@mui/material';
 import GDSCText, { TextType } from '../../core/GDSCText';
 import Colors from '../../../style/Colors';
 import GDSCStatusChip from '../../core/GDSCStatusChip';
+import { useEffect, useState } from 'react';
+import { getForEntity } from '../../../network/HttpRequests';
 
 const StyledDiv = styled.div`
   width: 100%;
@@ -28,7 +30,36 @@ const Button = styled.button`
   height: fit-content;
 `;
 
-const OrgTableRow = ({ orgName, orgEmail, orgCardPDF, orgEditPermission, setIsModalOpen, setSelectedOrgName }) => {
+const CardFileArea = styled.div`
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* padding: 12px 16px; */
+  cursor: pointer;
+`;
+
+const OrgTableRow = ({
+  orgId,
+  orgName,
+  orgEmail,
+  orgCardPDF,
+  orgEditPermission,
+  setIsModalOpen,
+  setSelectedOrgName,
+  year,
+  half,
+}) => {
+  const [cards, setCards] = useState();
+
+  useEffect(() => {
+    getForEntity(`card_records/${orgId}/${year}/${half}`).then(data => {
+      console.log(data);
+      setCards(data);
+    });
+  }, [orgId, year, half]);
+
   const handleChipClick = () => {
     if (!orgEditPermission) {
       setSelectedOrgName(orgName);
@@ -54,14 +85,16 @@ const OrgTableRow = ({ orgName, orgEmail, orgCardPDF, orgEditPermission, setIsMo
       </TableCell>
       <TableCell>
         <StyledDiv>
-          {orgCardPDF ? (
-            <GDSCText size={13} fontType={TextType.BOLD} color={Colors.GREY80}>
-              {'제출됨'}
-            </GDSCText>
-          ) : (
+          {cards === undefined || cards.length === 0 ? (
             <GDSCText size={13} fontType={TextType.BOLD} color={Colors.GREY80}>
               {'미제출'}
             </GDSCText>
+          ) : (
+            <CardFileArea onClick={() => window.open(cards.URI)}>
+              <GDSCText size={13} fontType={TextType.BOLD} color={Colors.GREY80}>
+                {'제출됨'}
+              </GDSCText>
+            </CardFileArea>
           )}
         </StyledDiv>
       </TableCell>

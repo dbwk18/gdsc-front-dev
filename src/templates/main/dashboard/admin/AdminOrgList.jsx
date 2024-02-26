@@ -26,14 +26,14 @@ const PaginationContainer = styled.div`
 
 const COUNT_PER_PAGE = 12;
 
-const AdminOrgList = ({ orgs }) => {
+const AdminOrgList = ({ orgs, year, half }) => {
   const [page, setPage] = useState(1);
   return (
     <Container>
       <GDSCText size={24} fontType={TextType.BOLD}>
         {'피감기관 목록'}
       </GDSCText>
-      <OrgTable orgs={orgs} />
+      <OrgTable orgs={orgs} year={year} half={half} />
       <PaginationContainer>
         <GDSCPagination count={Math.ceil(orgs.length / COUNT_PER_PAGE)} page={page} setPage={setPage} />
       </PaginationContainer>
