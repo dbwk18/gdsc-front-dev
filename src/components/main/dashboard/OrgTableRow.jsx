@@ -44,7 +44,6 @@ const OrgTableRow = ({
   orgId,
   orgName,
   orgEmail,
-  orgCardPDF,
   orgEditPermission,
   setIsModalOpen,
   setSelectedOrgName,
@@ -55,7 +54,6 @@ const OrgTableRow = ({
 
   useEffect(() => {
     getForEntity(`card_records/${orgId}/${year}/${half}`).then(data => {
-      console.log(data);
       setCards(data);
     });
   }, [orgId, year, half]);

@@ -29,7 +29,6 @@ const OrgTable = ({ orgs, year, half }) => {
                   orgId={org.id}
                   orgName={org.organization_name}
                   orgEmail={org.email}
-                  orgCardPDF={org.card}
                   orgEditPermission={false}
                   setIsModalOpen={setIsModalOpen}
                   setSelectedOrgName={setSelectedOrgName}
