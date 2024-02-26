@@ -53,9 +53,13 @@ const OrgTableRow = ({
   const [cards, setCards] = useState();
 
   useEffect(() => {
-    getForEntity(`card_records/${orgId}/${year}/${half}`).then(data => {
-      setCards(data);
-    });
+    getForEntity(`card_records/${orgId}/${year}/${half}`)
+      .then(data => {
+        setCards(data);
+      })
+      .catch(e => {
+        setCards(undefined);
+      });
   }, [orgId, year, half]);
 
   const handleChipClick = () => {
